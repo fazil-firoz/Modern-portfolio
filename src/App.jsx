@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import anime from 'animejs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,29 +93,24 @@ function App() {
         },
       });
 
-      // ── Background Sketch Draw Reveal via Anime.js on scroll ──
-      ScrollTrigger.create({
-        trigger: experienceRef.current,
-        start: 'top 75%',
-        onEnter: () => {
-          anime({
-            targets: bgSketchRef.current,
-            clipPath: ['inset(0% 100% 0% 0%)', 'inset(0% 0% 0% 0%)'],
-            opacity: [0, 0.28],
-            easing: 'easeInOutQuart',
-            duration: 2200,
-          });
+      // ── Background Sketch Draw Reveal on scroll ──
+      gsap.fromTo(bgSketchRef.current,
+        {
+          clipPath: 'inset(0% 100% 0% 0%)',
+          opacity: 0,
         },
-        onLeaveBack: () => {
-          anime({
-            targets: bgSketchRef.current,
-            clipPath: 'inset(0% 100% 0% 0%)',
-            opacity: 0,
-            duration: 800,
-            easing: 'easeInQuad'
-          });
+        {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          opacity: 0.28,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: experienceRef.current,
+            start: 'top 75%',
+            end:   'top 25%',
+            scrub: 1.5,
+          },
         }
-      });
+      );
 
       // ── Experience content slides in from right ──
       gsap.from(expContentRef.current, {
