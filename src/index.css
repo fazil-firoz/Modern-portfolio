@@ -641,32 +641,33 @@ html, body, #root {
   background: #e59619;
 }
 
-/* White Arch Cutout for Photo — Semi-circle top arch matching original card */
-.antas-photo-arch {
+/* Circular Photo Ring Cutout */
+.antas-photo-ring {
   position: absolute;
-  top: 34px;
+  top: 42px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 112px;
-  border-radius: 55px 55px 0 0;
-  background: #ffffff;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3.5px solid #ffffff;
   overflow: hidden;
+  background: #ffffff;
   z-index: 5;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.22);
 }
 
 .antas-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center top;
 }
 
 /* White body text section */
 .antas-body {
   flex: 1;
-  padding: 54px 8px 6px;
+  padding: 40px 8px 6px;
   text-align: center;
   display: flex;
   flex-direction: column;

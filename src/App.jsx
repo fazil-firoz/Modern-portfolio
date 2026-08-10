@@ -63,8 +63,8 @@ function AntasCard() {
           <div className="antas-orange-stripe-right" />
         </div>
 
-        {/* Arch Photo Cutout — Semi-circle top arch matching original card */}
-        <div className="antas-photo-arch">
+        {/* Circular photo cutout */}
+        <div className="antas-photo-ring">
           <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="antas-photo-img" />
         </div>
 
