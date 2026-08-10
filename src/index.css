@@ -489,9 +489,35 @@ html, body, #root {
   flex-shrink: 0;
 }
 
-/* Direct Content Layout */
-.exp-direct-content {
+/* Timeline Layout Wrapper */
+.exp-timeline-wrapper {
+  display: flex;
+  gap: 1.75rem;
   width: 100%;
+  position: relative;
+}
+
+/* Vertical Timeline Track Line */
+.exp-timeline-track {
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.exp-timeline-progress {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, #10b981 0%, #3b82f6 50%, #93c5fd 100%);
+  transform-origin: top center;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.exp-timeline-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.35rem;

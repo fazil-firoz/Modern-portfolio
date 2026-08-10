@@ -46,8 +46,10 @@ function App() {
   const floatingCardRef  = useRef(null);
   const aboutRef         = useRef(null);
   const aboutTextRef     = useRef(null);
-  const experienceRef    = useRef(null);
-  const expContentRef    = useRef(null);
+  const experienceRef        = useRef(null);
+  const expContentRef       = useRef(null);
+  const timelineProgressRef = useRef(null);
+  const bulletItemsRef      = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -91,17 +93,39 @@ function App() {
         },
       });
 
-      // ── Experience content slides up on scroll ──
-      gsap.from(expContentRef.current, {
-        y: 60,
-        opacity: 0,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: experienceRef.current,
-          start: 'top 70%',
-          end:   'top 20%',
-          scrub: 1.5,
-        },
+      // ── Vertical Timeline Line Draw on scroll ──
+      gsap.fromTo(timelineProgressRef.current,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: experienceRef.current,
+            start: 'top 60%',
+            end:   'bottom 85%',
+            scrub: 1,
+          },
+        }
+      );
+
+      // ── Staggered Bullet Points Cascade Reveal ──
+      bulletItemsRef.current.forEach((el) => {
+        if (!el) return;
+        gsap.fromTo(el,
+          { opacity: 0, x: 35, scale: 0.96 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              end:   'top 65%',
+              scrub: 1.2,
+            },
+          }
+        );
       });
 
     });
@@ -187,10 +211,10 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (Royal Violet & Gold Theme)
+          SECTION 3 — EXPERIENCE  (Timeline Track & Cascade)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
-        <div className="exp-inner" ref={expContentRef}>
+        <div className="exp-inner">
 
           {/* Section Heading Tag */}
           <div className="exp-tag">
@@ -198,48 +222,62 @@ function App() {
             Work Experience
           </div>
 
-          {/* Direct Experience Layout (No Box) */}
-          <div className="exp-direct-content">
-            
-            {/* Header Row */}
-            <div className="exp-card-header">
-              <div className="exp-role-group">
-                <h3 className="exp-role-title">Junior Software Engineer</h3>
-                <div className="exp-company-sub">
-                  <span className="exp-company-name">Antas Technologies</span>
-                  <span className="exp-dot-sep">•</span>
-                  <span className="exp-location">Infopark, Kochi, India</span>
+          {/* Direct Experience Layout with Vertical Timeline Track */}
+          <div className="exp-timeline-wrapper">
+
+            {/* Vertical Timeline Track Line */}
+            <div className="exp-timeline-track">
+              <div className="exp-timeline-progress" ref={timelineProgressRef} />
+            </div>
+
+            {/* Experience Content Column */}
+            <div className="exp-timeline-content">
+
+              {/* Header Row */}
+              <div className="exp-card-header">
+                <div className="exp-role-group">
+                  <h3 className="exp-role-title">Junior Software Engineer</h3>
+                  <div className="exp-company-sub">
+                    <span className="exp-company-name">Antas Technologies</span>
+                    <span className="exp-dot-sep">•</span>
+                    <span className="exp-location">Infopark, Kochi, India</span>
+                  </div>
+                </div>
+
+                <div className="exp-period-badge">
+                  <span className="exp-badge-pulse" />
+                  2025 – Present
                 </div>
               </div>
 
-              <div className="exp-period-badge">
-                <span className="exp-badge-pulse" />
-                2025 – Present
+              {/* Tech Stack Pills */}
+              <div className="exp-tech-pills">
+                {techBadges.map((badge, idx) => (
+                  <span key={idx} className="exp-tech-pill">{badge}</span>
+                ))}
               </div>
+
+              {/* Divider Line */}
+              <div className="exp-divider" />
+
+              {/* Cascading Contribution Bullet Points */}
+              <ul className="exp-points-list">
+                {expItems.map((item, i) => (
+                  <li
+                    key={i}
+                    className="exp-point-item"
+                    ref={(el) => (bulletItemsRef.current[i] = el)}
+                  >
+                    <span className="exp-point-icon">◆</span>
+                    <div className="exp-point-body">
+                      <span className="exp-point-text">{item.text}</span>
+                      {item.tech && <span className="exp-point-tech">[{item.tech}]</span>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
             </div>
-
-            {/* Tech Stack Pills */}
-            <div className="exp-tech-pills">
-              {techBadges.map((badge, idx) => (
-                <span key={idx} className="exp-tech-pill">{badge}</span>
-              ))}
-            </div>
-
-            {/* Divider Line */}
-            <div className="exp-divider" />
-
-            {/* Contribution Bullet Points */}
-            <ul className="exp-points-list">
-              {expItems.map((item, i) => (
-                <li key={i} className="exp-point-item">
-                  <span className="exp-point-icon">◆</span>
-                  <div className="exp-point-body">
-                    <span className="exp-point-text">{item.text}</span>
-                    {item.tech && <span className="exp-point-tech">[{item.tech}]</span>}
-                  </div>
-                </li>
-              ))}
-            </ul>
 
           </div>
 
