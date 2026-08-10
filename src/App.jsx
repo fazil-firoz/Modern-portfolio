@@ -45,37 +45,46 @@ function IDCard() {
 ───────────────────────────────────────── */
 function AntasCard() {
   return (
-    <div className="antas-card">
-      {/* Dark header with logo */}
-      <div className="antas-header">
-        <div className="antas-logo">
-          <span>ant</span><span className="antas-star">▲</span><span>as</span>
+    <div className="antas-sleeve">
+      {/* Top lanyard clip loop */}
+      <div className="antas-sleeve-clip" />
+      {/* Side holder notches */}
+      <div className="antas-sleeve-notch-left" />
+      <div className="antas-sleeve-notch-right" />
+
+      {/* The actual ID card inside */}
+      <div className="antas-card">
+        {/* Dark header with logo */}
+        <div className="antas-header">
+          <div className="antas-logo">
+            an<span className="antas-t-accent"><span className="antas-orange-dot" />t</span>as
+          </div>
+          <div className="antas-orange-stripe-left" />
+          <div className="antas-orange-stripe-right" />
         </div>
-        <div className="antas-orange-stripe-left" />
-        <div className="antas-orange-stripe-right" />
-      </div>
 
-      {/* Circular photo — positioned cleanly below logo */}
-      <div className="antas-photo-ring">
-        <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="antas-photo-img" />
-      </div>
-
-      {/* White body */}
-      <div className="antas-body">
-        <div className="antas-name">MOHAMMED FAZIL FIROZ E</div>
-        <div className="antas-id">(ID A10008)</div>
-        <div className="antas-company">Antas Solutions PVT LTD</div>
-        <div className="antas-address">
-          Carnival InfoparkPhase 1,First floor<br />
-          Infopark,Kakkanad,Kochi<br />
-          Kerala 682042
+        {/* Arch Photo Cutout — Semi-circle top arch matching original card */}
+        <div className="antas-photo-arch">
+          <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="antas-photo-img" />
         </div>
-        <div className="antas-blood">Blood Group: <strong>O+ve</strong></div>
-      </div>
 
-      {/* Dark footer — number kept blank as requested */}
-      <div className="antas-footer">
-        Contact Number:
+        {/* White body */}
+        <div className="antas-body">
+          <div className="antas-name">MOHAMMED FAZIL FIROZ E</div>
+          <div className="antas-id">(ID A10008)</div>
+          <div className="antas-company">Antas Solutions PVT LTD</div>
+          <div className="antas-address">
+            Carnival InfoparkPhase 1,First floor<br />
+            Infopark,Kakkanad,Kochi<br />
+            Kerala 682042
+          </div>
+          <div className="antas-blood">Blood Group: <span>O+ve</span></div>
+        </div>
+
+        {/* Dark footer — number kept blank as requested */}
+        <div className="antas-footer">
+          Contact Number:
+        </div>
       </div>
     </div>
   );
