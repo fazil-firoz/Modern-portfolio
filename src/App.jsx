@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-removebg-preview.png";
-const ANTAS_IMG = "/Images/WhatsApp Image 2026-08-10 at 11.16.53 PM.jpeg";
+const SKETCH_IMG = "/Images/developer-sketch.png";
 
 /* ─────────────────────────────────────────
    PORTFOLIO ID CARD  (hero card)
@@ -41,41 +41,14 @@ function IDCard() {
 }
 
 /* ─────────────────────────────────────────
-   ANTAS COMPANY ID CARD  (experience section)
+   DEVELOPER SKETCH  (experience section)
 ───────────────────────────────────────── */
-function AntasCard() {
+function DevSketch() {
   return (
-    <div className="scene antas-card-scene">
-      <div className="id-card antas-id-card">
-        <div className="card-hole antas-hole" />
-        <div className="id-card-face antas-card-face">
-          
-          {/* Top Bar — brand logo & ID badge */}
-          <div className="card-top-bar">
-            <span className="antas-brand-logo">ant<span className="antas-star">▲</span>as</span>
-            <span className="antas-badge-id">ID A10008</span>
-          </div>
-
-          {/* Photo area — big full-bleed image with giant background text */}
-          <div className="card-photo-area antas-photo-area">
-            <div className="card-big-text antas-big-text">ANTAS<br />ENG</div>
-            <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="card-photo-img antas-photo-img" />
-            <div className="card-photo-fade" />
-          </div>
-
-          {/* Info section — company details */}
-          <div className="card-info-section antas-info-section">
-            <div className="card-person-name">MOHAMMED FAZIL FIROZ E</div>
-            <div className="antas-role-badge">Junior Software Engineer</div>
-            <div className="card-footer-row">
-              <span className="card-dept">Antas Solutions · Infopark</span>
-              <div className="antas-blood-mark">O+ve</div>
-            </div>
-          </div>
-
-        </div>
+    <div className="sketch-container">
+      <div className="sketch-frame">
+        <img src={SKETCH_IMG} alt="Developer at work sketch" className="sketch-img" />
       </div>
-      <div className="card-shadow antas-card-shadow" />
     </div>
   );
 }
@@ -251,10 +224,10 @@ function App() {
 
         <div className="exp-inner">
 
-          {/* LEFT — Antas ID card (animated in) */}
+          {/* LEFT — Developer Sketch (animated in) */}
           <div className="exp-left">
-            <div className="antas-card-scene" ref={antasCardRef}>
-              <AntasCard />
+            <div className="sketch-anim-wrapper" ref={antasCardRef}>
+              <DevSketch />
             </div>
           </div>
 
