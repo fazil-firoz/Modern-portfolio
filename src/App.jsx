@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-removebg-preview.png";
-const SKETCH_IMG = "/Images/developer-sketch.png";
 
 /* ─────────────────────────────────────────
    PORTFOLIO ID CARD  (hero card)
@@ -49,7 +48,6 @@ function App() {
   const aboutTextRef     = useRef(null);
   const experienceRef    = useRef(null);
   const expContentRef    = useRef(null);
-  const bgSketchRef      = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -93,28 +91,9 @@ function App() {
         },
       });
 
-      // ── Background Sketch Draw Reveal on scroll ──
-      gsap.fromTo(bgSketchRef.current,
-        {
-          clipPath: 'inset(0% 100% 0% 0%)',
-          opacity: 0,
-        },
-        {
-          clipPath: 'inset(0% 0% 0% 0%)',
-          opacity: 0.28,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: experienceRef.current,
-            start: 'top 75%',
-            end:   'top 25%',
-            scrub: 1.5,
-          },
-        }
-      );
-
-      // ── Experience content slides in from right ──
+      // ── Experience content slides up on scroll ──
       gsap.from(expContentRef.current, {
-        x: 70,
+        y: 60,
         opacity: 0,
         ease: 'power3.out',
         scrollTrigger: {
@@ -130,14 +109,16 @@ function App() {
   }, []);
 
   const expItems = [
-    { text: 'Designed & developed Hospital Management Systems (HMS) for clients across Dubai and India.', tech: 'ASP.NET Core · React · SQL · PostgreSQL' },
-    { text: 'Built a CRM system for an overseas educational consultancy, streamlining student & application management.' },
-    { text: 'Built robust backend modules and improved database performance through optimized SQL queries.', tech: 'C#' },
-    { text: 'Developed and integrated RESTful APIs for seamless frontend–backend communication.' },
-    { text: 'Integrated third-party APIs to extend system functionality and external service communication.' },
-    { text: 'Resolved critical production issues and ensured high system availability & reliability.' },
-    { text: 'Performed unit testing and debugging to ensure code quality and smooth functionality across modules.' },
+    { text: 'Designed and developed Hospital Management Systems (HMS) for clients across Dubai and India.', tech: 'ASP.NET Core · React · SQL · PostgreSQL' },
+    { text: 'Built and contributed to a CRM system for an overseas educational consultancy, streamlining student and application management processes.' },
+    { text: 'Built robust backend modules using C# and improved database performance through optimized SQL queries.', tech: 'C#' },
+    { text: 'Developed and integrated RESTful APIs to enable seamless communication between frontend and backend systems.' },
+    { text: 'Integrated third-party APIs to extend system functionality and ensure smooth external service communication.' },
+    { text: 'Resolved critical production issues and ensured high system availability and reliability.' },
+    { text: 'Performed unit testing and debugging to ensure application reliability, code quality, and smooth functionality across modules.' },
   ];
+
+  const techBadges = ['ASP.NET Core', 'React', 'C#', 'PostgreSQL', 'SQL', 'REST APIs', 'Unit Testing'];
 
   return (
     <div className="page-wrapper">
@@ -206,39 +187,64 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (Deep Cyber Teal / Emerald Theme)
+          SECTION 3 — EXPERIENCE  (Royal Violet & Gold Theme)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
-        {/* Background Sketch Drawing Watermark (revealed via anime.js draw stroke on scroll) */}
-        <div className="exp-bg-sketch" ref={bgSketchRef}>
-          <img src={SKETCH_IMG} alt="Developer at work sketch drawing" className="exp-bg-sketch-img" />
-        </div>
+        <div className="exp-glow-1" /><div className="exp-glow-2" /><div className="exp-glow-3" />
 
-        <div className="exp-glow-1" /><div className="exp-glow-2" />
+        <div className="exp-inner" ref={expContentRef}>
 
-        {/* Section label top */}
-        <div className="exp-section-label">Experience</div>
+          {/* Section Heading Tag */}
+          <div className="exp-tag">
+            <span className="exp-tag-line" />
+            Work Experience
+          </div>
 
-        <div className="exp-inner">
-          {/* Experience details */}
-          <div className="exp-right" ref={expContentRef}>
-            <div className="exp-role-header">
-              <h3 className="exp-role">Junior Software Engineer</h3>
-              <span className="exp-period">2024 – Present</span>
+          {/* Main Experience Card */}
+          <div className="exp-card">
+            
+            {/* Card Header Row */}
+            <div className="exp-card-header">
+              <div className="exp-role-group">
+                <h3 className="exp-role-title">Junior Software Engineer</h3>
+                <div className="exp-company-sub">
+                  <span className="exp-company-name">Antas Technologies</span>
+                  <span className="exp-dot-sep">•</span>
+                  <span className="exp-location">Infopark, Kochi, India</span>
+                </div>
+              </div>
+
+              <div className="exp-period-badge">
+                <span className="exp-badge-pulse" />
+                2024 – Present
+              </div>
             </div>
-            <div className="exp-company">Antas Technologies · Infopark, Kochi</div>
-            <ul className="exp-list">
+
+            {/* Tech Stack Pills */}
+            <div className="exp-tech-pills">
+              {techBadges.map((badge, idx) => (
+                <span key={idx} className="exp-tech-pill">{badge}</span>
+              ))}
+            </div>
+
+            {/* Divider Line */}
+            <div className="exp-divider" />
+
+            {/* Contribution Bullet Points */}
+            <ul className="exp-points-list">
               {expItems.map((item, i) => (
-                <li key={i} className="exp-item">
-                  <span className="exp-bullet" />
-                  <div>
-                    <span>{item.text}</span>
-                    {item.tech && <span className="exp-tech">{item.tech}</span>}
+                <li key={i} className="exp-point-item">
+                  <span className="exp-point-icon">◆</span>
+                  <div className="exp-point-body">
+                    <span className="exp-point-text">{item.text}</span>
+                    {item.tech && <span className="exp-point-tech">[{item.tech}]</span>}
                   </div>
                 </li>
               ))}
             </ul>
+
           </div>
+
         </div>
       </section>
 
