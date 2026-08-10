@@ -45,47 +45,37 @@ function IDCard() {
 ───────────────────────────────────────── */
 function AntasCard() {
   return (
-    <div className="antas-sleeve">
-      {/* Top lanyard clip loop */}
-      <div className="antas-sleeve-clip" />
-      {/* Side holder notches */}
-      <div className="antas-sleeve-notch-left" />
-      <div className="antas-sleeve-notch-right" />
-
-      {/* The actual ID card inside */}
-      <div className="antas-card">
-        {/* Dark header with logo */}
-        <div className="antas-header">
-          <div className="antas-logo">
-            an<span className="antas-t-accent"><span className="antas-orange-dot" />t</span>as
+    <div className="scene antas-card-scene">
+      <div className="id-card antas-id-card">
+        <div className="card-hole antas-hole" />
+        <div className="id-card-face antas-card-face">
+          
+          {/* Top Bar — brand logo & ID badge */}
+          <div className="card-top-bar">
+            <span className="antas-brand-logo">ant<span className="antas-star">▲</span>as</span>
+            <span className="antas-badge-id">ID A10008</span>
           </div>
-          <div className="antas-orange-stripe-left" />
-          <div className="antas-orange-stripe-right" />
-        </div>
 
-        {/* Circular photo cutout */}
-        <div className="antas-photo-ring">
-          <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="antas-photo-img" />
-        </div>
-
-        {/* White body */}
-        <div className="antas-body">
-          <div className="antas-name">MOHAMMED FAZIL FIROZ E</div>
-          <div className="antas-id">(ID A10008)</div>
-          <div className="antas-company">Antas Solutions PVT LTD</div>
-          <div className="antas-address">
-            Carnival InfoparkPhase 1,First floor<br />
-            Infopark,Kakkanad,Kochi<br />
-            Kerala 682042
+          {/* Photo area — big full-bleed image with giant background text */}
+          <div className="card-photo-area antas-photo-area">
+            <div className="card-big-text antas-big-text">ANTAS<br />ENG</div>
+            <img src={ANTAS_IMG} alt="Mohammed Fazil Firoz E" className="card-photo-img antas-photo-img" />
+            <div className="card-photo-fade" />
           </div>
-          <div className="antas-blood">Blood Group: <span>O+ve</span></div>
-        </div>
 
-        {/* Dark footer — number kept blank as requested */}
-        <div className="antas-footer">
-          Contact Number:
+          {/* Info section — company details */}
+          <div className="card-info-section antas-info-section">
+            <div className="card-person-name">MOHAMMED FAZIL FIROZ E</div>
+            <div className="antas-role-badge">Junior Software Engineer</div>
+            <div className="card-footer-row">
+              <span className="card-dept">Antas Solutions · Infopark</span>
+              <div className="antas-blood-mark">O+ve</div>
+            </div>
+          </div>
+
         </div>
       </div>
+      <div className="card-shadow antas-card-shadow" />
     </div>
   );
 }
