@@ -190,8 +190,6 @@ function App() {
           SECTION 3 — EXPERIENCE  (Royal Violet & Gold Theme)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
-        <div className="exp-glow-1" /><div className="exp-glow-2" /><div className="exp-glow-3" />
-
         <div className="exp-inner" ref={expContentRef}>
 
           {/* Section Heading Tag */}
@@ -216,7 +214,7 @@ function App() {
 
               <div className="exp-period-badge">
                 <span className="exp-badge-pulse" />
-                2024 – Present
+                2025 – Present
               </div>
             </div>
 
