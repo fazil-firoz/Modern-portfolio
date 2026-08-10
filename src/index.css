@@ -169,12 +169,12 @@ html, body, #root {
 /* About layout grid */
 .about-inner {
   position: relative; z-index: 5;
-  width: 100%; max-width: 1200px;
-  margin: 0 auto; padding: 0 5rem;
+  width: 100%;
+  padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr 310px;  /* 310px = buffer so text doesn't go under card */
   align-items: start;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 /* ── LEFT — story column ── */
@@ -182,7 +182,30 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 3rem 0 4rem;
+  padding: 2rem 0 2.5rem;
+  max-width: 600px;   /* hard cap — text never goes under the card */
+}
+
+/* ── About Me heading tag ── */
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6366f1;
+  margin-bottom: 0.5rem;
+}
+
+.about-tag-line {
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: #6366f1;
+  flex-shrink: 0;
 }
 
 /* ── Handwritten story styles ── */
@@ -190,9 +213,9 @@ html, body, #root {
   font-family: 'Caveat', cursive;
   font-size: 1.28rem;
   font-weight: 400;
-  line-height: 2;
+  line-height: 1.7;
   color: #2c2c3e;
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .story-text strong {
@@ -205,7 +228,7 @@ html, body, #root {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin: 2rem 0 1.2rem;
+  margin: 0.9rem 0 0.6rem;
   position: relative;
 }
 
@@ -237,17 +260,17 @@ html, body, #root {
   font-family: 'Caveat', cursive;
   font-size: 1.28rem;
   font-weight: 400;
-  line-height: 2;
+  line-height: 1.7;
   color: #2c2c3e;
-  margin-top: 1rem;
-  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
   border-top: 1px dashed rgba(99,102,241,0.25);
 }
 
 .story-emoji {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
 }
 
 /* ── RIGHT card slot (ghost — fixed card lands here visually) ── */
