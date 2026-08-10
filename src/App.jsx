@@ -200,10 +200,10 @@ function App() {
             Work Experience
           </div>
 
-          {/* Main Experience Card */}
-          <div className="exp-card">
+          {/* Direct Experience Layout (No Box) */}
+          <div className="exp-direct-content">
             
-            {/* Card Header Row */}
+            {/* Header Row */}
             <div className="exp-card-header">
               <div className="exp-role-group">
                 <h3 className="exp-role-title">Junior Software Engineer</h3>
