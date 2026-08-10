@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import anime from 'animejs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,19 +42,6 @@ function IDCard() {
 }
 
 /* ─────────────────────────────────────────
-   DEVELOPER SKETCH  (experience section)
-───────────────────────────────────────── */
-function DevSketch() {
-  return (
-    <div className="sketch-container">
-      <div className="sketch-frame">
-        <img src={SKETCH_IMG} alt="Developer at work sketch" className="sketch-img" />
-      </div>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
@@ -61,8 +49,8 @@ function App() {
   const aboutRef         = useRef(null);
   const aboutTextRef     = useRef(null);
   const experienceRef    = useRef(null);
-  const antasCardRef     = useRef(null);
   const expContentRef    = useRef(null);
+  const bgSketchRef      = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -106,18 +94,28 @@ function App() {
         },
       });
 
-      // ── Antas card: sweeps up from below-left with tilt ──
-      gsap.from(antasCardRef.current, {
-        y: 130,
-        rotateZ: -22,
-        opacity: 0,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: experienceRef.current,
-          start: 'top 80%',
-          end:   'top 25%',
-          scrub: 1.8,
+      // ── Background Sketch Draw Reveal via Anime.js on scroll ──
+      ScrollTrigger.create({
+        trigger: experienceRef.current,
+        start: 'top 75%',
+        onEnter: () => {
+          anime({
+            targets: bgSketchRef.current,
+            clipPath: ['inset(0% 100% 0% 0%)', 'inset(0% 0% 0% 0%)'],
+            opacity: [0, 0.28],
+            easing: 'easeInOutQuart',
+            duration: 2200,
+          });
         },
+        onLeaveBack: () => {
+          anime({
+            targets: bgSketchRef.current,
+            clipPath: 'inset(0% 100% 0% 0%)',
+            opacity: 0,
+            duration: 800,
+            easing: 'easeInQuad'
+          });
+        }
       });
 
       // ── Experience content slides in from right ──
@@ -214,30 +212,21 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (dark variant)
+          SECTION 3 — EXPERIENCE  (Deep Cyber Teal / Emerald Theme)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
+        {/* Background Sketch Drawing Watermark (revealed via anime.js draw stroke on scroll) */}
+        <div className="exp-bg-sketch" ref={bgSketchRef}>
+          <img src={SKETCH_IMG} alt="Developer at work sketch drawing" className="exp-bg-sketch-img" />
+        </div>
+
         <div className="exp-glow-1" /><div className="exp-glow-2" />
 
         {/* Section label top */}
         <div className="exp-section-label">Experience</div>
 
         <div className="exp-inner">
-
-          {/* LEFT — Developer Sketch (animated in) */}
-          <div className="exp-left">
-            <div className="sketch-anim-wrapper" ref={antasCardRef}>
-              <DevSketch />
-            </div>
-          </div>
-
-          {/* Connector: line + dot from card to content */}
-          <div className="exp-connector">
-            <div className="exp-connector-line" />
-            <div className="exp-connector-dot" />
-          </div>
-
-          {/* RIGHT — Experience details */}
+          {/* Experience details */}
           <div className="exp-right" ref={expContentRef}>
             <div className="exp-role-header">
               <h3 className="exp-role">Junior Software Engineer</h3>
@@ -256,7 +245,6 @@ function App() {
               ))}
             </ul>
           </div>
-
         </div>
       </section>
 
