@@ -427,7 +427,7 @@ html, body, #root {
 
 
 /* ═══════════════════════════════════════════════════════
-   SECTION 3 — EXPERIENCE  (Royal Violet & Amber Gold Theme)
+   SECTION 3 — EXPERIENCE  (Deep Obsidian & Amber Gold Theme)
 ═══════════════════════════════════════════════════════ */
 .section-experience {
   position: relative;
@@ -441,31 +441,31 @@ html, body, #root {
   overflow: hidden;
   padding: 6rem 0;
 
-  /* Royal Midnight Violet Background */
+  /* Deep Obsidian & Warm Amber Gold Background */
   background:
-    radial-gradient(ellipse at 15% 30%, rgba(124, 58, 237, 0.24) 0%, transparent 48%),
-    radial-gradient(ellipse at 85% 70%, rgba(245, 158, 11, 0.20) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 10%, rgba(139, 92, 246, 0.16) 0%, transparent 55%),
-    #0a0818;
+    radial-gradient(ellipse at 15% 30%, rgba(245, 158, 11, 0.20) 0%, transparent 48%),
+    radial-gradient(ellipse at 85% 70%, rgba(217, 119, 6, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 10%, rgba(251, 191, 36, 0.12) 0%, transparent 55%),
+    #0b0d14;
 }
 
-/* Violet fine grid lines */
+/* Warm Gold fine grid lines */
 .section-experience::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none; z-index: 0;
 }
 
-/* Glowing Orbs — Royal Purple & Amber */
+/* Glowing Orbs — Amber & Gold */
 .exp-glow-1 {
   position: absolute;
   width: 550px; height: 550px; border-radius: 50%;
   bottom: -100px; left: -150px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, transparent 70%);
   filter: blur(90px);
   pointer-events: none; z-index: 0;
 }
@@ -474,7 +474,7 @@ html, body, #root {
   position: absolute;
   width: 650px; height: 650px; border-radius: 50%;
   top: -120px; right: -150px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
   filter: blur(95px);
   pointer-events: none; z-index: 0;
 }
@@ -501,14 +501,14 @@ html, body, #root {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #a78bfa;
+  color: #f59e0b;
 }
 
 .exp-tag-line {
   display: block;
   width: 28px;
   height: 1.5px;
-  background: #a78bfa;
+  background: #f59e0b;
   flex-shrink: 0;
 }
 
@@ -520,7 +520,7 @@ html, body, #root {
   gap: 1.25rem;
 }
 
-/* Card Header */
+/* Header */
 .exp-card-header {
   display: flex;
   align-items: flex-start;
@@ -549,7 +549,7 @@ html, body, #root {
   gap: 0.5rem;
   font-size: 0.88rem;
   font-weight: 600;
-  color: #f59e0b;  /* Warm Amber Gold */
+  color: #fbbf24;
 }
 
 .exp-dot-sep {
@@ -557,7 +557,7 @@ html, body, #root {
 }
 
 .exp-location {
-  color: rgba(235, 230, 255, 0.65);
+  color: rgba(240, 240, 245, 0.65);
   font-weight: 400;
 }
 
@@ -569,7 +569,7 @@ html, body, #root {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.73rem;
   font-weight: 700;
-  color: #fbbf24;
+  color: #f59e0b;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: rgba(245, 158, 11, 0.12);
@@ -597,10 +597,10 @@ html, body, #root {
 .exp-tech-pill {
   font-size: 0.72rem;
   font-weight: 600;
-  color: #c4b5fd;
+  color: #fcd34d;
   letter-spacing: 0.02em;
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
   padding: 0.3rem 0.85rem;
   border-radius: 50px;
 }
