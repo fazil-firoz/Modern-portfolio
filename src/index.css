@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -140,10 +140,11 @@ html, body, #root {
 ═══════════════════════════════════════════ */
 .section-about {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
 
   /* Clean warm white */
@@ -171,89 +172,88 @@ html, body, #root {
   width: 100%; max-width: 1200px;
   margin: 0 auto; padding: 0 5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4rem;
+  grid-template-columns: 1fr 420px;
+  align-items: start;
+  gap: 3rem;
 }
 
-/* ── LEFT text ── */
+/* ── LEFT — story column ── */
 .about-left {
-  display: flex; flex-direction: column; gap: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 3rem 0 4rem;
 }
 
-.about-tag {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
+/* ── Handwritten story styles ── */
+.story-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.28rem;
+  font-weight: 400;
+  line-height: 2;
+  color: #2c2c3e;
+  margin-bottom: 1.6rem;
+}
+
+.story-text strong {
+  font-weight: 700;
+  color: #1a1a3a;
+}
+
+/* Chapter divider with icon + label */
+.chapter-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0 1.2rem;
+  position: relative;
+}
+
+.chapter-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.2), transparent);
+}
+
+.chapter-icon {
+  font-size: 1.4rem;
   color: #6366f1;
-}
-.about-tag::before {
-  content: '';
-  display: block; width: 28px; height: 1.5px;
-  background: #6366f1;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
-.about-heading {
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 800; letter-spacing: -0.03em;
-  line-height: 1.15; color: #0f0f1a;
-}
-.about-heading span {
-  background: linear-gradient(135deg, #6366f1, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.about-body {
-  font-size: 0.93rem; font-weight: 400;
-  line-height: 1.85; color: #555570;
-  max-width: 420px;
-}
-.about-body strong {
-  color: #1a1a3a; font-weight: 600;
+.chapter-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6366f1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.about-skills {
-  display: flex; flex-wrap: wrap; gap: 0.45rem;
-  margin-top: 0.25rem;
-}
-.skill-pill {
-  padding: 0.35rem 0.85rem; border-radius: 50px;
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.20);
-  font-size: 0.73rem; font-weight: 600;
-  color: #6366f1; letter-spacing: 0.02em;
-  transition: all 0.2s ease;
-}
-.skill-pill:hover {
-  background: #6366f1; color: #fff;
-  border-color: #6366f1;
+/* Closing heart line */
+.story-closing {
+  font-family: 'Caveat', cursive;
+  font-size: 1.28rem;
+  font-weight: 400;
+  line-height: 2;
+  color: #2c2c3e;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(99,102,241,0.25);
 }
 
-.about-cta { display: flex; gap: 1rem; align-items: center; margin-top: 0.25rem; }
-
-.btn-primary {
-  padding: 0.75rem 1.75rem; border-radius: 50px;
-  background: #6366f1; color: #fff;
-  font-size: 0.85rem; font-weight: 700;
-  text-decoration: none; border: none; cursor: pointer;
-  box-shadow: 0 6px 20px rgba(99,102,241,0.3);
-  transition: all 0.25s ease;
+.story-emoji {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.25rem;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(99,102,241,0.4); }
 
-.btn-outline {
-  padding: 0.75rem 1.75rem; border-radius: 50px;
-  background: transparent; color: #6366f1;
-  font-size: 0.85rem; font-weight: 600;
-  text-decoration: none; border: 1.5px solid rgba(99,102,241,0.35);
-  cursor: pointer; transition: all 0.25s ease;
-}
-.btn-outline:hover { background: #6366f1; color: #fff; border-color: #6366f1; }
-
-/* ── RIGHT card slot ── */
+/* ── RIGHT card slot (ghost — fixed card lands here visually) ── */
 .about-right {
-  display: flex; align-items: center; justify-content: center;
+  /* just reserves the column space */
+  min-height: 100px;
 }
 
 /* ═══════════════════════════════════════════
