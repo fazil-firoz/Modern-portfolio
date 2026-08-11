@@ -720,8 +720,8 @@ html, body, #root {
   padding: 0.5rem 0 1rem;
 }
 
-/* SVG Roadway */
-.edu-road-svg {
+/* SVG Wire / String Connection Line */
+.edu-wire-svg {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -730,22 +730,22 @@ html, body, #root {
   z-index: 1;
 }
 
-.edu-road-asphalt {
+.edu-wire-base {
   fill: none;
-  stroke: #1e293b;
-  stroke-width: 44px;
+  stroke: #cbd5e1;
+  stroke-width: 2px;
+  stroke-dasharray: 6, 6;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.12));
 }
 
-.edu-road-dashed {
+.edu-wire-active {
   fill: none;
-  stroke: #ffffff;
-  stroke-width: 4px;
-  stroke-dasharray: 16, 12;
+  stroke: #475569;
+  stroke-width: 2.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 /* Milestones Grid */
