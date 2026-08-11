@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-removebg-preview.png";
 
 /* ─────────────────────────────────────────
-   PORTFOLIO ID CARD
+   PORTFOLIO ID CARD  (hero card)
 ───────────────────────────────────────── */
 function IDCard() {
   return (
@@ -40,49 +40,20 @@ function IDCard() {
 }
 
 /* ─────────────────────────────────────────
-   EDUCATION DATA
-───────────────────────────────────────── */
-const educationItems = [
-  {
-    type: 'degree',
-    year: '2023 – 2025',
-    title: 'Master of Computer Applications',
-    institution: 'MES College of Engineering, Kuttippuram',
-    university: 'APJ Abdul Kalam Technological University',
-    icon: '🎓',
-  },
-  {
-    type: 'certification',
-    year: '2022',
-    title: 'Python Web Development Expert',
-    institution: 'Luminar Technolab, Kakkanad',
-    university: 'National Council for Technology and Training',
-    icon: '🏅',
-  },
-  {
-    type: 'degree',
-    year: '2019 – 2022',
-    title: 'Bachelor of Computer Applications',
-    institution: 'Majlis Arts and Science College, Puramannur',
-    university: 'University of Calicut',
-    icon: '🎓',
-  },
-];
-
-/* ─────────────────────────────────────────
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
-  const floatingCardRef     = useRef(null);
-  const aboutRef            = useRef(null);
-  const aboutTextRef        = useRef(null);
-  const educationRef        = useRef(null);
-  const eduRoadRef          = useRef(null);
-  const eduNodeRefs         = useRef([]);
-  const eduPathRef          = useRef(null);
-  const experienceRef       = useRef(null);
+  const floatingCardRef  = useRef(null);
+  const aboutRef         = useRef(null);
+  const aboutTextRef     = useRef(null);
+  const experienceRef        = useRef(null);
+  const expContentRef       = useRef(null);
   const timelineProgressRef = useRef(null);
   const bulletItemsRef      = useRef([]);
+
+  const educationRef        = useRef(null);
+  const roadDashedRef       = useRef(null);
+  const eduCardsRef         = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -100,13 +71,13 @@ function App() {
         },
       });
 
-      // ── Portfolio card fades out as education section enters ──
+      // ── Portfolio card fades out as experience section enters ──
       gsap.to(floatingCardRef.current, {
         opacity: 0,
         scale: 0.88,
         ease: 'power1.out',
         scrollTrigger: {
-          trigger: educationRef.current,
+          trigger: experienceRef.current,
           start: 'top 85%',
           end:   'top 40%',
           scrub: 1.2,
@@ -126,45 +97,7 @@ function App() {
         },
       });
 
-      // ── Education roadmap path draws on scroll ──
-      gsap.fromTo(eduPathRef.current,
-        { scaleY: 0, opacity: 0 },
-        {
-          scaleY: 1,
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: educationRef.current,
-            start: 'top 55%',
-            end:   'bottom 80%',
-            scrub: 1,
-          },
-        }
-      );
-
-      // ── Education nodes pop-in with stagger ──
-      eduNodeRefs.current.forEach((el, i) => {
-        if (!el) return;
-        gsap.fromTo(el,
-          { opacity: 0, y: 50, scale: 0.85 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            ease: 'back.out(1.4)',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 85%',
-              end:   'top 60%',
-              scrub: false,
-              toggleActions: 'play none none reverse',
-            },
-            delay: i * 0.08,
-          }
-        );
-      });
-
-      // ── Experience vertical timeline line draw ──
+      // ── Vertical Timeline Line Draw on scroll ──
       gsap.fromTo(timelineProgressRef.current,
         { scaleY: 0 },
         {
@@ -179,7 +112,7 @@ function App() {
         }
       );
 
-      // ── Experience bullet cascade reveal ──
+      // ── Staggered Bullet Points Cascade Reveal ──
       bulletItemsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
@@ -193,6 +126,41 @@ function App() {
               trigger: el,
               start: 'top 88%',
               end:   'top 65%',
+              scrub: 1.2,
+            },
+          }
+        );
+      });
+
+      // ── Education Winding Road Line Draw ──
+      gsap.fromTo(roadDashedRef.current,
+        { strokeDashoffset: 1000 },
+        {
+          strokeDashoffset: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: educationRef.current,
+            start: 'top 70%',
+            end:   'bottom 80%',
+            scrub: 1.5,
+          },
+        }
+      );
+
+      // ── Education Milestone Cards Pop Reveal ──
+      eduCardsRef.current.forEach((el) => {
+        if (!el) return;
+        gsap.fromTo(el,
+          { opacity: 0, y: 50, scale: 0.9 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            ease: 'back.out(1.4)',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              end:   'top 60%',
               scrub: 1.2,
             },
           }
@@ -282,7 +250,7 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (Dark Slate — Timeline)
+          SECTION 3 — EXPERIENCE  (Timeline Track & Cascade)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
         <div className="exp-inner">
@@ -293,15 +261,18 @@ function App() {
             Work Experience
           </div>
 
-          {/* Vertical Timeline Track + Content */}
+          {/* Direct Experience Layout with Vertical Timeline Track */}
           <div className="exp-timeline-wrapper">
 
+            {/* Vertical Timeline Track Line */}
             <div className="exp-timeline-track">
               <div className="exp-timeline-progress" ref={timelineProgressRef} />
             </div>
 
+            {/* Experience Content Column */}
             <div className="exp-timeline-content">
 
+              {/* Header Row */}
               <div className="exp-card-header">
                 <div className="exp-role-group">
                   <h3 className="exp-role-title">Junior Software Engineer</h3>
@@ -311,20 +282,24 @@ function App() {
                     <span className="exp-location">Infopark, Kochi, India</span>
                   </div>
                 </div>
+
                 <div className="exp-period-badge">
                   <span className="exp-badge-pulse" />
-                  2024 – Present
+                  2025 – Present
                 </div>
               </div>
 
+              {/* Tech Stack Pills */}
               <div className="exp-tech-pills">
                 {techBadges.map((badge, idx) => (
                   <span key={idx} className="exp-tech-pill">{badge}</span>
                 ))}
               </div>
 
+              {/* Divider Line */}
               <div className="exp-divider" />
 
+              {/* Cascading Contribution Bullet Points */}
               <ul className="exp-points-list">
                 {expItems.map((item, i) => (
                   <li
@@ -342,80 +317,114 @@ function App() {
               </ul>
 
             </div>
+
           </div>
 
         </div>
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 4 — EDUCATION  (Light White Theme — Roadmap)
+          SECTION 4 — EDUCATION & ROADMAP  (White Theme)
       ══════════════════════════════════════ */}
       <section className="section-education" ref={educationRef}>
-
         <div className="edu-inner">
 
-          {/* Section Tag (Matches About Me style) */}
+          {/* Section Tag */}
           <div className="edu-tag">
             <span className="edu-tag-line" />
-            Education
+            Education & Journey
           </div>
 
-          <p className="edu-subtitle">The academic journey that shaped my path.</p>
+          <h2 className="edu-heading">Academic & Certification Roadmap</h2>
 
-          {/* Roadmap Container */}
-          <div className="edu-roadmap" ref={eduRoadRef}>
+          {/* Winding Road Roadmap Container */}
+          <div className="edu-roadmap-container">
 
-            {/* Vertical Path Line */}
-            <div className="edu-path-track">
-              <div className="edu-path-progress" ref={eduPathRef} />
-            </div>
+            {/* SVG Winding Road Path */}
+            <svg className="edu-road-svg" viewBox="0 0 1000 800" preserveAspectRatio="none">
+              {/* Road Asphalt Base */}
+              <path
+                className="edu-road-asphalt"
+                d="M 200,60 C 700,180 800,320 500,440 C 200,560 300,680 800,760"
+              />
+              {/* Road Center Dashed Line */}
+              <path
+                ref={roadDashedRef}
+                className="edu-road-dashed"
+                d="M 200,60 C 700,180 800,320 500,440 C 200,560 300,680 800,760"
+              />
+            </svg>
 
-            {/* Education Nodes */}
-            <div className="edu-nodes">
-              {educationItems.map((item, i) => (
-                <div
-                  key={i}
-                  className={`edu-node ${item.type === 'certification' ? 'edu-node--cert' : 'edu-node--degree'}`}
-                  ref={(el) => (eduNodeRefs.current[i] = el)}
-                >
-                  {/* Connector dot on the path */}
-                  <div className="edu-node-dot">
-                    <span className="edu-node-icon">{item.icon}</span>
-                  </div>
+            {/* Milestone Cards positioned along the Roadmap */}
+            <div className="edu-milestones-grid">
 
-                  {/* Card */}
-                  <div className="edu-node-card">
-                    {/* Header Row */}
-                    <div className="edu-card-top-row">
-                      <span className="edu-year-badge">{item.year}</span>
-                      <span className={`edu-type-tag ${item.type === 'certification' ? 'edu-type-tag--cert' : 'edu-type-tag--degree'}`}>
-                        {item.type === 'certification' ? '🏅 Certification' : '🎓 Degree'}
-                      </span>
-                    </div>
-
-                    {/* Degree / Title */}
-                    <h3 className="edu-node-title">{item.title}</h3>
-
-                    {/* Institution */}
-                    <div className="edu-node-institution">{item.institution}</div>
-
-                    {/* University */}
-                    <div className="edu-node-university">{item.university}</div>
-                  </div>
+              {/* Milestone 1 — BCA (Degree) */}
+              <div
+                className="edu-milestone-card edu-card-left"
+                ref={(el) => (eduCardsRef.current[0] = el)}
+              >
+                <div className="edu-pin-wrapper edu-pin-cyan">
+                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
                 </div>
-              ))}
-            </div>
-
-            {/* End marker */}
-            <div className="edu-path-end">
-              <div className="chapter-mark">
-                <span className="chapter-label">— completed</span>
-                <span className="chapter-icon">✓</span>
-                <div className="chapter-line" />
+                <div className="edu-card-content">
+                  <div className="edu-card-header">
+                    <span className="edu-type-pill pill-degree">Degree</span>
+                    <span className="edu-period">2019 – 2022</span>
+                  </div>
+                  <h3 className="edu-degree-title">Bachelor of Computer Applications (BCA)</h3>
+                  <div className="edu-institution">Majlis Arts and Science College, Puramannur</div>
+                  <div className="edu-board">University of Calicut</div>
+                </div>
               </div>
+
+              {/* Milestone 2 — Python Certification */}
+              <div
+                className="edu-milestone-card edu-card-right"
+                ref={(el) => (eduCardsRef.current[1] = el)}
+              >
+                <div className="edu-pin-wrapper edu-pin-amber">
+                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <div className="edu-card-content">
+                  <div className="edu-card-header">
+                    <span className="edu-type-pill pill-cert">Certification</span>
+                    <span className="edu-period">2022</span>
+                  </div>
+                  <h3 className="edu-degree-title">Python Web Development Expert</h3>
+                  <div className="edu-institution">Luminar Technolab, Kakkanad</div>
+                  <div className="edu-board">National Council for Technology and Training</div>
+                </div>
+              </div>
+
+              {/* Milestone 3 — MCA (Master's Degree) */}
+              <div
+                className="edu-milestone-card edu-card-left"
+                ref={(el) => (eduCardsRef.current[2] = el)}
+              >
+                <div className="edu-pin-wrapper edu-pin-purple">
+                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <div className="edu-card-content">
+                  <div className="edu-card-header">
+                    <span className="edu-type-pill pill-masters">Master's Degree</span>
+                    <span className="edu-period">2023 – 2025</span>
+                  </div>
+                  <h3 className="edu-degree-title">Master of Computer Applications (MCA)</h3>
+                  <div className="edu-institution">MES College of Engineering, Kuttippuram</div>
+                  <div className="edu-board">APJ Abdul Kalam Technological University</div>
+                </div>
+              </div>
+
             </div>
 
           </div>
+
         </div>
       </section>
 
