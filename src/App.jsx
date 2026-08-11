@@ -282,76 +282,7 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EDUCATION  (Light Warm Cream — Roadmap)
-      ══════════════════════════════════════ */}
-      <section className="section-education" ref={educationRef}>
-
-        <div className="edu-inner">
-
-          {/* Section Tag */}
-          <div className="edu-tag">
-            <span className="edu-tag-line" />
-            Education
-          </div>
-
-          <p className="edu-subtitle">The journey that shaped the engineer.</p>
-
-          {/* Roadmap Container */}
-          <div className="edu-roadmap" ref={eduRoadRef}>
-
-            {/* Vertical Path Line */}
-            <div className="edu-path-track">
-              <div className="edu-path-progress" ref={eduPathRef} />
-            </div>
-
-            {/* Education Nodes */}
-            <div className="edu-nodes">
-              {educationItems.map((item, i) => (
-                <div
-                  key={i}
-                  className={`edu-node ${item.type === 'certification' ? 'edu-node--cert' : 'edu-node--degree'}`}
-                  ref={(el) => (eduNodeRefs.current[i] = el)}
-                >
-                  {/* Connector dot on the path */}
-                  <div className="edu-node-dot">
-                    <span className="edu-node-icon">{item.icon}</span>
-                  </div>
-
-                  {/* Card */}
-                  <div className="edu-node-card">
-                    {/* Year badge */}
-                    <span className="edu-year-badge">{item.year}</span>
-
-                    {/* Type tag */}
-                    <span className={`edu-type-tag ${item.type === 'certification' ? 'edu-type-tag--cert' : 'edu-type-tag--degree'}`}>
-                      {item.type === 'certification' ? '🏅 Certification' : '🎓 Degree'}
-                    </span>
-
-                    {/* Degree / Title */}
-                    <h3 className="edu-node-title">{item.title}</h3>
-
-                    {/* Institution */}
-                    <div className="edu-node-institution">{item.institution}</div>
-
-                    {/* University */}
-                    <div className="edu-node-university">{item.university}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* End marker */}
-            <div className="edu-path-end">
-              <span className="edu-path-end-dot" />
-              <span className="edu-path-end-label">Journey continues ›</span>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          SECTION 4 — EXPERIENCE  (Dark Slate — Timeline)
+          SECTION 3 — EXPERIENCE  (Dark Slate — Timeline)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
         <div className="exp-inner">
@@ -413,6 +344,78 @@ function App() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SECTION 4 — EDUCATION  (Light White Theme — Roadmap)
+      ══════════════════════════════════════ */}
+      <section className="section-education" ref={educationRef}>
+
+        <div className="edu-inner">
+
+          {/* Section Tag (Matches About Me style) */}
+          <div className="edu-tag">
+            <span className="edu-tag-line" />
+            Education
+          </div>
+
+          <p className="edu-subtitle">The academic journey that shaped my path.</p>
+
+          {/* Roadmap Container */}
+          <div className="edu-roadmap" ref={eduRoadRef}>
+
+            {/* Vertical Path Line */}
+            <div className="edu-path-track">
+              <div className="edu-path-progress" ref={eduPathRef} />
+            </div>
+
+            {/* Education Nodes */}
+            <div className="edu-nodes">
+              {educationItems.map((item, i) => (
+                <div
+                  key={i}
+                  className={`edu-node ${item.type === 'certification' ? 'edu-node--cert' : 'edu-node--degree'}`}
+                  ref={(el) => (eduNodeRefs.current[i] = el)}
+                >
+                  {/* Connector dot on the path */}
+                  <div className="edu-node-dot">
+                    <span className="edu-node-icon">{item.icon}</span>
+                  </div>
+
+                  {/* Card */}
+                  <div className="edu-node-card">
+                    {/* Header Row */}
+                    <div className="edu-card-top-row">
+                      <span className="edu-year-badge">{item.year}</span>
+                      <span className={`edu-type-tag ${item.type === 'certification' ? 'edu-type-tag--cert' : 'edu-type-tag--degree'}`}>
+                        {item.type === 'certification' ? '🏅 Certification' : '🎓 Degree'}
+                      </span>
+                    </div>
+
+                    {/* Degree / Title */}
+                    <h3 className="edu-node-title">{item.title}</h3>
+
+                    {/* Institution */}
+                    <div className="edu-node-institution">{item.institution}</div>
+
+                    {/* University */}
+                    <div className="edu-node-university">{item.university}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* End marker */}
+            <div className="edu-path-end">
+              <div className="chapter-mark">
+                <span className="chapter-label">— completed</span>
+                <span className="chapter-icon">✓</span>
+                <div className="chapter-line" />
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
