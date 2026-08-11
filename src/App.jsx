@@ -358,28 +358,28 @@ function App() {
             {/* Milestone Cards positioned along the Roadmap */}
             <div className="edu-milestones-grid">
 
-              {/* Milestone 1 — BCA (Degree) */}
+              {/* Milestone 1 (Top) — MCA (Master's Degree) */}
               <div
                 className="edu-milestone-card edu-card-left"
                 ref={(el) => (eduCardsRef.current[0] = el)}
               >
-                <div className="edu-pin-wrapper edu-pin-cyan">
+                <div className="edu-pin-wrapper edu-pin-purple">
                   <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
                 </div>
                 <div className="edu-card-content">
                   <div className="edu-card-header">
-                    <span className="edu-type-pill pill-degree">Degree</span>
-                    <span className="edu-period">2019 – 2022</span>
+                    <span className="edu-type-pill pill-masters">Master's Degree</span>
+                    <span className="edu-period">2023 – 2025</span>
                   </div>
-                  <h3 className="edu-degree-title">Bachelor of Computer Applications (BCA)</h3>
-                  <div className="edu-institution">Majlis Arts and Science College, Puramannur</div>
-                  <div className="edu-board">University of Calicut</div>
+                  <h3 className="edu-degree-title">Master of Computer Applications (MCA)</h3>
+                  <div className="edu-institution">MES College of Engineering, Kuttippuram</div>
+                  <div className="edu-board">APJ Abdul Kalam Technological University</div>
                 </div>
               </div>
 
-              {/* Milestone 2 — Python Certification */}
+              {/* Milestone 2 (Middle) — Python Certification */}
               <div
                 className="edu-milestone-card edu-card-right"
                 ref={(el) => (eduCardsRef.current[1] = el)}
@@ -400,24 +400,24 @@ function App() {
                 </div>
               </div>
 
-              {/* Milestone 3 — MCA (Master's Degree) */}
+              {/* Milestone 3 (Bottom) — BCA (Degree) */}
               <div
                 className="edu-milestone-card edu-card-left"
                 ref={(el) => (eduCardsRef.current[2] = el)}
               >
-                <div className="edu-pin-wrapper edu-pin-purple">
+                <div className="edu-pin-wrapper edu-pin-cyan">
                   <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
                 </div>
                 <div className="edu-card-content">
                   <div className="edu-card-header">
-                    <span className="edu-type-pill pill-masters">Master's Degree</span>
-                    <span className="edu-period">2023 – 2025</span>
+                    <span className="edu-type-pill pill-degree">Degree</span>
+                    <span className="edu-period">2019 – 2022</span>
                   </div>
-                  <h3 className="edu-degree-title">Master of Computer Applications (MCA)</h3>
-                  <div className="edu-institution">MES College of Engineering, Kuttippuram</div>
-                  <div className="edu-board">APJ Abdul Kalam Technological University</div>
+                  <h3 className="edu-degree-title">Bachelor of Computer Applications (BCA)</h3>
+                  <div className="edu-institution">Majlis Arts and Science College, Puramannur</div>
+                  <div className="edu-board">University of Calicut</div>
                 </div>
               </div>
 
