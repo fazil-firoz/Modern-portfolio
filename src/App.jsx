@@ -340,18 +340,18 @@ function App() {
           {/* Winding Road Roadmap Container */}
           <div className="edu-roadmap-container">
 
-            {/* SVG Connecting Wire / String Line */}
+            {/* SVG Connecting Wire / String Line (Pins to Pin Center Corridor) */}
             <svg className="edu-wire-svg" viewBox="0 0 1000 520" preserveAspectRatio="none">
               {/* Base Wire String Line */}
               <path
                 className="edu-wire-base"
-                d="M 220,50 C 750,110 850,220 750,260 C 650,300 280,410 220,470"
+                d="M 475,45 C 540,110 550,175 525,240 C 500,305 450,370 475,435"
               />
               {/* Active Wire String Line (Animated Draw on Scroll) */}
               <path
                 ref={roadDashedRef}
                 className="edu-wire-active"
-                d="M 220,50 C 750,110 850,220 750,260 C 650,300 280,410 220,470"
+                d="M 475,45 C 540,110 550,175 525,240 C 500,305 450,370 475,435"
               />
             </svg>
 

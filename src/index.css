@@ -777,14 +777,28 @@ html, body, #root {
   transform: translateY(-4px);
 }
 
+/* Left Cards (MCA & BCA): Pin on Right, Text on Left facing center corridor */
 .edu-card-left {
   align-self: flex-start;
-  margin-left: 2.5rem;
+  margin-left: 2rem;
+  flex-direction: row-reverse;
+  text-align: right;
 }
 
+.edu-card-left .edu-card-header {
+  flex-direction: row-reverse;
+}
+
+/* Right Cards (Python Cert): Pin on Left, Text on Right facing center corridor */
 .edu-card-right {
   align-self: flex-end;
-  margin-right: 2.5rem;
+  margin-right: 2rem;
+  flex-direction: row;
+  text-align: left;
+}
+
+.edu-card-right .edu-card-header {
+  flex-direction: row;
 }
 
 /* Map Pin Marker Styling */
