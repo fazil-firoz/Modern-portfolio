@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-removebg-preview.png";
 
 /* ─────────────────────────────────────────
-   PORTFOLIO ID CARD  (hero card)
+   PORTFOLIO ID CARD
 ───────────────────────────────────────── */
 function IDCard() {
   return (
@@ -40,14 +40,47 @@ function IDCard() {
 }
 
 /* ─────────────────────────────────────────
+   EDUCATION DATA
+───────────────────────────────────────── */
+const educationItems = [
+  {
+    type: 'degree',
+    year: '2023 – 2025',
+    title: 'Master of Computer Applications',
+    institution: 'MES College of Engineering, Kuttippuram',
+    university: 'APJ Abdul Kalam Technological University',
+    icon: '🎓',
+  },
+  {
+    type: 'certification',
+    year: '2022',
+    title: 'Python Web Development Expert',
+    institution: 'Luminar Technolab, Kakkanad',
+    university: 'National Council for Technology and Training',
+    icon: '🏅',
+  },
+  {
+    type: 'degree',
+    year: '2019 – 2022',
+    title: 'Bachelor of Computer Applications',
+    institution: 'Majlis Arts and Science College, Puramannur',
+    university: 'University of Calicut',
+    icon: '🎓',
+  },
+];
+
+/* ─────────────────────────────────────────
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
-  const floatingCardRef  = useRef(null);
-  const aboutRef         = useRef(null);
-  const aboutTextRef     = useRef(null);
-  const experienceRef        = useRef(null);
-  const expContentRef       = useRef(null);
+  const floatingCardRef     = useRef(null);
+  const aboutRef            = useRef(null);
+  const aboutTextRef        = useRef(null);
+  const educationRef        = useRef(null);
+  const eduRoadRef          = useRef(null);
+  const eduNodeRefs         = useRef([]);
+  const eduPathRef          = useRef(null);
+  const experienceRef       = useRef(null);
   const timelineProgressRef = useRef(null);
   const bulletItemsRef      = useRef([]);
 
@@ -67,13 +100,13 @@ function App() {
         },
       });
 
-      // ── Portfolio card fades out as experience section enters ──
+      // ── Portfolio card fades out as education section enters ──
       gsap.to(floatingCardRef.current, {
         opacity: 0,
         scale: 0.88,
         ease: 'power1.out',
         scrollTrigger: {
-          trigger: experienceRef.current,
+          trigger: educationRef.current,
           start: 'top 85%',
           end:   'top 40%',
           scrub: 1.2,
@@ -93,7 +126,45 @@ function App() {
         },
       });
 
-      // ── Vertical Timeline Line Draw on scroll ──
+      // ── Education roadmap path draws on scroll ──
+      gsap.fromTo(eduPathRef.current,
+        { scaleY: 0, opacity: 0 },
+        {
+          scaleY: 1,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: educationRef.current,
+            start: 'top 55%',
+            end:   'bottom 80%',
+            scrub: 1,
+          },
+        }
+      );
+
+      // ── Education nodes pop-in with stagger ──
+      eduNodeRefs.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.fromTo(el,
+          { opacity: 0, y: 50, scale: 0.85 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            ease: 'back.out(1.4)',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              end:   'top 60%',
+              scrub: false,
+              toggleActions: 'play none none reverse',
+            },
+            delay: i * 0.08,
+          }
+        );
+      });
+
+      // ── Experience vertical timeline line draw ──
       gsap.fromTo(timelineProgressRef.current,
         { scaleY: 0 },
         {
@@ -108,7 +179,7 @@ function App() {
         }
       );
 
-      // ── Staggered Bullet Points Cascade Reveal ──
+      // ── Experience bullet cascade reveal ──
       bulletItemsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
@@ -211,7 +282,76 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (Timeline Track & Cascade)
+          SECTION 3 — EDUCATION  (Light Warm Cream — Roadmap)
+      ══════════════════════════════════════ */}
+      <section className="section-education" ref={educationRef}>
+
+        <div className="edu-inner">
+
+          {/* Section Tag */}
+          <div className="edu-tag">
+            <span className="edu-tag-line" />
+            Education
+          </div>
+
+          <p className="edu-subtitle">The journey that shaped the engineer.</p>
+
+          {/* Roadmap Container */}
+          <div className="edu-roadmap" ref={eduRoadRef}>
+
+            {/* Vertical Path Line */}
+            <div className="edu-path-track">
+              <div className="edu-path-progress" ref={eduPathRef} />
+            </div>
+
+            {/* Education Nodes */}
+            <div className="edu-nodes">
+              {educationItems.map((item, i) => (
+                <div
+                  key={i}
+                  className={`edu-node ${item.type === 'certification' ? 'edu-node--cert' : 'edu-node--degree'}`}
+                  ref={(el) => (eduNodeRefs.current[i] = el)}
+                >
+                  {/* Connector dot on the path */}
+                  <div className="edu-node-dot">
+                    <span className="edu-node-icon">{item.icon}</span>
+                  </div>
+
+                  {/* Card */}
+                  <div className="edu-node-card">
+                    {/* Year badge */}
+                    <span className="edu-year-badge">{item.year}</span>
+
+                    {/* Type tag */}
+                    <span className={`edu-type-tag ${item.type === 'certification' ? 'edu-type-tag--cert' : 'edu-type-tag--degree'}`}>
+                      {item.type === 'certification' ? '🏅 Certification' : '🎓 Degree'}
+                    </span>
+
+                    {/* Degree / Title */}
+                    <h3 className="edu-node-title">{item.title}</h3>
+
+                    {/* Institution */}
+                    <div className="edu-node-institution">{item.institution}</div>
+
+                    {/* University */}
+                    <div className="edu-node-university">{item.university}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* End marker */}
+            <div className="edu-path-end">
+              <span className="edu-path-end-dot" />
+              <span className="edu-path-end-label">Journey continues ›</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SECTION 4 — EXPERIENCE  (Dark Slate — Timeline)
       ══════════════════════════════════════ */}
       <section className="section-experience" ref={experienceRef}>
         <div className="exp-inner">
@@ -222,18 +362,15 @@ function App() {
             Work Experience
           </div>
 
-          {/* Direct Experience Layout with Vertical Timeline Track */}
+          {/* Vertical Timeline Track + Content */}
           <div className="exp-timeline-wrapper">
 
-            {/* Vertical Timeline Track Line */}
             <div className="exp-timeline-track">
               <div className="exp-timeline-progress" ref={timelineProgressRef} />
             </div>
 
-            {/* Experience Content Column */}
             <div className="exp-timeline-content">
 
-              {/* Header Row */}
               <div className="exp-card-header">
                 <div className="exp-role-group">
                   <h3 className="exp-role-title">Junior Software Engineer</h3>
@@ -243,24 +380,20 @@ function App() {
                     <span className="exp-location">Infopark, Kochi, India</span>
                   </div>
                 </div>
-
                 <div className="exp-period-badge">
                   <span className="exp-badge-pulse" />
-                  2025 – Present
+                  2024 – Present
                 </div>
               </div>
 
-              {/* Tech Stack Pills */}
               <div className="exp-tech-pills">
                 {techBadges.map((badge, idx) => (
                   <span key={idx} className="exp-tech-pill">{badge}</span>
                 ))}
               </div>
 
-              {/* Divider Line */}
               <div className="exp-divider" />
 
-              {/* Cascading Contribution Bullet Points */}
               <ul className="exp-points-list">
                 {expItems.map((item, i) => (
                   <li
@@ -278,7 +411,6 @@ function App() {
               </ul>
 
             </div>
-
           </div>
 
         </div>
