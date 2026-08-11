@@ -53,6 +53,7 @@ function App() {
 
   const educationRef        = useRef(null);
   const roadDashedRef       = useRef(null);
+  const pulseRef            = useRef(null);
   const eduCardsRef         = useRef([]);
 
   useEffect(() => {
@@ -146,6 +147,34 @@ function App() {
           },
         }
       );
+
+      // ── Interactive Light Pulse Orb Traveling along SVG Wire on Scroll ──
+      const pathEl = roadDashedRef.current;
+      if (pathEl && pulseRef.current) {
+        try {
+          const totalLength = pathEl.getTotalLength();
+          const obj = { val: 0 };
+
+          gsap.to(obj, {
+            val: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: educationRef.current,
+              start: 'top 70%',
+              end:   'bottom 80%',
+              scrub: 1,
+              onUpdate: (self) => {
+                if (!pathEl || !pulseRef.current) return;
+                const point = pathEl.getPointAtLength(self.progress * totalLength);
+                pulseRef.current.setAttribute('cx', point.x);
+                pulseRef.current.setAttribute('cy', point.y);
+              },
+            },
+          });
+        } catch (err) {
+          console.warn('SVG path getTotalLength error:', err);
+        }
+      }
 
       // ── Education Milestone Cards Pop Reveal ──
       eduCardsRef.current.forEach((el) => {
@@ -335,7 +364,7 @@ function App() {
             Education & Journey
           </div>
 
-          <h2 className="edu-heading">Academic & Certification Roadmap</h2>
+          {/* <h2 className="edu-heading">Academic & Certification</h2> */}
 
           {/* Winding Road Roadmap Container */}
           <div className="edu-roadmap-container">
@@ -352,6 +381,14 @@ function App() {
                 ref={roadDashedRef}
                 className="edu-wire-active"
                 d="M 475,45 C 540,110 550,175 525,240 C 500,305 450,370 475,435"
+              />
+              {/* Interactive Glowing Light Pulse Orb Traveling along SVG Wire */}
+              <circle
+                ref={pulseRef}
+                className="edu-wire-pulse-orb"
+                cx="475"
+                cy="45"
+                r="7"
               />
             </svg>
 
@@ -392,7 +429,7 @@ function App() {
                 <div className="edu-card-content">
                   <div className="edu-card-header">
                     <span className="edu-type-pill pill-cert">Certification</span>
-                    <span className="edu-period">2022</span>
+                    <span className="edu-period">2022-2023</span>
                   </div>
                   <h3 className="edu-degree-title">Python Web Development Expert</h3>
                   <div className="edu-institution">Luminar Technolab, Kakkanad</div>
