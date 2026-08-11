@@ -345,13 +345,13 @@ function App() {
               {/* Road Asphalt Base */}
               <path
                 className="edu-road-asphalt"
-                d="M 180,40 C 650,110 750,210 480,310 C 220,410 380,470 760,490"
+                d="M 220,50 C 750,110 850,220 750,260 C 650,300 280,410 220,470"
               />
               {/* Road Center Dashed Line */}
               <path
                 ref={roadDashedRef}
                 className="edu-road-dashed"
-                d="M 180,40 C 650,110 750,210 480,310 C 220,410 380,470 760,490"
+                d="M 220,50 C 750,110 850,220 750,260 C 650,300 280,410 220,470"
               />
             </svg>
 
@@ -400,9 +400,9 @@ function App() {
                 </div>
               </div>
 
-              {/* Milestone 3 (Final Road Edge) — BCA (Degree) */}
+              {/* Milestone 3 (Bottom Left Edge) — BCA (Degree) */}
               <div
-                className="edu-milestone-card edu-card-right edu-card-end"
+                className="edu-milestone-card edu-card-left"
                 ref={(el) => (eduCardsRef.current[2] = el)}
               >
                 <div className="edu-pin-wrapper edu-pin-cyan">
