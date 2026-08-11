@@ -341,24 +341,24 @@ function App() {
           <div className="edu-roadmap-container">
 
             {/* SVG Winding Road Path */}
-            <svg className="edu-road-svg" viewBox="0 0 1000 800" preserveAspectRatio="none">
+            <svg className="edu-road-svg" viewBox="0 0 1000 520" preserveAspectRatio="none">
               {/* Road Asphalt Base */}
               <path
                 className="edu-road-asphalt"
-                d="M 200,60 C 700,180 800,320 500,440 C 200,560 300,680 800,760"
+                d="M 180,40 C 650,110 750,210 480,310 C 220,410 380,470 760,490"
               />
               {/* Road Center Dashed Line */}
               <path
                 ref={roadDashedRef}
                 className="edu-road-dashed"
-                d="M 200,60 C 700,180 800,320 500,440 C 200,560 300,680 800,760"
+                d="M 180,40 C 650,110 750,210 480,310 C 220,410 380,470 760,490"
               />
             </svg>
 
             {/* Milestone Cards positioned along the Roadmap */}
             <div className="edu-milestones-grid">
 
-              {/* Milestone 1 (Top) — MCA (Master's Degree) */}
+              {/* Milestone 1 (Top Left Edge) — MCA (Master's Degree) */}
               <div
                 className="edu-milestone-card edu-card-left"
                 ref={(el) => (eduCardsRef.current[0] = el)}
@@ -379,7 +379,7 @@ function App() {
                 </div>
               </div>
 
-              {/* Milestone 2 (Middle) — Python Certification */}
+              {/* Milestone 2 (Middle Right Edge) — Python Certification */}
               <div
                 className="edu-milestone-card edu-card-right"
                 ref={(el) => (eduCardsRef.current[1] = el)}
@@ -400,9 +400,9 @@ function App() {
                 </div>
               </div>
 
-              {/* Milestone 3 (Bottom) — BCA (Degree) */}
+              {/* Milestone 3 (Final Road Edge) — BCA (Degree) */}
               <div
-                className="edu-milestone-card edu-card-left"
+                className="edu-milestone-card edu-card-right edu-card-end"
                 ref={(el) => (eduCardsRef.current[2] = el)}
               >
                 <div className="edu-pin-wrapper edu-pin-cyan">
