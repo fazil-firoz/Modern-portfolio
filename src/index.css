@@ -1024,22 +1024,21 @@ html, body, #root {
   }
 }
 
-/* Animated Thin Line Box Container */
+/* Animated Thin Outline Frame (Transparent Website Background) */
 .proj-card {
-  background: rgba(13, 14, 26, 0.45);
+  background: transparent;
   border: 1px solid rgba(167, 139, 250, 0.14);
   border-radius: 20px;
   padding: 1.85rem 2.1rem;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
+  box-shadow: none;
   position: relative;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              border-color 0.4s ease,
-              box-shadow 0.4s ease,
-              background-color 0.4s ease;
+              border-color 0.4s ease;
 }
 
 /* Animated Top Line Laser Sweep on Hover */
@@ -1055,10 +1054,10 @@ html, body, #root {
 }
 
 .proj-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: rgba(56, 189, 248, 0.45);
-  background: rgba(167, 139, 250, 0.04);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35), 0 0 22px rgba(56, 189, 248, 0.14);
+  background: transparent;
+  box-shadow: none;
 }
 
 .proj-card:hover::before {
