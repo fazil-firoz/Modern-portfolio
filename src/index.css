@@ -945,25 +945,28 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SECTION 5 — PROJECTS  (Dark Slate & Charcoal Theme)
+   SECTION 5 — PROJECTS  (Deep Indigo Midnight & Cyber Aurora)
 ═══════════════════════════════════════════════════════ */
 .section-projects {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #101216;
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(99, 102, 241, 0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 75%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
+    #0d0e1a;
   color: #f8fafc;
   padding: 6rem 0 8rem;
   overflow: hidden;
 }
 
-/* Dark Fine Grid Texture */
+/* Fine Aurora Grid Texture */
 .section-projects::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(167, 139, 250, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 139, 250, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none; z-index: 0;
 }
@@ -987,14 +990,14 @@ html, body, #root {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #c4b5fd;
 }
 
 .proj-tag-line {
   display: block;
   width: 28px;
   height: 1.5px;
-  background: #64748b;
+  background: #818cf8;
   flex-shrink: 0;
 }
 
