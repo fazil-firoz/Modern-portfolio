@@ -297,8 +297,20 @@ function App() {
       live: 'https://note-book-portfolio-eta.vercel.app/'
     },
     {
-      id: 'news24',
+      id: 'modern-portfolio',
       num: '06',
+      title: 'Modern 3D Portfolio',
+      subtitle: 'Latest Portfolio Project',
+      tag: 'Latest Portfolio',
+      badgeClass: 'proj-tag-featured',
+      description: 'Ultra-modern interactive developer portfolio featuring a 3D floating ID card with GSAP ScrollTrigger transition physics, dark/light section theme contrasts, Education roadmap, and modern web application showcase.',
+      tech: ['React', 'GSAP', 'ScrollTrigger', 'CSS3', 'Vite'],
+      github: 'https://github.com/fazil-firoz/Modern-portfolio.git',
+      live: null
+    },
+    {
+      id: 'news24',
+      num: '07',
       title: 'News24',
       subtitle: 'Real-Time News App',
       tag: 'API Integration Project',
@@ -310,7 +322,7 @@ function App() {
     },
     {
       id: 'bonos',
-      num: '07',
+      num: '08',
       title: "Bono's",
       subtitle: 'Static Front-End Webpage',
       tag: 'My First Work',
