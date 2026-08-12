@@ -281,6 +281,17 @@ function App() {
       live: 'https://fazil-firoz.github.io/Portfolio_new/'
     },
     {
+      id: 'notebook-portfolio',
+      title: 'Notebook Portfolio',
+      subtitle: 'Hobby Project',
+      tag: 'Hobby Project',
+      badgeClass: 'proj-tag-platform',
+      description: 'Designed and built an interactive notebook-themed portfolio as a creative hobby project, exploring realistic paper textures, handwritten journal layouts, and creative front-end styling.',
+      tech: ['React', 'HTML', 'CSS', 'JavaScript', 'Vercel'],
+      github: null,
+      live: 'https://note-book-portfolio-eta.vercel.app/'
+    },
+    {
       id: 'news24',
       title: 'News24',
       subtitle: 'Real-Time News App',
