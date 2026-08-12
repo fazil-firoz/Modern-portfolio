@@ -945,28 +945,28 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════════════════
-   SECTION 5 — PROJECTS  (Deep Indigo Midnight & Cyber Aurora)
+   SECTION 5 — PROJECTS  (Deep Cyber Teal & Obsidian Emerald)
 ═══════════════════════════════════════════════════════ */
 .section-projects {
   position: relative;
   min-height: 100vh;
   width: 100%;
   background:
-    radial-gradient(ellipse at 20% 25%, rgba(99, 102, 241, 0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 75%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
-    #0d0e1a;
+    radial-gradient(ellipse at 25% 20%, rgba(20, 184, 166, 0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 55%),
+    #0b141a;
   color: #f8fafc;
   padding: 6rem 0 8rem;
   overflow: hidden;
 }
 
-/* Fine Aurora Grid Texture */
+/* Fine Cyber Grid Texture */
 .section-projects::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(167, 139, 250, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167, 139, 250, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(45, 212, 191, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none; z-index: 0;
 }
@@ -990,14 +990,14 @@ html, body, #root {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c4b5fd;
+  color: #5eead4;
 }
 
 .proj-tag-line {
   display: block;
   width: 28px;
   height: 1.5px;
-  background: #818cf8;
+  background: #14b8a6;
   flex-shrink: 0;
 }
 
