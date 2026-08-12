@@ -57,7 +57,7 @@ function App() {
   const eduCardsRef         = useRef([]);
 
   const projectsRef         = useRef(null);
-  const projectCardsRef     = useRef([]);
+  const projCardsRef        = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -199,11 +199,11 @@ function App() {
         );
       });
 
-      // ── Projects Section Cards Cascade Reveal ──
-      projectCardsRef.current.forEach((el) => {
+      // ── Projects Cards Stagger Slide Up Reveal ──
+      projCardsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
-          { opacity: 0, y: 50, scale: 0.96 },
+          { opacity: 0, y: 45, scale: 0.96 },
           {
             opacity: 1,
             y: 0,
@@ -211,8 +211,8 @@ function App() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
-              end:   'top 65%',
+              start: 'top 85%',
+              end:   'top 60%',
               scrub: 1.2,
             },
           }
@@ -239,53 +239,58 @@ function App() {
     {
       id: 'self-billing',
       title: 'Self-Billing System',
-      subtitle: 'Retail Management Solution',
-      category: 'Full-Stack & Mobile',
-      description: 'An intelligent self-checkout solution for supermarkets that allows customers to scan product QR codes, automatically generate bills, and make secure payments through their smartphones. Features real-time transaction monitoring to prevent fraud and reduce checkout queues.',
-      tech: ['Python Django', 'Flutter (Dart)', 'HTML', 'CSS', 'JavaScript', 'MySQL'],
+      subtitle: 'Retail Management System',
+      tag: 'Main Project',
+      badgeClass: 'proj-tag-featured',
+      description: 'An intelligent self-checkout solution for supermarkets that allows customers to scan product QR codes, automatically generate bills, and make secure payments through their smartphones. Features real-time monitoring to ensure transaction security and prevent fraud.',
+      tech: ['Python Django', 'HTML', 'CSS', 'JavaScript', 'Flutter (Dart)', 'MySQL'],
       github: 'https://github.com/fazil-firoz/Main-Project.git',
-      live: null,
+      live: null
     },
     {
       id: 'learnify',
       title: 'Learnify',
       subtitle: 'E-Learning Platform',
-      category: 'Web Application',
-      description: 'Developed a full-featured online learning platform where instructors can create and manage courses, admins approve content, and students securely enroll and access video lessons after payment. Designed for a seamless digital learning experience.',
+      tag: 'Web Platform',
+      badgeClass: 'proj-tag-platform',
+      description: 'A full-featured online learning platform where instructors can create and manage courses, admins approve content, and students securely enroll and access video lessons after payment. Designed for a seamless and secure digital learning experience.',
       tech: ['Python Django', 'HTML', 'CSS', 'Bootstrap', 'MySQL'],
       github: 'https://github.com/fazil-firoz/Learnify.git',
-      live: null,
+      live: null
     },
     {
       id: 'portfolio',
       title: 'Personal Portfolio',
-      subtitle: 'Developer Showcase Website',
-      category: 'Frontend & UI',
+      subtitle: 'Interactive Developer Showcase',
+      tag: 'Live Website',
+      badgeClass: 'proj-tag-live',
       description: 'Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase projects, skills, and achievements. Focused on creating a clean, user-friendly interface to highlight my journey as a developer.',
       tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
-      github: 'https://github.com/fazil-firoz/Portfolio_new',
-      live: 'https://fazil-firoz.github.io/Portfolio_new/',
+      github: null,
+      live: 'https://fazil-firoz.github.io/Portfolio_new/'
     },
     {
       id: 'news24',
       title: 'News24',
-      subtitle: 'Live News Application',
-      category: 'API Integration',
-      description: 'My first project exploring REST API integrations! Created a functional news web application using HTML, CSS, and JavaScript that fetches live news feeds dynamically using a free News API.',
-      tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'News API'],
+      subtitle: 'Real-Time News App',
+      tag: 'API Integration Project',
+      badgeClass: 'proj-tag-api',
+      description: 'My first project where I learned how APIs actually work! Created a simple yet functional news website using HTML, CSS, and JavaScript, and fetched live news dynamically using a free News API.',
+      tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
       github: 'https://github.com/fazil-firoz/News-App.git',
-      live: null,
+      live: null
     },
     {
       id: 'bonos',
       title: "Bono's",
-      subtitle: 'Static Web Interface',
-      category: 'Frontend Layout',
-      description: "Designed and developed my first static website using pure HTML and CSS to master web structure, layout mechanics, and styling fundamentals — building a strong foundation in front-end design principles.",
+      subtitle: 'Static Front-End Webpage',
+      tag: 'Live Website',
+      badgeClass: 'proj-tag-static',
+      description: 'Designed and developed my first static website using only HTML and CSS to grasp the fundamentals of web structure, layout, and styling — laying a strong foundation in front-end development and design principles.',
       tech: ['HTML', 'CSS'],
-      github: 'https://github.com/fazil-firoz/bonos',
-      live: 'https://fazil-firoz.github.io/bonos/',
-    },
+      github: null,
+      live: 'https://fazil-firoz.github.io/bonos/'
+    }
   ];
 
   return (
@@ -542,78 +547,78 @@ function App() {
       </section>
 
       {/* ══════════════════════════════════════
-          SECTION 5 — PROJECTS  (Dark Theme like Experience)
+          SECTION 5 — PROJECTS  (Dark Theme)
       ══════════════════════════════════════ */}
       <section className="section-projects" ref={projectsRef}>
-        <div className="projects-inner">
+        <div className="proj-inner">
 
-          {/* Section Heading Tag */}
-          <div className="projects-tag">
-            <span className="projects-tag-line" />
-            Featured Projects
+          {/* Section Tag */}
+          <div className="proj-tag">
+            <span className="proj-tag-line" />
+            Featured Work
           </div>
 
-          <div className="projects-header-row">
-            <h2 className="projects-heading">Software & Web Development Projects</h2>
-            <p className="projects-subheading">Selected engineering projects spanning Python Django, Flutter, REST APIs, and modern web interfaces.</p>
-          </div>
+          <h2 className="proj-heading">Projects & Built Systems</h2>
 
           {/* Projects Grid */}
-          <div className="projects-grid">
+          <div className="proj-grid">
             {projectsData.map((project, idx) => (
               <div
                 key={project.id}
-                className="project-card"
-                ref={(el) => (projectCardsRef.current[idx] = el)}
+                className="proj-card"
+                ref={(el) => (projCardsRef.current[idx] = el)}
               >
-                <div className="project-card-top">
-                  <div className="project-category-badge">{project.category}</div>
-                  <h3 className="project-title">{project.title} <span className="project-subtitle">— {project.subtitle}</span></h3>
-                  <p className="project-desc">{project.description}</p>
-                </div>
-
-                <div className="project-card-bottom">
-                  {/* Tech Stack Badges */}
-                  <div className="project-tech-tags">
-                    {project.tech.map((t, i) => (
-                      <span key={i} className="project-tech-pill">{t}</span>
-                    ))}
-                  </div>
-
-                  {/* Separate GitHub Repo & Live Demo Links */}
-                  <div className="project-links-row">
+                {/* Card Top Badge & Link Row */}
+                <div className="proj-card-top">
+                  <span className={`proj-category-pill ${project.badgeClass}`}>
+                    {project.tag}
+                  </span>
+                  <div className="proj-links-row">
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project-link-btn btn-github"
+                        className="proj-link-btn btn-github"
+                        title="GitHub Repository"
                       >
-                        <svg className="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="proj-link-icon" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                         </svg>
                         <span>GitHub Repo</span>
                       </a>
                     )}
-
                     {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="project-link-btn btn-live"
+                        className="proj-link-btn btn-live"
+                        title="Live Website Preview"
                       >
-                        <svg className="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                          <polyline points="15 3 21 3 21 9" />
-                          <line x1="10" y1="14" x2="21" y2="3" />
+                        <svg className="proj-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
                         </svg>
-                        <span>Live Demo ↗</span>
+                        <span>Live Preview ↗</span>
                       </a>
                     )}
                   </div>
                 </div>
 
+                {/* Project Title & Subtitle */}
+                <h3 className="proj-title">{project.title}</h3>
+                <div className="proj-subtitle">{project.subtitle}</div>
+
+                {/* Description */}
+                <p className="proj-desc">{project.description}</p>
+
+                {/* Tech Pills */}
+                <div className="proj-tech-row">
+                  {project.tech.map((t, i) => (
+                    <span key={i} className="proj-tech-pill">{t}</span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -624,7 +629,5 @@ function App() {
     </div>
   );
 }
-
-export default App;
 
 export default App;
