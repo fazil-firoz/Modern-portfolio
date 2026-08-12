@@ -237,6 +237,17 @@ function App() {
 
   const projectsData = [
     {
+      id: 'ecommerce',
+      title: 'E-Commerce Web App',
+      subtitle: 'Full-Featured Online Store',
+      tag: 'Full-Stack Project',
+      badgeClass: 'proj-tag-featured',
+      description: 'Full-featured modern e-commerce web application with interactive 3D product animations, C# backend API, PostgreSQL database, Razorpay payment gateway integration, dynamic cart management, and seamless checkout.',
+      tech: ['C#', 'React.js', 'PostgreSQL', 'Razorpay', '3D Animations', 'Vercel'],
+      github: null,
+      live: 'https://e-commerce-web-app-woad-nine.vercel.app/'
+    },
+    {
       id: 'self-billing',
       title: 'Self-Billing System',
       subtitle: 'Retail Management System',
