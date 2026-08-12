@@ -1007,31 +1007,18 @@ html, body, #root {
   margin-bottom: 2rem;
 }
 
-/* Projects Grid Layout with Center Vertical Divider Line */
+/* Projects Grid Layout */
 .proj-grid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3.5rem 4rem;
-}
-
-.proj-grid::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0; left: 50%;
-  width: 1px;
-  background: rgba(167, 139, 250, 0.14);
-  transform: translateX(-50%);
-  pointer-events: none;
+  gap: 3.5rem 3rem;
 }
 
 @media (max-width: 900px) {
   .proj-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-  .proj-grid::after {
-    display: none;
   }
 }
 
