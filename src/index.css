@@ -1052,6 +1052,39 @@ html, body, #root {
   flex-wrap: wrap;
 }
 
+/* Minimal Geometric Index & Floating Shape Node Group */
+.proj-index-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.proj-index-num {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #818cf8;
+  letter-spacing: 0.08em;
+  opacity: 0.95;
+}
+
+/* Floating Wireframe Diamond Shape Node */
+.proj-shape-node {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #a78bfa;
+  transform: rotate(45deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.proj-card:hover .proj-shape-node {
+  transform: rotate(225deg) scale(1.35);
+  border-color: #38bdf8;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+}
+
 /* Category Pills */
 .proj-category-pill {
   font-family: 'Space Grotesk', sans-serif;

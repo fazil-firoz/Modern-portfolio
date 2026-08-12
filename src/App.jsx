@@ -238,6 +238,7 @@ function App() {
   const projectsData = [
     {
       id: 'ecommerce',
+      num: '01',
       title: 'E-Commerce Web App',
       subtitle: 'Full-Featured Online Store',
       tag: 'Full-Stack Project',
@@ -249,6 +250,7 @@ function App() {
     },
     {
       id: 'self-billing',
+      num: '02',
       title: 'Self-Billing System',
       subtitle: 'Retail Management System',
       tag: 'Main Project',
@@ -260,6 +262,7 @@ function App() {
     },
     {
       id: 'learnify',
+      num: '03',
       title: 'Learnify',
       subtitle: 'E-Learning Platform',
       tag: 'Mini Project',
@@ -271,6 +274,7 @@ function App() {
     },
     {
       id: 'portfolio',
+      num: '04',
       title: 'Personal Portfolio',
       subtitle: 'Interactive Developer Showcase',
       tag: 'Single Page Portfolio',
@@ -282,6 +286,7 @@ function App() {
     },
     {
       id: 'notebook-portfolio',
+      num: '05',
       title: 'Notebook Portfolio',
       subtitle: 'Hobby Project',
       tag: 'Hobby Project',
@@ -293,6 +298,7 @@ function App() {
     },
     {
       id: 'news24',
+      num: '06',
       title: 'News24',
       subtitle: 'Real-Time News App',
       tag: 'API Integration Project',
@@ -304,6 +310,7 @@ function App() {
     },
     {
       id: 'bonos',
+      num: '07',
       title: "Bono's",
       subtitle: 'Static Front-End Webpage',
       tag: 'My First Work',
@@ -590,11 +597,15 @@ function App() {
                 className="proj-card"
                 ref={(el) => (projCardsRef.current[idx] = el)}
               >
-                {/* Card Top Badge & Link Row */}
+                {/* Card Top Badge & Link Row with Geometric Index */}
                 <div className="proj-card-top">
-                  <span className={`proj-category-pill ${project.badgeClass}`}>
-                    {project.tag}
-                  </span>
+                  <div className="proj-index-group">
+                    <span className="proj-index-num">{project.num}</span>
+                    <span className="proj-shape-node" />
+                    <span className={`proj-category-pill ${project.badgeClass}`}>
+                      {project.tag}
+                    </span>
+                  </div>
                   <div className="proj-links-row">
                     {project.github && (
                       <a
