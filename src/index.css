@@ -1007,59 +1007,71 @@ html, body, #root {
   margin-bottom: 2rem;
 }
 
-/* Projects Grid Layout */
+/* Projects Grid Layout with Center Vertical Divider Line */
 .proj-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 3.5rem 4rem;
+}
+
+.proj-grid::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 1px;
+  background: rgba(167, 139, 250, 0.14);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
   .proj-grid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 2.5rem;
+  }
+  .proj-grid::after {
+    display: none;
   }
 }
 
-/* Animated Thin Outline Frame (Transparent Website Background) */
+/* Direct Project Content (No Outer Box, Horizontal Line Below) */
 .proj-card {
   background: transparent;
-  border: 1px solid rgba(167, 139, 250, 0.16);
-  border-radius: 20px;
-  padding: 1.85rem 2.1rem;
+  border: none;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.14);
+  border-radius: 0;
+  padding: 0 0 2rem 0;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
   backdrop-filter: none;
   box-shadow: none;
   position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              border-color 0.4s ease;
+  transition: transform 0.35s ease, border-color 0.35s ease;
 }
 
-/* Animated Top Line Sweep on Hover */
+/* Animated Accent Line Below on Hover */
 .proj-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  bottom: -1px; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #8b5cf6, #c4b5fd, transparent);
+  background: linear-gradient(90deg, #8b5cf6, #c4b5fd, transparent);
   opacity: 0;
-  transform: translateX(-100%);
-  transition: transform 0.6s ease, opacity 0.4s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .proj-card:hover {
-  transform: translateY(-5px);
-  border-color: #a78bfa;
-  background: transparent;
-  box-shadow: none;
+  transform: translateY(-4px);
+  border-bottom-color: #a78bfa;
 }
 
 .proj-card:hover::before {
   opacity: 1;
-  transform: translateX(100%);
+  transform: scaleX(1);
 }
 
 .proj-card-top {
