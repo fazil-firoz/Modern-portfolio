@@ -346,8 +346,12 @@ function App() {
           SECTION 1 — HERO  (dark)
       ══════════════════════════════════════ */}
       <section className="section-hero">
-        <div className="hero-glow-1" /><div className="hero-glow-2" /><div className="hero-glow-3" />
-        <div className="hero-bg-text">DEVELOPER</div>
+        <div className="hero-bg-text-wrapper">
+          <div className="hero-bg-text">DEVELOPER</div>
+          <div className="hero-light-beam" />
+          <div className="hero-light-dot hero-dot-1" />
+          <div className="hero-light-dot hero-dot-2" />
+        </div>
         <div className="scroll-hint">
           <span className="scroll-hint-label">Scroll</span>
           <div className="scroll-hint-arrow" />
