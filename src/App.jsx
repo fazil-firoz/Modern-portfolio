@@ -369,10 +369,6 @@ function App() {
               Software Engineer based in Infopark, Kochi | Full-Stack Web Developer
             </p>
 
-            <p className="story-text">
-              My journey into tech began with pure curiosity — from a weekly one-hour computer class in school to earning my <strong>MCA (Master of Computer Applications)</strong> and stepping into the professional software engineering world.
-            </p>
-
             <div className="about-highlights-grid">
               <div className="highlight-item">
                 <span className="highlight-icon">💼</span>
@@ -397,10 +393,6 @@ function App() {
               </div>
             </div>
 
-            <p className="story-text">
-              After navigating through self-doubt, intense job hunts, and pivotal decisions, I realized every step had a purpose. Today, I build scalable web applications, craft modern user interfaces, and continuously push my technical boundaries.
-            </p>
-
             <div className="chapter-mark">
               <span className="chapter-label">— currently building & evolving</span>
               <span className="chapter-icon">✓</span>
@@ -408,8 +400,8 @@ function App() {
             </div>
 
             <div className="story-closing">
-              <span className="story-emoji">✨</span>
-              "Driven by curiosity, fueled by code. Always excited for the next big challenge ahead!"
+              <span className="story-emoji">♡</span>
+              I believe something good is waiting ahead. And if life decides otherwise... well, I do have a Plan B — though between you and me, I'm secretly hoping I never have to use it. 😄
             </div>
           </div>
           <div className="about-right" />

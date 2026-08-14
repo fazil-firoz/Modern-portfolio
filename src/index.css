@@ -268,31 +268,33 @@ html, body, #root {
 }
 
 .chapter-label {
-  font-family: 'Caveat', cursive;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: #6366f1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* Closing heart line */
+/* Closing Plan B statement — clean & neat typography */
 .story-closing {
-  font-family: 'Caveat', cursive;
-  font-size: 1.28rem;
-  font-weight: 400;
-  line-height: 1.7;
-  color: #2c2c3e;
-  margin-top: 0.5rem;
-  padding-top: 0.75rem;
-  border-top: 1px dashed rgba(99,102,241,0.25);
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #0f172a;
+  margin-top: 0.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(99, 102, 241, 0.25);
 }
 
 .story-emoji {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   display: block;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.25rem;
+  color: #6366f1;
 }
 
 /* ── RIGHT card slot (ghost — fixed card lands here visually) ── */
