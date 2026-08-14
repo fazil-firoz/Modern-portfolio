@@ -346,12 +346,8 @@ function App() {
           SECTION 1 — HERO  (dark)
       ══════════════════════════════════════ */}
       <section className="section-hero">
-        <div className="hero-bg-text-wrapper">
-          <div className="hero-bg-text">DEVELOPER</div>
-          <div className="hero-light-beam" />
-          <div className="hero-light-dot hero-dot-1" />
-          <div className="hero-light-dot hero-dot-2" />
-        </div>
+        <div className="hero-glow-1" /><div className="hero-glow-2" /><div className="hero-glow-3" />
+        <div className="hero-bg-text">DEVELOPER</div>
         <div className="scroll-hint">
           <span className="scroll-hint-label">Scroll</span>
           <div className="scroll-hint-arrow" />
@@ -365,39 +361,55 @@ function App() {
         <div className="about-inner">
           <div className="about-left" ref={aboutTextRef}>
             <div className="about-tag"><span className="about-tag-line" />About Me</div>
-            <p className="story-text">
-              I didn't know what programming was, but computers somehow fascinated me — that weekly one-hour
-              computer class was the highlight of my school days! Curiosity landed me in BCA, where I barely
-              understood what was happening yet somehow survived, assignment by assignment. Sometimes I still
-              wonder how I graduated.
+            
+            <h2 className="about-greeting">
+              Hi, I'm <span className="greeting-name">Fazil Firoz</span> 👋
+            </h2>
+            <p className="about-role-sub">
+              Software Engineer based in Infopark, Kochi | Full-Stack Web Developer
             </p>
+
             <p className="story-text">
-              Like many students, I dreamed of studying abroad — but somewhere between overthinking and my
-              own fears, I stepped back. Watching friends move abroad while I stayed behind felt heavy.
-              Still searching, I moved to Kochi, joined Luminar Technolab, tried software development.
-              Good experience — but the spark wasn't there yet. Then, almost unexpectedly, I joined MCA,
-              and the decision I was most unsure about turned out to be one of the happiest chapters of my
-              journey. Great friends, real growth, and for the first time — I genuinely enjoyed the ride.
+              My journey into tech began with pure curiosity — from a weekly one-hour computer class in school to earning my <strong>MCA (Master of Computer Applications)</strong> and stepping into the professional software engineering world.
             </p>
+
+            <div className="about-highlights-grid">
+              <div className="highlight-item">
+                <span className="highlight-icon">💼</span>
+                <div>
+                  <strong>Software Engineer</strong>
+                  <p>1+ Year building enterprise web applications at Infopark, Kochi.</p>
+                </div>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">🚀</span>
+                <div>
+                  <strong>Full-Stack Creator</strong>
+                  <p>Specialized in C#, ASP.NET Core, React, Python Django, PostgreSQL & REST APIs.</p>
+                </div>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">🎓</span>
+                <div>
+                  <strong>Continuous Learner</strong>
+                  <p>Passionate about crafting clean UI/UX, robust backend systems & interactive web experiences.</p>
+                </div>
+              </div>
+            </div>
+
             <p className="story-text">
-              The job hunt that followed tested me more than I expected. After countless applications and
-              plenty of self-doubt, I believed that if going abroad was truly meant for me, it would have
-              happened. Maybe life had a different route planned — and eventually,
-              I landed my first job as a <strong>Software Engineer in Infopark.</strong>
+              After navigating through self-doubt, intense job hunts, and pivotal decisions, I realized every step had a purpose. Today, I build scalable web applications, craft modern user interfaces, and continuously push my technical boundaries.
             </p>
+
             <div className="chapter-mark">
-              <span className="chapter-label">— today</span>
+              <span className="chapter-label">— currently building & evolving</span>
               <span className="chapter-icon">✓</span>
               <div className="chapter-line" />
             </div>
-            <p className="story-text">
-              I've completed one year. Do I know if I'm on the right path? Honestly... I still don't.
-              Some days confident, some days lost — still figuring it out, just like everyone else.
-            </p>
+
             <div className="story-closing">
-              <span className="story-emoji">♡</span>
-              I believe something good is waiting ahead. And if life decides otherwise... well,
-              I do have a Plan B — though between you and me, I'm secretly hoping I never have to use it. 😄
+              <span className="story-emoji">✨</span>
+              "Driven by curiosity, fueled by code. Always excited for the next big challenge ahead!"
             </div>
           </div>
           <div className="about-right" />
