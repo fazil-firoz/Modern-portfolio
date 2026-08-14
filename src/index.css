@@ -14,7 +14,7 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════
-   SECTION 1 — HERO  (LIGHT — Solid Dark Yellowish Honey Amber Theme)
+   SECTION 1 — HERO  (LIGHT — Soft Light Yellow Cream Theme)
 ═══════════════════════════════════════════ */
 .section-hero {
   position: relative;
@@ -25,17 +25,17 @@ html, body, #root {
   justify-content: center;
   overflow: hidden;
 
-  background: #fde68a; /* Solid Rich Dark Yellowish Honey Amber */
+  background: #fefce8; /* Soft Light Yellow Cream */
 }
 
-/* Fine grid — dark warm amber tint */
+/* Fine grid — soft warm amber tint */
 .section-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(180, 83, 9, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 83, 9, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(217, 119, 6, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 119, 6, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none;
   z-index: 0;
