@@ -546,9 +546,9 @@ html, body, #root {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #334155;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .exp-dot-sep {
@@ -556,8 +556,8 @@ html, body, #root {
 }
 
 .exp-location {
-  color: #64748b;
-  font-weight: 400;
+  color: #334155;
+  font-weight: 600;
 }
 
 /* Period Badge */
@@ -567,7 +567,7 @@ html, body, #root {
   gap: 0.55rem;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.73rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #0f172a;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -595,11 +595,11 @@ html, body, #root {
 
 .exp-tech-pill {
   font-size: 0.72rem;
-  font-weight: 600;
-  color: #334155;
+  font-weight: 700;
+  color: #0f172a;
   letter-spacing: 0.02em;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
   padding: 0.3rem 0.85rem;
   border-radius: 50px;
 }
@@ -627,23 +627,24 @@ html, body, #root {
 }
 
 .exp-point-icon {
-  font-size: 0.5rem;
-  color: #64748b;
+  font-size: 0.55rem;
+  color: #4f46e5;
   margin-top: 0.45rem;
   flex-shrink: 0;
 }
 
 .exp-point-body {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1.7;
-  color: #cbd5e1;  /* Soft, comfortable reading contrast */
+  font-weight: 500;
+  color: #0f172a;  /* High contrast solid obsidian text */
 }
 
 .exp-point-tech {
   margin-left: 0.4rem;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4f46e5;
 }
 
 /* ═══════════════════════════════════════════════════════
