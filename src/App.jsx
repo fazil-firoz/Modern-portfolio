@@ -823,6 +823,20 @@ function App() {
             </div>
           </div>
 
+          {/* Centered Profile Avatar Divider with Lines Drawing Outward to Both Sides */}
+          <div className="footer-avatar-divider">
+            <div className="avatar-divider-line left-line" />
+            <div className="footer-avatar-wrapper" title="Fazil Firoz — Software Engineer">
+              <img
+                src="/Images/profile-pic (18).png"
+                alt="Fazil Firoz Profile"
+                className="footer-avatar-img"
+              />
+              <span className="footer-avatar-online-dot" />
+            </div>
+            <div className="avatar-divider-line right-line" />
+          </div>
+
           {/* Footer Copyright Bottom Bar */}
           <div className="contact-footer-bar">
             <span>© 2026 Fazil Firoz. Built with React, GSAP & Modern Web Tech.</span>
