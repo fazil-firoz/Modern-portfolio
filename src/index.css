@@ -14,7 +14,7 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════
-   SECTION 1 — HERO  (LIGHT — Soft Light Yellow Cream Theme)
+   SECTION 1 — HERO  (LIGHT — Pure Warm White Theme)
 ═══════════════════════════════════════════ */
 .section-hero {
   position: relative;
@@ -25,23 +25,23 @@ html, body, #root {
   justify-content: center;
   overflow: hidden;
 
-  background: #fefce8; /* Soft Light Yellow Cream */
+  background: #ffffff; /* Pure Warm White */
 }
 
-/* Fine grid — soft warm amber tint */
+/* Fine grid — soft dark slate tint */
 .section-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(217, 119, 6, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217, 119, 6, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none;
   z-index: 0;
 }
 
-/* DEVELOPER text — solid dark yellowish bg version */
+/* DEVELOPER text — light bg version */
 .hero-bg-text {
   position: absolute;
   top: 50%; left: 50%;
@@ -52,8 +52,8 @@ html, body, #root {
   letter-spacing: -0.05em;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 2px rgba(146, 64, 14, 0.25);
-  text-stroke: 2px rgba(146, 64, 14, 0.25);
+  -webkit-text-stroke: 1.5px rgba(15, 23, 42, 0.09);
+  text-stroke: 1.5px rgba(15, 23, 42, 0.09);
   user-select: none; pointer-events: none; z-index: 1;
 }
 
@@ -337,13 +337,12 @@ html, body, #root {
 .id-card-face {
   position: absolute; inset: 0;
   border-radius: 20px; overflow: hidden;
-  background: #0c0c1a;
-  border: 1.5px solid rgba(140, 120, 255, 0.45);
+  background: #ffffff;
+  border: 1.5px solid rgba(79, 70, 229, 0.25);
   box-shadow:
-    0 0 25px rgba(120,100,255,0.18),
-    0 0 60px rgba(80,80,200,0.12),
-    0 30px 80px rgba(0,0,0,0.35),
-    0 50px 100px rgba(0,0,0,0.2);
+    0 18px 45px -10px rgba(79, 70, 229, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.04);
   z-index: 1;
 }
 
@@ -351,9 +350,9 @@ html, body, #root {
   position: absolute; top: -11px; left: 50%;
   transform: translateX(-50%);
   width: 22px; height: 22px; border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(140,120,255,0.55);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.7) inset, 0 0 10px rgba(120,100,255,0.2);
+  background: #f8fafc;
+  border: 2px solid rgba(79, 70, 229, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) inset;
   z-index: 20;
 }
 
@@ -371,18 +370,18 @@ html, body, #root {
 }
 .card-brand-left {
   font-size: 0.65rem; font-weight: 700;
-  color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase;
+  color: #475569; letter-spacing: 0.06em; text-transform: uppercase;
 }
 .card-brand-right {
-  font-size: 0.6rem; font-weight: 700; color: rgba(255,255,255,0.8);
+  font-size: 0.6rem; font-weight: 700; color: #4f46e5;
   letter-spacing: 0.1em; text-transform: uppercase;
-  background: rgba(255,255,255,0.1); padding: 3px 8px;
-  border-radius: 4px; border: 1px solid rgba(255,255,255,0.15);
+  background: #eff6ff; padding: 3px 8px;
+  border-radius: 4px; border: 1px solid #bfdbfe;
 }
 
 .card-photo-area {
   position: absolute; top: 0; left: 0; right: 0; height: 72%;
-  background: linear-gradient(160deg, #12122a 0%, #0e0e22 40%, #111128 100%);
+  background: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 60%, #e2e8f0 100%);
   overflow: hidden;
 }
 .card-big-text {
@@ -390,20 +389,19 @@ html, body, #root {
   transform: translate(-52%, -42%);
   font-family: 'Inter', sans-serif; font-weight: 900;
   font-size: 5.2rem; letter-spacing: -0.04em; line-height: 0.85;
-  color: rgba(255,255,255,0.13); white-space: nowrap;
+  color: rgba(15, 23, 42, 0.07); white-space: nowrap;
   user-select: none; pointer-events: none; z-index: 1;
-  text-shadow: 0 0 80px rgba(140,120,255,0.25);
 }
 .card-photo-img {
   position: absolute; bottom: -2px; left: 50%;
   transform: translateX(-50%);
   width: 110%; height: 132%;
   object-fit: contain; object-position: bottom center;
-  z-index: 2; filter: brightness(1.05) contrast(1.02);
+  z-index: 2; filter: brightness(1.02) contrast(1.04);
 }
 .card-photo-fade {
   position: absolute; bottom: 0; left: 0; right: 0; height: 35%;
-  background: linear-gradient(to bottom, transparent 0%, rgba(12,12,26,0.6) 60%, #0c0c1a 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.7) 65%, #ffffff 100%);
   z-index: 3; pointer-events: none;
 }
 
@@ -412,29 +410,29 @@ html, body, #root {
   padding: 10px 20px 18px;
   display: flex; flex-direction: column; justify-content: flex-end;
   z-index: 5;
-  background: linear-gradient(to bottom, transparent 0%, #0c0c1a 45%);
+  background: linear-gradient(to bottom, transparent 0%, #ffffff 50%);
 }
 .card-person-name {
-  font-size: 1.15rem; font-weight: 700; color: #ffffff;
+  font-size: 1.15rem; font-weight: 800; color: #0f172a;
   letter-spacing: -0.01em; margin-bottom: 5px;
 }
 .card-role-badge {
   display: inline-block; padding: 3px 12px; border-radius: 4px;
-  background: rgba(120,100,255,0.35); border: 1px solid rgba(140,120,255,0.5);
-  font-size: 0.7rem; font-weight: 600; color: #c8b8ff;
+  background: #eff6ff; border: 1px solid #bfdbfe;
+  font-size: 0.7rem; font-weight: 700; color: #2563eb;
   letter-spacing: 0.04em; margin-bottom: 12px; width: fit-content;
 }
 .card-footer-row { display: flex; justify-content: space-between; align-items: center; }
-.card-dept { font-size: 0.7rem; font-weight: 500; color: rgba(255,255,255,0.4); font-style: italic; }
+.card-dept { font-size: 0.7rem; font-weight: 600; color: #64748b; font-style: italic; }
 .card-icon-mark {
   width: 22px; height: 22px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.25);
+  background: #0f172a; border: 1.5px solid #0f172a;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.6rem; color: rgba(255,255,255,0.5); font-weight: 700;
+  font-size: 0.6rem; color: #ffffff; font-weight: 800;
 }
 .id-card-face::before {
   content: ''; position: absolute; inset: 0; border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.2) 100%);
   z-index: 20; pointer-events: none;
 }
 
