@@ -70,6 +70,7 @@ function App() {
   const projectsRef         = useRef(null);
   const projCardsRef        = useRef([]);
   const projProgressRef     = useRef(null);
+  const projDotRef          = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -211,7 +212,7 @@ function App() {
         );
       });
 
-      // ── Projects Section Left Vertical Scroll Line Draw ──
+      // ── Projects Section Left Vertical Scroll Line & Traveling Laser Dot ──
       gsap.fromTo(projProgressRef.current,
         { scaleY: 0 },
         {
@@ -219,9 +220,16 @@ function App() {
           ease: 'none',
           scrollTrigger: {
             trigger: projectsRef.current,
-            start: 'top 65%',
+            start: 'top 70%',
             end:   'bottom 85%',
             scrub: 1,
+            onUpdate: (self) => {
+              if (projDotRef.current) {
+                gsap.set(projDotRef.current, {
+                  top: `${self.progress * 100}%`,
+                });
+              }
+            },
           },
         }
       );
@@ -626,9 +634,10 @@ function App() {
           SECTION 5 — PROJECTS  (Dark Theme)
       ══════════════════════════════════════ */}
       <section className="section-projects" ref={projectsRef}>
-        {/* Left Animated Scroll Progress Timeline Bar */}
+        {/* Left Animated Scroll Progress Timeline Bar with Traveling Laser Dot */}
         <div className="proj-timeline-track">
           <div className="proj-timeline-progress" ref={projProgressRef} />
+          <div className="proj-timeline-head-dot" ref={projDotRef} />
         </div>
 
         <div className="proj-inner">
