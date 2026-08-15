@@ -1370,11 +1370,15 @@ html, body, #root {
   margin-bottom: 1.5rem;
 }
 
-/* Contact Cards Grid */
+/* Contact Cards Grid (Seamless Connected Grid with Zero Gap) */
 .contact-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
   margin-bottom: 3.5rem;
 }
 
@@ -1390,28 +1394,75 @@ html, body, #root {
   }
 }
 
-/* Individual Interactive Big Solid Color-Filled Box Card */
+/* Individual Social Brand Filled Cards (Zero Gap Layout) */
 .contact-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
   padding: 1.6rem 1.8rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
   text-decoration: none;
-  color: inherit;
   position: relative;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.035);
+  transition: all 0.3s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  background: #ffffff;
-  border-color: #cbd5e1;
-  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.08);
+  filter: brightness(0.97);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.15);
 }
+
+/* Brand Background Colors & Typography Contrast */
+.card-whatsapp {
+  background: #f0fdf4;
+}
+.card-whatsapp .contact-label { color: #166534; }
+.card-whatsapp .contact-value { color: #14532d; }
+.card-whatsapp .contact-action-arrow { color: #15803d; }
+
+.card-phone {
+  background: #f0f9ff;
+}
+.card-phone .contact-label { color: #0369a1; }
+.card-phone .contact-value { color: #075985; }
+.card-phone .contact-action-arrow { color: #0284c7; }
+
+.card-email {
+  background: #fdf4ff;
+}
+.card-email .contact-label { color: #7e22ce; }
+.card-email .contact-value { color: #581c87; }
+.card-email .contact-action-arrow { color: #c026d3; }
+
+.card-linkedin {
+  background: #eeefbe; /* soft contrast */
+  background: #eef2ff;
+}
+.card-linkedin .contact-label { color: #3730a3; }
+.card-linkedin .contact-value { color: #312e81; }
+.card-linkedin .contact-action-arrow { color: #4338ca; }
+
+.card-github {
+  background: #f8fafc;
+}
+.card-github .contact-label { color: #475569; }
+.card-github .contact-value { color: #0f172a; }
+.card-github .contact-action-arrow { color: #0f172a; }
+
+.card-instagram {
+  background: #fdf2f8;
+}
+.card-instagram .contact-label { color: #be185d; }
+.card-instagram .contact-value { color: #831843; }
+.card-instagram .contact-action-arrow { color: #db2777; }
+
+.card-address {
+  grid-column: 1 / -1;
+  background: #fffbeb;
+}
+.card-address .contact-label { color: #92400e; }
+.card-address .contact-address-text { color: #78350f; }
 
 /* Card Icon Box */
 .contact-card-icon-box {
@@ -1423,6 +1474,8 @@ html, body, #root {
   justify-content: center;
   flex-shrink: 0;
   transition: transform 0.3s ease;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .contact-card:hover .contact-card-icon-box {
@@ -1434,14 +1487,14 @@ html, body, #root {
   height: 22px;
 }
 
-/* Icon Variants */
-.icon-whatsapp { background: #dcfce7; color: #16a34a; }
-.icon-phone { background: #e0f2fe; color: #0284c7; }
-.icon-email { background: #fae8ff; color: #c026d3; }
-.icon-linkedin { background: #e0e7ff; color: #4338ca; }
-.icon-github { background: #f1f5f9; color: #0f172a; }
-.icon-instagram { background: #fce7f3; color: #db2777; }
-.icon-location { background: #fef3c7; color: #d97706; }
+/* Icon Variants Colors inside White Box */
+.icon-whatsapp { color: #16a34a; }
+.icon-phone { color: #0284c7; }
+.icon-email { color: #c026d3; }
+.icon-linkedin { color: #4338ca; }
+.icon-github { color: #0f172a; }
+.icon-instagram { color: #db2777; }
+.icon-location { color: #d97706; }
 
 /* Info Labels */
 .contact-card-info {
@@ -1454,10 +1507,9 @@ html, body, #root {
 .contact-label {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #64748b;
 }
 
 .contact-value {
