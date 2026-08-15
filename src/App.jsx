@@ -817,8 +817,13 @@ function App() {
               <span className="contact-action-arrow">↗</span>
             </a>
 
-            {/* Address Location Card */}
-            <div className="contact-card card-address">
+            {/* Address Location Card (Clickable Google Maps Link) */}
+            <a
+              href="https://maps.google.com/?q=Erakkingal+(H),+Mulayankavu+(PO),+Kulukkallur,+Palakkad,+Kerala+679337,+India"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card card-address"
+            >
               <div className="contact-card-icon-box icon-location">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
@@ -831,7 +836,8 @@ function App() {
                   Erakkingal (H), Mulayankavu (PO), Kulukkallur, Palakkad, Kerala 679337, India
                 </span>
               </div>
-            </div>
+              <span className="contact-action-arrow">↗</span>
+            </a>
           </div>
 
           {/* Centered Profile Avatar Divider with Lines Drawing Outward to Both Sides */}

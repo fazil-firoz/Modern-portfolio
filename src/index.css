@@ -1461,9 +1461,14 @@ html, body, #root {
 .card-instagram .contact-label { color: #f472b6; }
 .card-instagram .contact-value { color: #ffffff; }
 .card-instagram .contact-action-arrow { color: #f472b6; }
-.card-address .contact-label { color: #fcd34d; }
-.card-address .contact-address-text { color: #ffffff; font-size: 0.9rem; }
-.card-address .contact-card-icon-box { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+.card-address {
+  grid-column: 1 / -1;
+  background: #fef3c7;
+}
+.card-address .contact-label { color: #92400e; letter-spacing: 0.08em; }
+.card-address .contact-address-text { color: #451a03; font-size: 0.95rem; font-weight: 700; line-height: 1.5; }
+.card-address .contact-action-arrow { color: #b45309; }
+.card-address .contact-card-icon-box { background: #fde68a; color: #b45309; border: 1px solid rgba(180, 83, 9, 0.25); }
 
 /* Card Icon Box (Big Square Style) */
 .contact-card-icon-box {
@@ -1482,18 +1487,9 @@ html, body, #root {
 }
 
 .contact-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
-
-/* Icon Variants Colors inside White Box */
-.icon-whatsapp { color: #16a34a; }
-.icon-phone { color: #0284c7; }
-.icon-email { color: #c026d3; }
-.icon-linkedin { color: #4338ca; }
-.icon-github { color: #0f172a; }
-.icon-instagram { color: #db2777; }
-.icon-location { color: #d97706; }
 
 /* Info Labels */
 .contact-card-info {
@@ -1505,24 +1501,25 @@ html, body, #root {
 
 .contact-label {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.73rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .contact-value {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .contact-address-text {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #334155;
-  line-height: 1.45;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #451a03;
+  line-height: 1.5;
 }
 
 .contact-action-arrow {
