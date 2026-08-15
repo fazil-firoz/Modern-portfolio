@@ -1370,15 +1370,15 @@ html, body, #root {
   margin-bottom: 1.5rem;
 }
 
-/* Contact Cards Grid (Seamless Connected Grid with Zero Gap) */
+/* Contact Cards Grid (Seamless Connected Square Grid with Zero Gap & Border Radius 0) */
 .contact-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  border-radius: 24px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid #1e293b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 3.5rem;
 }
 
@@ -1394,88 +1394,93 @@ html, body, #root {
   }
 }
 
-/* Individual Social Brand Filled Cards (Zero Gap Layout) */
+/* Big Square Social Brand Dark Filled Cards (Zero Gap, Border Radius 0) */
 .contact-card {
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0;
-  padding: 1.6rem 1.8rem;
+  padding: 2.2rem 2.2rem;
+  min-height: 140px;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.35rem;
   text-decoration: none;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .contact-card:hover {
-  filter: brightness(0.97);
+  filter: brightness(1.2);
   z-index: 2;
-  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
 }
 
-/* Brand Background Colors & Typography Contrast */
+/* Deep Dark Brand Colors & High-Contrast Glowing Typography */
 .card-whatsapp {
-  background: #f0fdf4;
+  background: #0b261a;
 }
-.card-whatsapp .contact-label { color: #166534; }
-.card-whatsapp .contact-value { color: #14532d; }
-.card-whatsapp .contact-action-arrow { color: #15803d; }
+.card-whatsapp .contact-label { color: #86efac; }
+.card-whatsapp .contact-value { color: #ffffff; }
+.card-whatsapp .contact-action-arrow { color: #4ade80; }
+.card-whatsapp .contact-card-icon-box { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
 
 .card-phone {
-  background: #f0f9ff;
+  background: #082f49;
 }
-.card-phone .contact-label { color: #0369a1; }
-.card-phone .contact-value { color: #075985; }
-.card-phone .contact-action-arrow { color: #0284c7; }
+.card-phone .contact-label { color: #7dd3fc; }
+.card-phone .contact-value { color: #ffffff; }
+.card-phone .contact-action-arrow { color: #38bdf8; }
+.card-phone .contact-card-icon-box { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
 
 .card-email {
-  background: #fdf4ff;
+  background: #3b0764;
 }
-.card-email .contact-label { color: #7e22ce; }
-.card-email .contact-value { color: #581c87; }
-.card-email .contact-action-arrow { color: #c026d3; }
+.card-email .contact-label { color: #f0abfc; }
+.card-email .contact-value { color: #ffffff; }
+.card-email .contact-action-arrow { color: #e879f9; }
+.card-email .contact-card-icon-box { background: rgba(232, 121, 249, 0.2); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
 
 .card-linkedin {
-  background: #eeefbe; /* soft contrast */
-  background: #eef2ff;
+  background: #1e1b4b;
 }
-.card-linkedin .contact-label { color: #3730a3; }
-.card-linkedin .contact-value { color: #312e81; }
-.card-linkedin .contact-action-arrow { color: #4338ca; }
+.card-linkedin .contact-label { color: #a5b4fc; }
+.card-linkedin .contact-value { color: #ffffff; }
+.card-linkedin .contact-action-arrow { color: #818cf8; }
+.card-linkedin .contact-card-icon-box { background: rgba(129, 140, 248, 0.2); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
 
 .card-github {
-  background: #f8fafc;
+  background: #0f172a;
 }
-.card-github .contact-label { color: #475569; }
-.card-github .contact-value { color: #0f172a; }
-.card-github .contact-action-arrow { color: #0f172a; }
+.card-github .contact-label { color: #cbd5e1; }
+.card-github .contact-value { color: #ffffff; }
+.card-github .contact-action-arrow { color: #ffffff; }
+.card-github .contact-card-icon-box { background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
 
 .card-instagram {
-  background: #fdf2f8;
+  background: #4c0519;
 }
-.card-instagram .contact-label { color: #be185d; }
-.card-instagram .contact-value { color: #831843; }
-.card-instagram .contact-action-arrow { color: #db2777; }
+.card-instagram .contact-label { color: #f472b6; }
+.card-instagram .contact-value { color: #ffffff; }
+.card-instagram .contact-action-arrow { color: #f472b6; }
+.card-instagram .contact-card-icon-box { background: rgba(244, 114, 182, 0.2); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); }
 
 .card-address {
   grid-column: 1 / -1;
-  background: #fffbeb;
+  background: #451a03;
 }
-.card-address .contact-label { color: #92400e; }
-.card-address .contact-address-text { color: #78350f; }
+.card-address .contact-label { color: #fcd34d; }
+.card-address .contact-address-text { color: #ffffff; font-size: 0.9rem; }
+.card-address .contact-card-icon-box { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
 
-/* Card Icon Box */
+/* Card Icon Box (Big Square Style) */
 .contact-card-icon-box {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: transform 0.3s ease;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .contact-card:hover .contact-card-icon-box {
