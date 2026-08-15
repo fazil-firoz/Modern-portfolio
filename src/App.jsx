@@ -69,6 +69,7 @@ function App() {
 
   const projectsRef         = useRef(null);
   const projCardsRef        = useRef([]);
+  const projProgressRef     = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -209,6 +210,21 @@ function App() {
           }
         );
       });
+
+      // ── Projects Section Left Vertical Scroll Line Draw ──
+      gsap.fromTo(projProgressRef.current,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: 'top 65%',
+            end:   'bottom 85%',
+            scrub: 1,
+          },
+        }
+      );
 
       // ── Projects Cards Stagger Slide Up Reveal ──
       projCardsRef.current.forEach((el) => {
@@ -610,6 +626,11 @@ function App() {
           SECTION 5 — PROJECTS  (Dark Theme)
       ══════════════════════════════════════ */}
       <section className="section-projects" ref={projectsRef}>
+        {/* Left Animated Scroll Progress Timeline Bar */}
+        <div className="proj-timeline-track">
+          <div className="proj-timeline-progress" ref={projProgressRef} />
+        </div>
+
         <div className="proj-inner">
 
           {/* Section Tag */}
