@@ -1416,36 +1416,36 @@ html, body, #root {
 
 /* Deep Dark Brand Colors & High-Contrast Glowing Typography */
 .card-whatsapp {
-  background: #0b261a;
+  background: #082116;
 }
-.card-whatsapp .contact-label { color: #86efac; }
+.card-whatsapp .contact-label { color: #4ade80; }
 .card-whatsapp .contact-value { color: #ffffff; }
 .card-whatsapp .contact-action-arrow { color: #4ade80; }
-.card-whatsapp .contact-card-icon-box { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+.card-whatsapp .contact-card-icon-box { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
 
 .card-phone {
-  background: #082f49;
+  background: #072238;
 }
-.card-phone .contact-label { color: #7dd3fc; }
+.card-phone .contact-label { color: #38bdf8; }
 .card-phone .contact-value { color: #ffffff; }
 .card-phone .contact-action-arrow { color: #38bdf8; }
-.card-phone .contact-card-icon-box { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+.card-phone .contact-card-icon-box { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
 
 .card-email {
-  background: #3b0764;
+  background: #2b074a;
 }
-.card-email .contact-label { color: #f0abfc; }
+.card-email .contact-label { color: #e879f9; }
 .card-email .contact-value { color: #ffffff; }
 .card-email .contact-action-arrow { color: #e879f9; }
-.card-email .contact-card-icon-box { background: rgba(232, 121, 249, 0.2); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
+.card-email .contact-card-icon-box { background: rgba(232, 121, 249, 0.15); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
 
 .card-linkedin {
-  background: #1e1b4b;
+  background: #151336;
 }
-.card-linkedin .contact-label { color: #a5b4fc; }
+.card-linkedin .contact-label { color: #818cf8; }
 .card-linkedin .contact-value { color: #ffffff; }
 .card-linkedin .contact-action-arrow { color: #818cf8; }
-.card-linkedin .contact-card-icon-box { background: rgba(129, 140, 248, 0.2); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
+.card-linkedin .contact-card-icon-box { background: rgba(129, 140, 248, 0.15); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
 
 .card-github {
   background: #0f172a;
@@ -1453,20 +1453,14 @@ html, body, #root {
 .card-github .contact-label { color: #cbd5e1; }
 .card-github .contact-value { color: #ffffff; }
 .card-github .contact-action-arrow { color: #ffffff; }
-.card-github .contact-card-icon-box { background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
+.card-github .contact-card-icon-box { background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); }
 
 .card-instagram {
-  background: #4c0519;
+  background: #3b0717;
 }
 .card-instagram .contact-label { color: #f472b6; }
 .card-instagram .contact-value { color: #ffffff; }
 .card-instagram .contact-action-arrow { color: #f472b6; }
-.card-instagram .contact-card-icon-box { background: rgba(244, 114, 182, 0.2); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); }
-
-.card-address {
-  grid-column: 1 / -1;
-  background: #451a03;
-}
 .card-address .contact-label { color: #fcd34d; }
 .card-address .contact-address-text { color: #ffffff; font-size: 0.9rem; }
 .card-address .contact-card-icon-box { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
