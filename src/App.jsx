@@ -369,6 +369,24 @@ function App() {
     }
   ];
 
+  const handleCardMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+  };
+
+  const handleCardMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  };
+
   return (
     <div className="page-wrapper">
 
@@ -760,6 +778,8 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card card-whatsapp"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-whatsapp">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -777,6 +797,8 @@ function App() {
             <a
               href="tel:+919048634881"
               className="contact-card card-phone"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-phone">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -794,6 +816,8 @@ function App() {
             <a
               href="mailto:fazzilfiroz@gmail.com"
               className="contact-card card-email"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-email">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -814,6 +838,8 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card card-linkedin"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-linkedin">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -833,6 +859,8 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card card-github"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-github">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -852,6 +880,8 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card card-instagram"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-instagram">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -871,6 +901,8 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-card card-address"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
             >
               <div className="contact-card-icon-box icon-location">
                 <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

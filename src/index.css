@@ -1420,16 +1420,17 @@ html, body, #root {
   margin-bottom: 1.5rem;
 }
 
-/* Contact Cards Grid (Seamless Connected Square Grid with Zero Gap & Border Radius 0) */
+/* Contact Cards Grid (Seamless Connected Square Grid with Zero Gap & 3D Tilt Perspective) */
 .contact-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   border-radius: 0;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid #0f172a;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
   margin-bottom: 3.5rem;
+  perspective: 1200px;
 }
 
 @media (max-width: 990px) {
@@ -1444,7 +1445,7 @@ html, body, #root {
   }
 }
 
-/* Big Square Social Brand Dark Filled Cards (100% Full Surface Clickable Pointer Link) */
+/* Big Square Social Brand Dark Filled Cards (100% Full Surface 3D Dynamic Tilt Physics) */
 .contact-card,
 .contact-cards-grid a {
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1460,7 +1461,9 @@ html, body, #root {
   position: relative;
   cursor: pointer !important;
   user-select: none;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease, box-shadow 0.35s ease;
 }
 
 .contact-card *,
