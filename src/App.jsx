@@ -39,7 +39,7 @@ function IDCard() {
             <div className="card-person-name">FaZil Firoz</div>
             <div className="card-role-badge">Software Engineer</div>
             <div className="card-footer-row">
-              <span className="card-dept">Software Solutions</span>
+              {/* <span className="card-dept">Software Solutions</span> */}
               <div className="card-icon-mark">FZ</div>
             </div>
           </div>
@@ -891,7 +891,11 @@ function App() {
           {/* Centered Profile Avatar Divider with Lines Drawing Outward to Both Sides */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
-            <div className="footer-avatar-wrapper" title="Fazil Firoz — Software Engineer">
+            <div
+              className="footer-avatar-wrapper"
+              title="Click to Scroll to Top — Fazil Firoz"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               <img
                 src="/Images/profile-pic (18).png"
                 alt="Fazil Firoz Profile"
@@ -913,6 +917,10 @@ function App() {
               <a href="https://www.instagram.com/fzl.frz/" target="_blank" rel="noopener noreferrer">Instagram</a>
               <span>•</span>
               <a href="https://wa.me/919048634881" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <span>•</span>
+              <a href="mailto:fazzilfiroz@gmail.com">Email</a>
+              <span>•</span>
+              <a href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
           </div>
 
