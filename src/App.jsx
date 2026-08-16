@@ -438,6 +438,24 @@ function App() {
               <span className="story-emoji">♡</span>
               I believe something good is waiting ahead. And if life decides otherwise... well, I do have a Plan B — though between you and me, I'm secretly hoping I never have to use it. 😄
             </div>
+
+            {/* Theme-Adapted Download Resume Action Button */}
+            <div className="about-resume-action">
+              <a
+                href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="download-resume-btn"
+                title="Download / View Fazil Firoz Official Resume"
+              >
+                <svg className="resume-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Download Resume</span>
+              </a>
+            </div>
           </div>
           <div className="about-right" />
         </div>
