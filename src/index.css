@@ -1268,28 +1268,35 @@ html, body, #root {
   color: #4f46e5;
 }
 
+.proj-desc,
 .proj-description {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: 0.95rem;
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.65;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* Tech Stack Tags */
+.proj-tech-row,
 .proj-tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 0.25rem;
 }
 
+.proj-tech-pill,
 .proj-tech-tag {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   color: #4f46e5;
   background: #e0e7ff;
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 6px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 /* Action Links — Compact, Colorful, Elegant */
@@ -1932,9 +1939,10 @@ html, body, #root {
   }
 
   .proj-timeline-track {
-    left: 0.5rem;
+    left: 0.35rem;
     top: 5rem;
     bottom: 6rem;
+    width: 3px;
   }
 
   .proj-heading {
