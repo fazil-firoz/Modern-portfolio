@@ -1268,35 +1268,37 @@ html, body, #root {
   color: #4f46e5;
 }
 
-.proj-desc,
-.proj-description {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+.proj-desc {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   font-size: 0.95rem;
   color: #475569;
   line-height: 1.65;
   text-align: justify;
-  hyphens: auto;
+  text-justify: inter-word;
 }
 
-/* Tech Stack Tags */
-.proj-tech-row,
-.proj-tech-stack {
+/* Tech Stack Pills — Distinct Spaced Badges */
+.proj-tech-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
 
-.proj-tech-pill,
-.proj-tech-tag {
+.proj-tech-pill {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.73rem;
   font-weight: 700;
   color: #4f46e5;
   background: #e0e7ff;
+  border: 1px solid rgba(79, 70, 229, 0.25);
   padding: 0.3rem 0.75rem;
-  border-radius: 6px;
+  border-radius: 50px;
   letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 /* Action Links — Compact, Colorful, Elegant */
@@ -1939,10 +1941,9 @@ html, body, #root {
   }
 
   .proj-timeline-track {
-    left: 0.35rem;
+    left: 0.5rem;
     top: 5rem;
     bottom: 6rem;
-    width: 3px;
   }
 
   .proj-heading {
@@ -1950,7 +1951,15 @@ html, body, #root {
   }
 
   .proj-card {
-    padding: 1.75rem 1.25rem;
+    padding: 0 0 2rem 0;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .proj-desc {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 0.92rem;
   }
 
   .proj-card-top {
