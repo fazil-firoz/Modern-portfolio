@@ -12,11 +12,11 @@ const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-rem
 function IDCard() {
   return (
     <div className="scene">
-      {/* Lanyard / Thread Strap extending upward out of top hole */}
+      {/* Lanyard / Thread Strap extending from top outer screen in a dynamic zigzag curve */}
       <div className="lanyard-thread-container">
-        <svg className="lanyard-thread-svg" viewBox="0 0 100 180" preserveAspectRatio="none">
+        <svg className="lanyard-thread-svg" viewBox="0 0 120 500" preserveAspectRatio="none">
           <path
-            d="M 50,0 C 40,60 60,120 50,180"
+            d="M 60,-400 C 10,-300 110,-200 20,-100 C 100,0 30,100 80,250 C 35,360 75,440 60,495"
             className="lanyard-strap-path"
           />
         </svg>

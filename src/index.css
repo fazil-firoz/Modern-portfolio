@@ -369,14 +369,14 @@ html, body, #root {
   position: relative;
 }
 
-/* Lanyard / Thread Strap coming from top center out of hole */
+/* Lanyard / Thread Strap coming from top outer screen in a dynamic zigzag curve */
 .lanyard-thread-container {
   position: absolute;
-  top: -150px;
+  top: -460px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 165px;
+  width: 110px;
+  height: 475px;
   pointer-events: none;
   z-index: 15;
 }
@@ -390,9 +390,10 @@ html, body, #root {
 .lanyard-strap-path {
   fill: none;
   stroke: #4f46e5;
-  stroke-width: 4px;
+  stroke-width: 4.5px;
   stroke-linecap: round;
-  filter: drop-shadow(0 3px 6px rgba(79, 70, 229, 0.35));
+  stroke-linejoin: round;
+  filter: drop-shadow(0 4px 10px rgba(79, 70, 229, 0.45));
 }
 
 .lanyard-clip {
@@ -1844,8 +1845,9 @@ html, body, #root {
   }
 
   .lanyard-thread-container {
-    height: 120px;
-    top: -120px;
+    height: 420px;
+    top: -410px;
+    width: 90px;
   }
 
   .hero-bg-text {
