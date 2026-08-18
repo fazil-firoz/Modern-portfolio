@@ -1452,54 +1452,55 @@ html, body, #root {
   transform: scale(1.015);
 }
 
-/* Deep Dark Brand Colors & High-Contrast Glowing Typography */
+/* Exact Official Social Media Brand Colors & High-Contrast Typography */
 .card-whatsapp {
-  background: #072619;
+  background: #25d366;
 }
-.card-whatsapp .contact-label { color: #4ade80; }
+.card-whatsapp .contact-label { color: rgba(255, 255, 255, 0.9); }
 .card-whatsapp .contact-value { color: #ffffff; }
-.card-whatsapp .contact-action-arrow { color: #4ade80; }
-.card-whatsapp .contact-card-icon-box { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+.card-whatsapp .contact-action-arrow { color: #ffffff; }
+.card-whatsapp .contact-card-icon-box { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
 
 .card-phone {
-  background: #062942;
+  background: #0284c7;
 }
-.card-phone .contact-label { color: #38bdf8; }
+.card-phone .contact-label { color: rgba(255, 255, 255, 0.9); }
 .card-phone .contact-value { color: #ffffff; }
-.card-phone .contact-action-arrow { color: #38bdf8; }
-.card-phone .contact-card-icon-box { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+.card-phone .contact-action-arrow { color: #ffffff; }
+.card-phone .contact-card-icon-box { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
 
 .card-email {
-  background: #2b074a;
+  background: #ea4335;
 }
-.card-email .contact-label { color: #e879f9; }
+.card-email .contact-label { color: rgba(255, 255, 255, 0.9); }
 .card-email .contact-value { color: #ffffff; }
-.card-email .contact-action-arrow { color: #e879f9; }
-.card-email .contact-card-icon-box { background: rgba(232, 121, 249, 0.15); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
+.card-email .contact-action-arrow { color: #ffffff; }
+.card-email .contact-card-icon-box { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
 
 .card-linkedin {
-  background: #151336;
+  background: #0a66c2;
 }
-.card-linkedin .contact-label { color: #818cf8; }
+.card-linkedin .contact-label { color: rgba(255, 255, 255, 0.9); }
 .card-linkedin .contact-value { color: #ffffff; }
-.card-linkedin .contact-action-arrow { color: #818cf8; }
-.card-linkedin .contact-card-icon-box { background: rgba(129, 140, 248, 0.15); color: #818cf8; border: 1px solid rgba(129, 140, 248, 0.3); }
+.card-linkedin .contact-action-arrow { color: #ffffff; }
+.card-linkedin .contact-card-icon-box { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
 
 .card-github {
-  background: #0f172a;
+  background: #24292e;
 }
-.card-github .contact-label { color: #cbd5e1; }
+.card-github .contact-label { color: rgba(255, 255, 255, 0.85); }
 .card-github .contact-value { color: #ffffff; }
 .card-github .contact-action-arrow { color: #ffffff; }
-.card-github .contact-card-icon-box { background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); }
+.card-github .contact-card-icon-box { background: rgba(255, 255, 255, 0.18); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
 
 .card-instagram {
-  background: #3b0717;
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
 }
-.card-instagram .contact-label { color: #f472b6; }
+.card-instagram .contact-label { color: rgba(255, 255, 255, 0.95); }
 .card-instagram .contact-value { color: #ffffff; }
-.card-instagram .contact-action-arrow { color: #f472b6; }
-.card-instagram .contact-card-icon-box { background: rgba(244, 114, 182, 0.18); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.35); }
+.card-instagram .contact-action-arrow { color: #ffffff; }
+.card-instagram .contact-card-icon-box { background: rgba(255, 255, 255, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); }
+
 .card-address {
   grid-column: 1 / -1;
   background: #fef3c7;
