@@ -183,6 +183,37 @@ html, body, #root {
   -webkit-text-fill-color: transparent;
 }
 
+/* Custom CSS Waving Hand Icon with Smooth Animation */
+.css-waving-hand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 0.45rem;
+  width: 32px;
+  height: 32px;
+  transform-origin: 70% 70%;
+  animation: cssHandWave 2.2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.wave-hand-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 5px rgba(217, 119, 6, 0.3));
+}
+
+@keyframes cssHandWave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(16deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(16deg); }
+  40% { transform: rotate(-6deg); }
+  50% { transform: rotate(12deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .about-role-sub {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.92rem;

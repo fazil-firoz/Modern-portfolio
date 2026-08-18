@@ -441,7 +441,12 @@ function App() {
             <div className="about-tag"><span className="about-tag-line" />About Me</div>
             
             <h2 className="about-greeting">
-              Hi, I'm <span className="greeting-name">Fazil Firoz</span> 👋
+              Hi, I'm <span className="greeting-name">Fazil Firoz</span>
+              <span className="css-waving-hand" title="Hello!">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="wave-hand-svg">
+                  <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8M18 8a2 2 0 0 1 2 2v4a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.8-5.6-2.4l-2.6-3.7a1.4 1.4 0 0 1 .3-1.9v0a1.4 1.4 0 0 1 1.9.3l2.4 3.4" stroke="#d97706" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="rgba(245, 158, 11, 0.25)"/>
+                </svg>
+              </span>
             </h2>
             <p className="about-role-sub">
               Software Engineer based in Infopark, Kochi | Full-Stack Web Developer
