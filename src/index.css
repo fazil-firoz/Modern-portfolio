@@ -127,11 +127,13 @@ html, body, #root {
 .about-inner {
   position: relative; z-index: 5;
   width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 310px;  /* 310px = buffer so text doesn't go under card */
+  grid-template-columns: 1fr 300px;
   align-items: start;
-  gap: 1.5rem;
+  gap: 2.5rem;
 }
 
 /* ── LEFT — story column ── */
@@ -140,7 +142,7 @@ html, body, #root {
   flex-direction: column;
   gap: 0;
   padding: 2rem 0 2.5rem;
-  max-width: 600px;   /* hard cap — text never goes under the card */
+  width: 100%;
 }
 
 /* ── About Me heading tag ── */

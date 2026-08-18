@@ -78,7 +78,7 @@ function App() {
       // ── Responsive GSAP Animations for Floating ID Card using matchMedia ──
       const mm = gsap.matchMedia();
 
-      // Desktop Screens (> 991px)
+      // Desktop Screens (> 991px): Card travels from Hero Center -> Section 2 Right, then dissolves as Section 3 enters
       mm.add("(min-width: 992px)", () => {
         gsap.to(floatingCardRef.current, {
           x: () => window.innerWidth * 0.26,
@@ -89,18 +89,19 @@ function App() {
           scrollTrigger: {
             trigger: aboutRef.current,
             start: 'top 90%',
-            end:   'top 15%',
-            scrub: 2,
+            end:   'top 20%',
+            scrub: 1.5,
           },
         });
 
         gsap.to(floatingCardRef.current, {
           opacity: 0,
-          scale: 0.88,
+          scale: 0.75,
+          y: 80,
           ease: 'power1.out',
           scrollTrigger: {
             trigger: experienceRef.current,
-            start: 'top 85%',
+            start: 'top 95%',
             end:   'top 40%',
             scrub: 1.2,
           },
