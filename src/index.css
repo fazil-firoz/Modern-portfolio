@@ -1794,9 +1794,23 @@ html, body, #root {
 /* Mobile & Tablet Containers (<= 991px) */
 @media (max-width: 991px) {
   .about-inner {
-    padding: 0 1.5rem;
+    display: flex;
     flex-direction: column;
-    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1.25rem;
+    gap: 0;
+  }
+
+  .about-left {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.5rem 0 2rem;
+  }
+
+  .about-highlights-grid {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .about-right {
@@ -1804,7 +1818,7 @@ html, body, #root {
   }
 
   .exp-inner, .edu-inner, .proj-inner, .contact-inner {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
 
   .proj-grid::after {
