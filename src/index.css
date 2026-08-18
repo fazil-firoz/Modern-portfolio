@@ -409,7 +409,7 @@ html, body, #root {
 }
 
 .id-card {
-  width: 250px; height: 400px;
+  width: 280px; height: 445px;
   border-radius: 20px;
   position: relative; overflow: visible;
   transform-style: preserve-3d;
@@ -1839,7 +1839,7 @@ html, body, #root {
   }
 
   .scene {
-    transform: scale(0.86);
+    transform: scale(0.95);
     transform-origin: center center;
   }
 
