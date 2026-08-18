@@ -107,18 +107,18 @@ function App() {
         });
       });
 
-      // Mobile Screens (<= 991px): Smoothly fade out card on scroll down so it never covers About text or reappears
+      // Mobile Screens (<= 991px): Card slides UNDER Section 2 (About Me) as user scrolls down
       mm.add("(max-width: 991px)", () => {
         gsap.to(floatingCardRef.current, {
+          y: 100,
+          scale: 0.8,
           opacity: 0,
-          scale: 0.45,
-          y: -40,
-          ease: 'power1.out',
+          ease: 'power2.inOut',
           scrollTrigger: {
             trigger: aboutRef.current,
             start: 'top 95%',
-            end:   'top 45%',
-            scrub: 1,
+            end:   'top 35%',
+            scrub: 1.2,
           },
         });
       });

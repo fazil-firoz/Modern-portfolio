@@ -1808,6 +1808,12 @@ html, body, #root {
 
 /* Mobile & Tablet Containers (<= 991px) */
 @media (max-width: 991px) {
+  .section-about {
+    position: relative;
+    z-index: 30;
+    background: #ffffff;
+  }
+
   .about-inner {
     display: flex;
     flex-direction: column;
