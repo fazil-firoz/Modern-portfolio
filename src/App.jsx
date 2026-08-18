@@ -107,11 +107,14 @@ function App() {
         });
       });
 
-      // Mobile Screens (<= 991px): Card slides UNDER Section 2 (About Me) as user scrolls down
+      // Mobile Screens (<= 991px): Guarantee 100% horizontal centering, slide UNDER Section 2 on scroll
       mm.add("(max-width: 991px)", () => {
+        gsap.set(floatingCardRef.current, { x: 0 });
+
         gsap.to(floatingCardRef.current, {
-          y: 100,
-          scale: 0.8,
+          x: 0,
+          y: 120,
+          scale: 0.82,
           opacity: 0,
           ease: 'power2.inOut',
           scrollTrigger: {
