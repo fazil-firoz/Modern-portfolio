@@ -1068,46 +1068,34 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* Projects Timeline Wrapper (Matching Section 3 Experience Layout) */
-.proj-timeline-wrapper {
+.proj-inner {
+  position: relative; z-index: 5;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 3rem;
   display: flex;
-  gap: 1.75rem;
-  width: 100%;
-  position: relative;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-/* Vertical Timeline Track Line */
-.proj-timeline-track {
-  width: 3px;
-  background: #e2e8f0;
-  position: relative;
+.proj-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4f46e5;
+}
+
+.proj-tag-line {
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: #818cf8;
   flex-shrink: 0;
-  border-radius: 3px;
-  overflow: visible;
-  margin-top: 0.5rem;
-}
-
-.proj-timeline-progress {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, #4f46e5 0%, #06b6d4 100%);
-  transform-origin: top center;
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
-}
-
-.proj-timeline-head-dot {
-  position: absolute;
-  left: 50%;
-  top: 0%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #4f46e5;
-  border: 2.5px solid #ffffff;
-  box-shadow: 0 0 14px rgba(79, 70, 229, 0.85), 0 0 6px rgba(2, 132, 199, 0.7);
-  pointer-events: none;
-  z-index: 12;
 }
 
 .proj-heading {
@@ -1116,12 +1104,12 @@ html, body, #root {
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
 /* Projects Grid Layout with Center Vertical Divider Line */
 .proj-grid {
-  flex: 1;
+  width: 100%;
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -705,17 +705,8 @@ function App() {
 
           <h2 className="proj-heading">Projects & Built Systems</h2>
 
-          {/* Projects Layout with Vertical Timeline Track (Matching Experience Section) */}
-          <div className="proj-timeline-wrapper">
-
-            {/* Vertical Timeline Track Line */}
-            <div className="proj-timeline-track">
-              <div className="proj-timeline-progress" ref={projProgressRef} />
-              <div className="proj-timeline-head-dot" ref={projDotRef} />
-            </div>
-
-            {/* Projects Grid */}
-            <div className="proj-grid">
+          {/* Projects Grid */}
+          <div className="proj-grid">
             {projectsData.map((project, idx) => (
               <div
                 key={project.id}
@@ -779,8 +770,6 @@ function App() {
                 </div>
               </div>
             ))}
-          </div>
-
           </div>
 
         </div>
