@@ -75,49 +75,33 @@ function App() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      const isMobile = window.innerWidth <= 991;
+      // ── Portfolio card travels hero-center → about right (desktop) or fades out centered (mobile) ──
+      gsap.to(floatingCardRef.current, {
+        x: () => (window.innerWidth <= 991 ? 0 : window.innerWidth * 0.26),
+        y: () => (window.innerWidth <= 991 ? -25 : 30),
+        opacity: () => (window.innerWidth <= 991 ? 0 : 1),
+        scale: () => (window.innerWidth <= 991 ? 0.55 : 1),
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: 'top 90%',
+          end:   'top 25%',
+          scrub: 1.5,
+        },
+      });
 
-      if (!isMobile) {
-        // ── Desktop: Portfolio card travels hero-center → about right on scroll ──
-        gsap.to(floatingCardRef.current, {
-          x: () => window.innerWidth * 0.26,
-          y: 30,
-          ease: 'power2.inOut',
-          scrollTrigger: {
-            trigger: aboutRef.current,
-            start: 'top 90%',
-            end:   'top 15%',
-            scrub: 2,
-          },
-        });
-
-        // ── Desktop: Portfolio card fades out as experience section enters ──
-        gsap.to(floatingCardRef.current, {
-          opacity: 0,
-          scale: 0.88,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: experienceRef.current,
-            start: 'top 85%',
-            end:   'top 40%',
-            scrub: 1.2,
-          },
-        });
-      } else {
-        // ── Mobile: Portfolio card scales down & fades out cleanly as About section enters (so text is never blocked) ──
-        gsap.to(floatingCardRef.current, {
-          opacity: 0,
-          scale: 0.55,
-          y: -30,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: aboutRef.current,
-            start: 'top 90%',
-            end:   'top 35%',
-            scrub: 1.2,
-          },
-        });
-      }
+      // ── Desktop: Portfolio card fades out as experience section enters ──
+      gsap.to(floatingCardRef.current, {
+        opacity: 0,
+        scale: 0.88,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: experienceRef.current,
+          start: 'top 85%',
+          end:   'top 40%',
+          scrub: 1.2,
+        },
+      });
 
       // ── About text slides in from left ──
       gsap.from(aboutTextRef.current, {
