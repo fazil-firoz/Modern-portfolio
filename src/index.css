@@ -1825,13 +1825,13 @@ html, body, #root {
   }
 
   .scene {
-    transform: scale(0.72);
-    transform-origin: top center;
+    transform: scale(0.86);
+    transform-origin: center center;
   }
 
   .lanyard-thread-container {
-    height: 110px;
-    top: -110px;
+    height: 120px;
+    top: -120px;
   }
 
   .hero-bg-text {
@@ -1997,8 +1997,8 @@ html, body, #root {
 /* Extra Small Mobile Screens (<= 480px) */
 @media (max-width: 480px) {
   .scene {
-    transform: scale(0.64);
-    transform-origin: top center;
+    transform: scale(0.80);
+    transform-origin: center center;
   }
 
   .about-inner, .exp-inner, .edu-inner, .proj-inner, .contact-inner {
