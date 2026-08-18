@@ -75,32 +75,52 @@ function App() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── Portfolio card travels hero-center → about right (desktop) or fades out centered (mobile) ──
-      gsap.to(floatingCardRef.current, {
-        x: () => (window.innerWidth <= 991 ? 0 : window.innerWidth * 0.26),
-        y: () => (window.innerWidth <= 991 ? -25 : 30),
-        opacity: () => (window.innerWidth <= 991 ? 0 : 1),
-        scale: () => (window.innerWidth <= 991 ? 0.55 : 1),
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: aboutRef.current,
-          start: 'top 90%',
-          end:   'top 25%',
-          scrub: 1.5,
-        },
+      // ── Responsive GSAP Animations for Floating ID Card using matchMedia ──
+      const mm = gsap.matchMedia();
+
+      // Desktop Screens (> 991px)
+      mm.add("(min-width: 992px)", () => {
+        gsap.to(floatingCardRef.current, {
+          x: () => window.innerWidth * 0.26,
+          y: 30,
+          opacity: 1,
+          scale: 1,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: aboutRef.current,
+            start: 'top 90%',
+            end:   'top 15%',
+            scrub: 2,
+          },
+        });
+
+        gsap.to(floatingCardRef.current, {
+          opacity: 0,
+          scale: 0.88,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: experienceRef.current,
+            start: 'top 85%',
+            end:   'top 40%',
+            scrub: 1.2,
+          },
+        });
       });
 
-      // ── Desktop: Portfolio card fades out as experience section enters ──
-      gsap.to(floatingCardRef.current, {
-        opacity: 0,
-        scale: 0.88,
-        ease: 'power1.out',
-        scrollTrigger: {
-          trigger: experienceRef.current,
-          start: 'top 85%',
-          end:   'top 40%',
-          scrub: 1.2,
-        },
+      // Mobile Screens (<= 991px): Smoothly fade out card on scroll down so it never covers About text or reappears
+      mm.add("(max-width: 991px)", () => {
+        gsap.to(floatingCardRef.current, {
+          opacity: 0,
+          scale: 0.45,
+          y: -40,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: aboutRef.current,
+            start: 'top 95%',
+            end:   'top 45%',
+            scrub: 1,
+          },
+        });
       });
 
       // ── About text slides in from left ──
