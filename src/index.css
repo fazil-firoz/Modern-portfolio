@@ -1787,3 +1787,236 @@ html, body, #root {
   }
 }
 
+/* ═══════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE & RESPONSIVE DESIGN (All Screen Sizes)
+═══════════════════════════════════════════════════════ */
+
+/* Mobile & Tablet Containers (<= 991px) */
+@media (max-width: 991px) {
+  .about-inner {
+    padding: 0 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-right {
+    display: none;
+  }
+
+  .exp-inner, .edu-inner, .proj-inner, .contact-inner {
+    padding: 0 1.5rem;
+  }
+
+  .proj-grid::after {
+    display: none;
+  }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  html, body, #root, .page-wrapper {
+    overflow-x: hidden !important;
+    width: 100vw;
+  }
+
+  .section-hero {
+    min-height: 100vh;
+    padding: 1rem 0;
+  }
+
+  .scene {
+    transform: scale(0.72);
+    transform-origin: top center;
+  }
+
+  .lanyard-thread-container {
+    height: 110px;
+    top: -110px;
+  }
+
+  .hero-bg-text {
+    font-size: 16vw;
+    -webkit-text-stroke: 1px rgba(100, 116, 139, 0.15);
+  }
+
+  .about-greeting {
+    font-size: 1.85rem;
+  }
+
+  .about-role-sub {
+    font-size: 0.95rem;
+  }
+
+  .download-resume-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .exp-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .exp-role-title {
+    font-size: 1.35rem;
+  }
+
+  .exp-company-sub {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .exp-timeline-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .edu-roadmap-container {
+    padding: 1rem 0;
+  }
+
+  .edu-wire-svg {
+    display: none;
+  }
+
+  .edu-milestones-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .edu-milestone-card {
+    width: 100% !important;
+    margin: 0 !important;
+    position: relative;
+    left: 0 !important; right: 0 !important;
+    transform: none !important;
+  }
+
+  .edu-card-left, .edu-card-right {
+    align-self: center;
+  }
+
+  .edu-pin-wrapper {
+    position: relative;
+    top: 0; left: 0;
+    margin-bottom: 0.75rem;
+    transform: none !important;
+  }
+
+  .edu-card-content {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .section-projects {
+    padding: 4rem 0 6rem;
+  }
+
+  .proj-timeline-track {
+    left: 0.5rem;
+    top: 5rem;
+    bottom: 6rem;
+  }
+
+  .proj-heading {
+    font-size: 1.85rem;
+  }
+
+  .proj-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .proj-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .proj-links-row {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .section-contact {
+    padding: 4rem 0 5rem;
+  }
+
+  .contact-heading {
+    font-size: 1.85rem;
+  }
+
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    border: none;
+    gap: 1px;
+    background: #0f172a;
+  }
+
+  .contact-card {
+    padding: 1.6rem 1.25rem;
+    min-height: auto;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  .contact-address-text {
+    font-size: 0.88rem;
+    word-break: break-word;
+  }
+
+  .contact-footer-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .footer-links-inline {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .floating-whatsapp-3d {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 54px;
+    height: 54px;
+  }
+
+  .whatsapp-3d-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Extra Small Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+  .scene {
+    transform: scale(0.64);
+    transform-origin: top center;
+  }
+
+  .about-inner, .exp-inner, .edu-inner, .proj-inner, .contact-inner {
+    padding: 0 1rem;
+  }
+
+  .about-greeting, .exp-role-title, .proj-heading, .contact-heading {
+    font-size: 1.55rem;
+  }
+
+  .proj-links-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .btn-github, .btn-live {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.72rem;
+  }
+}
+

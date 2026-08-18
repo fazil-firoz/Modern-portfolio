@@ -75,10 +75,10 @@ function App() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── Portfolio card travels hero-center → about right on scroll ──
+      // ── Portfolio card travels hero-center → about right on scroll (desktop) / centered (mobile) ──
       gsap.to(floatingCardRef.current, {
-        x: () => window.innerWidth * 0.26,
-        y: 30,
+        x: () => (window.innerWidth <= 991 ? 0 : window.innerWidth * 0.26),
+        y: () => (window.innerWidth <= 768 ? 15 : 30),
         ease: 'power2.inOut',
         scrollTrigger: {
           trigger: aboutRef.current,
