@@ -577,19 +577,19 @@ function App() {
               {/* Base Wire String Line */}
               <path
                 className="edu-wire-base"
-                d="M 475,45 C 540,110 550,175 525,240 C 500,305 450,370 475,435"
+                d="M 460,45 C 580,100 580,180 540,240 C 500,300 420,380 460,435"
               />
               {/* Active Wire String Line (Animated Draw on Scroll) */}
               <path
                 ref={roadDashedRef}
                 className="edu-wire-active"
-                d="M 475,45 C 540,110 550,175 525,240 C 500,305 450,370 475,435"
+                d="M 460,45 C 580,100 580,180 540,240 C 500,300 420,380 460,435"
               />
               {/* Interactive Glowing Light Pulse Orb Traveling along SVG Wire */}
               <circle
                 ref={pulseRef}
                 className="edu-wire-pulse-orb"
-                cx="475"
+                cx="460"
                 cy="45"
                 r="7"
               />
