@@ -695,12 +695,6 @@ function App() {
           SECTION 5 — PROJECTS  (Dark Theme)
       ══════════════════════════════════════ */}
       <section className="section-projects" ref={projectsRef}>
-        {/* Left Animated Scroll Progress Timeline Bar with Traveling Laser Dot */}
-        <div className="proj-timeline-track">
-          <div className="proj-timeline-progress" ref={projProgressRef} />
-          <div className="proj-timeline-head-dot" ref={projDotRef} />
-        </div>
-
         <div className="proj-inner">
 
           {/* Section Tag */}
@@ -711,8 +705,17 @@ function App() {
 
           <h2 className="proj-heading">Projects & Built Systems</h2>
 
-          {/* Projects Grid */}
-          <div className="proj-grid">
+          {/* Projects Layout with Vertical Timeline Track (Matching Experience Section) */}
+          <div className="proj-timeline-wrapper">
+
+            {/* Vertical Timeline Track Line */}
+            <div className="proj-timeline-track">
+              <div className="proj-timeline-progress" ref={projProgressRef} />
+              <div className="proj-timeline-head-dot" ref={projDotRef} />
+            </div>
+
+            {/* Projects Grid */}
+            <div className="proj-grid">
             {projectsData.map((project, idx) => (
               <div
                 key={project.id}
@@ -776,6 +779,8 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+
           </div>
 
         </div>

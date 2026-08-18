@@ -1068,26 +1068,31 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* Left Animated Vertical Scroll Progress Bar for Projects */
+/* Projects Timeline Wrapper (Matching Section 3 Experience Layout) */
+.proj-timeline-wrapper {
+  display: flex;
+  gap: 1.75rem;
+  width: 100%;
+  position: relative;
+}
+
+/* Vertical Timeline Track Line */
 .proj-timeline-track {
-  position: absolute;
-  left: 2rem;
-  top: 6rem;
-  bottom: 8rem;
-  width: 4px;
+  width: 3px;
   background: #e2e8f0;
-  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 3px;
   overflow: visible;
-  z-index: 10;
+  margin-top: 0.5rem;
 }
 
 .proj-timeline-progress {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #4f46e5 0%, #0284c7 50%, #6366f1 100%);
-  transform-origin: top;
-  border-radius: 4px;
-  box-shadow: 0 0 12px rgba(79, 70, 229, 0.6);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, #4f46e5 0%, #06b6d4 100%);
+  transform-origin: top center;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
 }
 
 .proj-timeline-head-dot {
@@ -1105,53 +1110,18 @@ html, body, #root {
   z-index: 12;
 }
 
-@media (max-width: 900px) {
-  .proj-timeline-track {
-    left: 0.75rem;
-  }
-}
-
-.proj-inner {
-  position: relative; z-index: 5;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.proj-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #4f46e5;
-}
-
-.proj-tag-line {
-  display: block;
-  width: 28px;
-  height: 1.5px;
-  background: #818cf8;
-  flex-shrink: 0;
-}
-
 .proj-heading {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 2.1rem;
   font-weight: 800;
   color: #0f172a;
   letter-spacing: -0.03em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Projects Grid Layout with Center Vertical Divider Line */
 .proj-grid {
+  flex: 1;
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
