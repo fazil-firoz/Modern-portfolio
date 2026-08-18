@@ -747,9 +747,11 @@ html, body, #root {
 
 .exp-point-body {
   font-size: 0.92rem;
-  line-height: 1.7;
+  line-height: 1.65;
   font-weight: 500;
-  color: #0f172a;  /* High contrast solid obsidian text */
+  color: #0f172a;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .exp-point-tech {
@@ -1940,10 +1942,9 @@ html, body, #root {
     padding: 4rem 0 6rem;
   }
 
-  .proj-timeline-track {
-    left: 0.5rem;
-    top: 5rem;
-    bottom: 6rem;
+  .proj-timeline-track,
+  .exp-timeline-track {
+    display: none !important;
   }
 
   .proj-heading {
