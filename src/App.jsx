@@ -161,16 +161,25 @@ function ProjectImageSlider({ project }) {
             </div>
             <div className="proj-qr-info">
               <span className="proj-qr-badge">
-                📱 Scan for Live Preview
+                📱 Scan QR Code
               </span>
               <a
                 href={targetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="proj-qr-link"
+                className="proj-qr-open-btn"
+                title="Click to visit live website in a new tab"
               >
-                {project.live.replace('https://', '')} ↗
+                <span>Visit Live Preview</span>
+                <svg className="link-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
               </a>
+              <span className="proj-qr-url-hint">
+                {project.live.replace('https://', '')}
+              </span>
             </div>
           </div>
         </div>
