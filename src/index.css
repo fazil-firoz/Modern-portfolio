@@ -1248,6 +1248,373 @@ html, body, #root {
   letter-spacing: 0.1em;
 }
 
+/* ── Project Image Showcase & Reserved Space Frame (Full Complete View, Border Radius 0) ── */
+.proj-img-wrapper {
+  width: 100%;
+  height: 220px;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  margin: 0.6rem 0 0.8rem 0;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.proj-card:hover .proj-img-wrapper {
+  border-color: #6366f1;
+  box-shadow: 0 12px 28px -6px rgba(79, 70, 229, 0.18);
+}
+
+.proj-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #f1f5f9;
+  border-radius: 0;
+  display: block;
+  opacity: 0.5; /* 50% visibility for foggy cover */
+  filter: blur(5px) grayscale(20%);
+  transition: opacity 0.45s ease, filter 0.45s ease, transform 0.5s ease;
+}
+
+/* Clear image visibility when revealed via Eye button or card hover */
+.proj-img.revealed,
+.proj-img-wrapper.img-revealed .proj-img,
+.proj-card:hover .proj-img {
+  opacity: 1; /* 100% crisp visibility */
+  filter: blur(0px) grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* Frosted Fog Cover Overlay Container */
+.proj-fog-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 250, 252, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  transition: opacity 0.4s ease;
+}
+
+.proj-card:hover .proj-fog-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Transparent Centered Eye Reveal Button */
+.proj-eye-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.55rem 1.25rem;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 8;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+}
+
+.proj-eye-btn:hover {
+  background: rgba(79, 70, 229, 0.75);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.75);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+}
+
+.proj-eye-hide-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: auto;
+  transform: none;
+  font-size: 0.7rem;
+  padding: 0.28rem 0.7rem;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 8;
+}
+
+.proj-eye-hide-btn:hover {
+  transform: scale(1.05);
+}
+
+.eye-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Project Slider & QR Code View ── */
+.proj-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.98);
+}
+
+.proj-slide.slide-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.proj-qr-slide {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.proj-qr-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.proj-qr-box {
+  width: 130px;
+  height: 130px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proj-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.proj-qr-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.proj-qr-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #4f46e5;
+  background: #e0e7ff;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  padding: 0.3rem 0.65rem;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+.proj-qr-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.25s ease;
+}
+
+.proj-qr-link:hover {
+  color: #4f46e5;
+}
+
+/* Navigation Controls (Arrows, Dots & Toggle Badge) */
+.proj-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.arrow-prev { left: 8px; }
+.arrow-next { right: 8px; }
+
+.proj-slider-arrow:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4338ca;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Quick Mode Toggle Badge in Top Right */
+.proj-slider-toggle-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #cbd5e1;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.proj-slider-toggle-badge:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+/* Slide Indicator Dots at Bottom */
+.proj-slider-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.proj-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.proj-dot.dot-active {
+  width: 18px;
+  border-radius: 10px;
+  background: #4f46e5;
+}
+
+/* Reserved Image Space Placeholder for projects without images */
+.proj-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  transition: background 0.35s ease;
+}
+
+.proj-card:hover .proj-img-placeholder {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%);
+}
+
+.proj-placeholder-mac-dots {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mac-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #f87171; }
+.dot-yellow { background: #fbbf24; }
+.dot-green { background: #34d399; }
+
+.proj-placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  user-select: none;
+}
+
+.proj-placeholder-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #818cf8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+.proj-placeholder-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.proj-card:hover .proj-placeholder-icon {
+  transform: scale(1.1) rotate(-3deg);
+  color: #4f46e5;
+  border-color: #818cf8;
+}
+
+.proj-placeholder-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  transition: color 0.35s ease;
+}
+
+.proj-card:hover .proj-placeholder-text {
+  color: #4338ca;
+}
+
 .proj-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.35rem;
@@ -1255,6 +1622,14 @@ html, body, #root {
   color: #0f172a;
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
+}
+
+.proj-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: -0.65rem;
 }
 
 .proj-card:hover .proj-title {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -46,6 +46,181 @@ function IDCard() {
         </div>
       </div>
       <div className="card-shadow" />
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────
+   PROJECT IMAGE & QR CODE SLIDER FRAME
+───────────────────────────────────────── */
+function ProjectImageSlider({ project }) {
+  const [activeSlide, setActiveSlide] = useState(0); // 0: Image/Placeholder, 1: QR Code
+  const [isRevealed, setIsRevealed] = useState(false); // Image fog cover reveal state
+
+  // QR Code is ONLY generated for Live Preview cases
+  const targetUrl = project.live;
+  const qrCodeUrl = targetUrl
+    ? `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=${encodeURIComponent(targetUrl)}`
+    : null;
+
+  const totalSlides = targetUrl ? 2 : 1;
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const toggleReveal = (e) => {
+    e.stopPropagation();
+    setIsRevealed((prev) => !prev);
+  };
+
+  return (
+    <div className={`proj-img-wrapper ${isRevealed ? 'img-revealed' : 'img-foggy'}`}>
+      {/* Slide 0: Project Screenshot Image or Reserved Placeholder */}
+      <div className={`proj-slide ${activeSlide === 0 ? 'slide-active' : ''}`}>
+        {project.image ? (
+          <>
+            <img
+              src={project.image}
+              alt={project.title}
+              className={`proj-img ${isRevealed ? 'revealed' : 'foggy'}`}
+              loading="lazy"
+            />
+            {/* Fog Cover Overlay with Eye Button when not revealed */}
+            {!isRevealed && (
+              <div className="proj-fog-overlay">
+                <button
+                  type="button"
+                  className="proj-eye-btn"
+                  onClick={toggleReveal}
+                  title="Click Eye to see full image clarity"
+                >
+                  <svg className="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <span>See Image</span>
+                </button>
+              </div>
+            )}
+
+            {/* Fog Cover Toggle Button when revealed */}
+            {isRevealed && (
+              <button
+                type="button"
+                className="proj-eye-btn proj-eye-hide-btn"
+                onClick={toggleReveal}
+                title="Click to cover image with fog"
+              >
+                <svg className="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+                <span>Fog Cover</span>
+              </button>
+            )}
+          </>
+        ) : (
+          <div className="proj-img-placeholder">
+            <div className="proj-placeholder-mac-dots">
+              <span className="mac-dot dot-red" />
+              <span className="mac-dot dot-yellow" />
+              <span className="mac-dot dot-green" />
+            </div>
+            <div className="proj-placeholder-content">
+              <div className="proj-placeholder-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+              </div>
+              <span className="proj-placeholder-text">Preview Image Space</span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Slide 1: Live Preview QR Code (Only for Live Preview projects) */}
+      {targetUrl && (
+        <div className={`proj-slide proj-qr-slide ${activeSlide === 1 ? 'slide-active' : ''}`}>
+          <div className="proj-qr-container">
+            <div className="proj-qr-box">
+              <img
+                src={qrCodeUrl}
+                alt={`QR Code for ${project.title}`}
+                className="proj-qr-img"
+                loading="lazy"
+              />
+            </div>
+            <div className="proj-qr-info">
+              <span className="proj-qr-badge">
+                📱 Scan for Live Preview
+              </span>
+              <a
+                href={targetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-qr-link"
+              >
+                {project.live.replace('https://', '')} ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Slider Controls (Arrows, Toggle Badge & Dots) */}
+      {totalSlides > 1 && (
+        <>
+          <button
+            type="button"
+            className="proj-slider-arrow arrow-prev"
+            onClick={handlePrev}
+            title="Previous View"
+            aria-label="Previous View"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="proj-slider-arrow arrow-next"
+            onClick={handleNext}
+            title="Next View (QR Code)"
+            aria-label="Next View"
+          >
+            ›
+          </button>
+
+          <button
+            type="button"
+            className="proj-slider-toggle-badge"
+            onClick={handleNext}
+            title="Toggle between Image and QR Code"
+          >
+            {activeSlide === 0 ? '📱 QR Code' : '📷 Image'}
+          </button>
+
+          <div className="proj-slider-dots">
+            <span
+              className={`proj-dot ${activeSlide === 0 ? 'dot-active' : ''}`}
+              onClick={() => setActiveSlide(0)}
+              title="View Image"
+            />
+            <span
+              className={`proj-dot ${activeSlide === 1 ? 'dot-active' : ''}`}
+              onClick={() => setActiveSlide(1)}
+              title="View QR Code"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -304,6 +479,7 @@ function App() {
       subtitle: 'Full-Featured Online Store',
       tag: 'Full-Stack Project',
       badgeClass: 'proj-tag-featured',
+      image: '/Images/E-commerce.png',
       description: 'Full-featured modern e-commerce web application with interactive 3D product animations, C# backend API, PostgreSQL database, Razorpay payment gateway integration, dynamic cart management, and seamless checkout.',
       tech: ['C#', 'React.js', 'PostgreSQL', 'Razorpay', '3D Animations', 'Vercel'],
       github: null,
@@ -316,6 +492,7 @@ function App() {
       subtitle: 'Retail Management System',
       tag: 'Main Project',
       badgeClass: 'proj-tag-featured',
+      image: '/Images/Self-Billing.png',
       description: 'An intelligent self-checkout solution for supermarkets that allows customers to scan product QR codes, automatically generate bills, and make secure payments through their smartphones. Features real-time monitoring to ensure transaction security and prevent fraud.',
       tech: ['Python Django', 'HTML', 'CSS', 'JavaScript', 'Flutter (Dart)', 'MySQL'],
       github: 'https://github.com/fazil-firoz/Main-Project.git',
@@ -328,6 +505,7 @@ function App() {
       subtitle: 'E-Learning Platform',
       tag: 'Mini Project',
       badgeClass: 'proj-tag-platform',
+      image: '/Images/Learnify.png',
       description: 'A full-featured online learning platform where instructors can create and manage courses, admins approve content, and students securely enroll and access video lessons after payment. Designed for a seamless and secure digital learning experience.',
       tech: ['Python Django', 'HTML', 'CSS', 'Bootstrap', 'MySQL'],
       github: 'https://github.com/fazil-firoz/Learnify.git',
@@ -340,6 +518,7 @@ function App() {
       subtitle: 'Interactive Developer Showcase',
       tag: 'Single Page Portfolio',
       badgeClass: 'proj-tag-live',
+      image: '/Images/SinglePagePortfolioi.png',
       description: 'Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase projects, skills, and achievements. Focused on creating a clean, user-friendly interface to highlight my journey as a developer.',
       tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
       github: null,
@@ -352,6 +531,7 @@ function App() {
       subtitle: 'Hobby Project',
       tag: 'Hobby Project',
       badgeClass: 'proj-tag-platform',
+      image: '/Images/NotebookPortoflio.png',
       description: 'Designed and built an interactive notebook-themed portfolio as a creative hobby project, exploring realistic paper textures, handwritten journal layouts, and creative front-end styling.',
       tech: ['React', 'HTML', 'CSS', 'JavaScript', 'Vercel'],
       github: null,
@@ -364,6 +544,7 @@ function App() {
       subtitle: 'Latest Portfolio Project',
       tag: 'Latest Portfolio',
       badgeClass: 'proj-tag-featured',
+      image: '/Images/Modern3DPortfolio.png',
       description: 'Ultra-modern interactive developer portfolio featuring a 3D floating ID card with GSAP ScrollTrigger transition physics, dark/light section theme contrasts, Education roadmap, and modern web application showcase.',
       tech: ['React', 'GSAP', 'ScrollTrigger', 'CSS3', 'Vite'],
       github: 'https://github.com/fazil-firoz/Modern-portfolio.git',
@@ -376,6 +557,7 @@ function App() {
       subtitle: 'Real-Time News App',
       tag: 'API Integration Project',
       badgeClass: 'proj-tag-api',
+      image: '/Images/news.jpg',
       description: 'My first project where I learned how APIs actually work! Created a simple yet functional news website using HTML, CSS, and JavaScript, and fetched live news dynamically using a free News API.',
       tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
       github: 'https://github.com/fazil-firoz/News-App.git',
@@ -388,6 +570,7 @@ function App() {
       subtitle: 'Static Front-End Webpage',
       tag: 'My First Work',
       badgeClass: 'proj-tag-static',
+      image: "/Images/Bono's.png",
       description: 'Designed and developed my first static website using only HTML and CSS to grasp the fundamentals of web structure, layout, and styling — laying a strong foundation in front-end development and design principles.',
       tech: ['HTML', 'CSS'],
       github: null,
@@ -767,6 +950,9 @@ function App() {
 
                 {/* Description */}
                 <p className="proj-desc">{project.description}</p>
+
+                {/* Project Image & QR Code Slider Component */}
+                <ProjectImageSlider project={project} />
 
                 {/* Tech Pills */}
                 <div className="proj-tech-row">
