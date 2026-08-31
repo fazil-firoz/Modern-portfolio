@@ -206,7 +206,62 @@ export default function AIChatbot() {
       };
     }
 
-    // 6. Greetings / Intro
+    // 6. Marital Status & Personal Life Questions
+    if (q.includes('marry') || q.includes('married') || q.includes('single') || q.includes('wife') || q.includes('husband') || q.includes('girlfriend') || q.includes('boyfriend') || q.includes('relationship') || q.includes('spouse')) {
+      return {
+        reply: `Fazil keeps his personal life private and focuses on his passion for software engineering, crafting clean web applications, and continuous learning! 💻🚀\n\nIf you'd like to discuss professional opportunities or technical collaborations, I'd be happy to share details about his experience or projects!`,
+        pills: [
+          { label: '💼 Work Experience', prompt: 'Tell me about Fazil\'s work experience' },
+          { label: '🚀 Featured Projects', prompt: 'Show me Fazil\'s projects' }
+        ]
+      };
+    }
+
+    // 7. Age & Birthday Questions
+    if (q.includes('age') || q.includes('how old') || q.includes('birthday') || q.includes('born') || q.includes('birth')) {
+      return {
+        reply: `Fazil is an energetic **Software Engineer** with 1+ year of professional industry experience at Infopark, Kochi, holding a **Master's Degree in Computer Applications (MCA 2023–2025)**! 🎓`,
+        pills: [
+          { label: '🎓 Education Details', prompt: 'What is Fazil\'s educational background?' },
+          { label: '💼 Work Experience', prompt: 'Tell me about his work experience' }
+        ]
+      };
+    }
+
+    // 8. Hobbies & Passions
+    if (q.includes('hobby') || q.includes('hobbies') || q.includes('interest') || q.includes('free time') || q.includes('passion') || q.includes('fun')) {
+      return {
+        reply: `When Fazil isn't coding enterprise applications, he enjoys:\n\n• 🎨 Exploring modern UI/UX design trends & GSAP animations\n• 📓 Building creative hobby projects (like his Notebook Portfolio!)\n• 🚀 Learning emerging full-stack technologies\n• 🎵 Listening to music & continuous self-improvement!`,
+        pills: [
+          { label: '📓 Notebook Portfolio Project', prompt: 'Tell me about Notebook Portfolio' },
+          { label: '⚡ Technical Skills', prompt: 'What are his technical skills?' }
+        ]
+      };
+    }
+
+    // 9. Salary & Hiring Questions
+    if (q.includes('salary') || q.includes('pay') || q.includes('money') || q.includes('package') || q.includes('cost') || q.includes('rate')) {
+      return {
+        reply: `For salary details, hiring packages, or direct project inquiries, please connect with Fazil directly via email or LinkedIn! 💼\n\n📄 **Official Resume**: [View / Download Resume](${FAZIL_KNOWLEDGE.resumeUrl})`,
+        pills: [
+          { label: '📄 Download Resume', prompt: 'Give me Fazil\'s resume link' },
+          { label: '💼 Work Experience', prompt: 'Tell me about his work experience' }
+        ]
+      };
+    }
+
+    // 10. Plan B Easter Egg
+    if (q.includes('plan b') || q.includes('backup plan')) {
+      return {
+        reply: `Haha! As Fazil mentions in his About section:\n\n*"I believe something good is waiting ahead. And if life decides otherwise... well, I do have a Plan B — though between you and me, I'm secretly hoping I never have to use it!"* 😄`,
+        pills: [
+          { label: '💼 Work Experience', prompt: 'Tell me about Fazil\'s work experience' },
+          { label: '🚀 Projects', prompt: 'Show me Fazil\'s projects' }
+        ]
+      };
+    }
+
+    // 11. Greetings / Intro
     if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('who') || q.includes('fazil')) {
       return {
         reply: `Hello! 👋 I'm **Fazil Firoz's AI Assistant**.\n\nFazil is a **Software Engineer at Infopark, Kochi** with 1+ year of experience building C#, ASP.NET Core, React, and Python Django web applications.\n\nHow can I help you today?`,
@@ -220,7 +275,7 @@ export default function AIChatbot() {
 
     // Default Fallback
     return {
-      reply: `I'm here to answer questions about **Fazil Firoz**! You can ask me about:\n\n• His **Work Experience** at Infopark Kochi\n• His **Technical Skills** (C#, React, ASP.NET Core, Django)\n• His **Featured Projects**\n• His **Education & MCA Degree**\n• How to **Download his Resume** or contact him.`,
+      reply: `I'm specialized as **Fazil's Portfolio Assistant**, so I focus on questions about his software engineering career, technical skills, projects, and background! 💻\n\nFeel free to ask me about:\n- His work at Antas Technologies (Infopark Kochi)\n- Technical skills in C#, React, ASP.NET Core & Django\n- Featured web application projects\n- Education background or Resume`,
       pills: [
         { label: '💼 Experience', prompt: 'Tell me about his work experience' },
         { label: '⚡ Skills', prompt: 'What are his skills?' },
