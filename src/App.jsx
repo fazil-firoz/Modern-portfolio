@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AIChatbot from './components/AIChatbot';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1194,6 +1195,9 @@ function App() {
         </div>
         <span className="whatsapp-3d-pulse" />
       </a>
+
+      {/* ── AI Portfolio Intelligence Chatbot (Fixed Bottom-Left Launcher) ── */}
+      <AIChatbot />
 
     </div>
   );
