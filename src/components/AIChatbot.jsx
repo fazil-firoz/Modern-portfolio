@@ -4,7 +4,11 @@ const FAZIL_KNOWLEDGE = {
   name: "Fazil Firoz",
   role: "Software Engineer / Full-Stack Web Developer",
   company: "Antas Technologies",
-  location: "Infopark, Kochi, Kerala, India",
+  location: "Infopark, Kakkanad, Kochi, Kerala 682042, India",
+  phone: "+91 9048634881",
+  whatsapp: "+91 9048634881 (https://wa.me/919048634881)",
+  email: "fazzilfiroz@gmail.com",
+  linkedin: "https://github.com/fazil-firoz/Modern-portfolio.git",
   experiencePeriod: "2025 – Present (1+ Year)",
   resumeUrl: "https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link",
   skills: [
@@ -195,13 +199,13 @@ export default function AIChatbot() {
       };
     }
 
-    // 5. Contact / Hire / Resume / Location
-    if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('resume') || q.includes('location') || q.includes('kochi') || q.includes('address')) {
+    // 5. Contact Details / Phone Number / WhatsApp / Email / Resume / Location
+    if (q.includes('number') || q.includes('umber') || q.includes('phone') || q.includes('mobile') || q.includes('call') || q.includes('contact') || q.includes('whatsapp') || q.includes('wa') || q.includes('email') || q.includes('mail') || q.includes('resume') || q.includes('location') || q.includes('kochi') || q.includes('address')) {
       return {
-        reply: `**Get in Touch with Fazil Firoz**:\n\n• 📍 **Location**: Infopark, Kochi, Kerala, India\n• 💼 **Role**: Software Engineer / Full-Stack Developer\n• 📄 **Official Resume**: [View / Download Resume](${FAZIL_KNOWLEDGE.resumeUrl})\n• 🔗 **LinkedIn / GitHub**: Available on portfolio contact cards below!`,
+        reply: `Here are **Fazil Firoz's Direct Contact & Social Details**:\n\n• 📱 **Phone / Mobile**: [+91 9048634881](tel:+919048634881)\n• 💬 **WhatsApp**: [Chat on WhatsApp (+91 9048634881)](https://wa.me/919048634881)\n• ✉️ **Email**: [fazzilfiroz@gmail.com](mailto:fazzilfiroz@gmail.com)\n• 📍 **Location / Address**: Infopark, Kakkanad, Kochi, Kerala 682042, India\n• 📄 **Official Resume**: [View / Download Resume](${FAZIL_KNOWLEDGE.resumeUrl})`,
         pills: [
           { label: '💼 Work Experience', prompt: 'Tell me about Fazil\'s work experience' },
-          { label: '🚀 Projects', prompt: 'Show me Fazil\'s projects' }
+          { label: '🚀 Featured Projects', prompt: 'Show me Fazil\'s projects' }
         ]
       };
     }
