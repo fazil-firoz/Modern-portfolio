@@ -2110,12 +2110,12 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════════════════
-   FLOATING 3D PROJECTION WHATSAPP BUTTON (Bottom Right)
+   FLOATING 3D ACTION BUTTONS (WhatsApp & AI Bot - Symmetrical Horizontal Line)
 ═══════════════════════════════════════════════════════ */
-.floating-whatsapp-3d {
+.floating-whatsapp-3d,
+.floating-aibot-3d {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
   z-index: 9999;
   width: 62px;
   height: 62px;
@@ -2124,8 +2124,21 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   perspective: 600px;
-  animation: floatWhatsApp 3.5s ease-in-out infinite alternate;
+  box-sizing: border-box;
+  animation: float3DButton 3.5s ease-in-out infinite alternate;
+}
+
+.floating-whatsapp-3d {
+  right: 2rem;
+}
+
+.floating-aibot-3d {
+  left: 2rem;
 }
 
 .whatsapp-3d-inner {
@@ -2472,27 +2485,8 @@ html, body, #root {
 
 
 /* ═══════════════════════════════════════════════════════
-   FLOATING 3D PROJECTION AI BOT BUTTON (Bottom Left - Identical to WhatsApp 3D)
+   AI BOT 3D INNER STYLING & ANIMATIONS
 ═══════════════════════════════════════════════════════ */
-.floating-aibot-3d {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  z-index: 999;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  perspective: 600px;
-  animation: floatAIBot 3.5s ease-in-out infinite alternate;
-}
 
 .aibot-3d-inner {
   width: 100%;
