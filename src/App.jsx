@@ -1147,7 +1147,8 @@ function App() {
             <div
               className="footer-avatar-wrapper"
               title="Click photo to Ask AI Bot about Fazil Firoz"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 window.dispatchEvent(new CustomEvent('open-ai-chat'));
               }}
             >
@@ -1155,9 +1156,19 @@ function App() {
                 src="/Images/profile-pic (18).png"
                 alt="Fazil Firoz Profile - Click to Ask AI"
                 className="footer-avatar-img"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                }}
               />
               <span className="footer-avatar-online-dot" />
-              <div className="footer-avatar-ai-badge">
+              <div
+                className="footer-avatar-ai-badge"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                }}
+              >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
                   <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                 </svg>
