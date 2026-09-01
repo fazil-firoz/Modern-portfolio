@@ -2039,10 +2039,9 @@ html, body, #root {
   background: linear-gradient(90deg, #cbd5e1, #cbd5e1, transparent);
 }
 
-.footer-avatar-wrapper,
-button.footer-avatar-wrapper {
+.footer-avatar-wrapper {
   position: relative;
-  z-index: 999;
+  z-index: 10;
   width: 115px;
   height: 115px;
   border-radius: 50%;
@@ -2054,12 +2053,14 @@ button.footer-avatar-wrapper {
   border: none;
   outline: none;
   margin: 0;
-  appearance: none;
-  -webkit-appearance: none;
   touch-action: manipulation;
-  pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+/* ALL children must be pointer-events:none so taps go to the wrapper */
+.footer-avatar-wrapper * {
+  pointer-events: none !important;
 }
 
 .footer-avatar-wrapper:hover {
@@ -2074,8 +2075,6 @@ button.footer-avatar-wrapper {
   border-radius: 50%;
   background: #ffffff;
   border: 3px solid #ffffff;
-  cursor: pointer;
-  pointer-events: auto;
 }
 
 .footer-avatar-online-dot {
@@ -2088,7 +2087,6 @@ button.footer-avatar-wrapper {
   background: #22c55e;
   border: 3px solid #ffffff;
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
-  pointer-events: none;
 }
 
 /* Adaptable AI Badge Pill attached to Footer Avatar */
@@ -2112,7 +2110,6 @@ button.footer-avatar-wrapper {
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
-  pointer-events: auto;
 }
 
 .footer-ai-sparkle {

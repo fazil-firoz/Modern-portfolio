@@ -1145,45 +1145,28 @@ function App() {
           {/* Centered Profile Avatar Divider — Click Photo to Open AI Chatbot */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
-            <button
-              type="button"
+            <div
+              id="footer-avatar-open-chat"
+              role="button"
+              tabIndex={0}
               className="footer-avatar-wrapper"
-              title="Click photo to Ask AI Bot about Fazil Firoz"
+              title="Click to Ask AI about Fazil Firoz"
               aria-label="Ask AI Assistant about Fazil Firoz"
-              onClick={(e) => {
-                if (e && typeof e.stopPropagation === 'function') {
-                  e.stopPropagation();
-                }
-                setOpenChatTrigger(c => c + 1);
-              }}
+              onClick={() => setOpenChatTrigger(c => c + 1)}
             >
               <img
                 src="/Images/profile-pic (18).png"
-                alt="Fazil Firoz Profile - Click to Ask AI"
+                alt="Fazil Firoz Profile"
                 className="footer-avatar-img"
-                onClick={(e) => {
-                  if (e && typeof e.stopPropagation === 'function') {
-                    e.stopPropagation();
-                  }
-                  setOpenChatTrigger(c => c + 1);
-                }}
               />
               <span className="footer-avatar-online-dot" />
-              <div
-                className="footer-avatar-ai-badge"
-                onClick={(e) => {
-                  if (e && typeof e.stopPropagation === 'function') {
-                    e.stopPropagation();
-                  }
-                  setOpenChatTrigger(c => c + 1);
-                }}
-              >
+              <div className="footer-avatar-ai-badge">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
                   <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                 </svg>
                 <span>Ask AI</span>
               </div>
-            </button>
+            </div>
             <div className="avatar-divider-line right-line" />
           </div>
 
