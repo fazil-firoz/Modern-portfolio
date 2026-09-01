@@ -391,12 +391,6 @@ export default function AIChatbot() {
               </div>
             )}
           </div>
-          {!isOpen && (
-            <div className="ai-launcher-tooltip">
-              <span className="ai-online-dot" />
-              <span>Ask AI Bot</span>
-            </div>
-          )}
         </button>
       </div>
 
