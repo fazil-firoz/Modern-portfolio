@@ -2422,14 +2422,23 @@ html, body, #root {
     gap: 0.5rem 0.75rem;
   }
 
-  .floating-whatsapp-3d {
+  .floating-whatsapp-3d,
+  .floating-aibot-3d {
     bottom: 1.25rem;
-    right: 1.25rem;
     width: 54px;
     height: 54px;
   }
 
-  .whatsapp-3d-icon {
+  .floating-whatsapp-3d {
+    right: 1.25rem;
+  }
+
+  .floating-aibot-3d {
+    left: 1.25rem;
+  }
+
+  .whatsapp-3d-icon,
+  .aibot-3d-icon {
     width: 28px;
     height: 28px;
   }
@@ -2463,115 +2472,88 @@ html, body, #root {
 
 
 /* ═══════════════════════════════════════════════════════
-   AI PORTFOLIO CHATBOT (FIXED BOTTOM-LEFT LAUNCHER)
+   FLOATING 3D PROJECTION AI BOT BUTTON (Bottom Left - Identical to WhatsApp 3D)
 ═══════════════════════════════════════════════════════ */
-.ai-bot-launcher-wrapper {
+.floating-aibot-3d {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-}
-
-.ai-bot-launcher-btn {
-  position: relative;
-  width: 60px;
-  height: 60px;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 999;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-  border: 1.8px solid #6366f1;
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  box-shadow: 0 10px 32px rgba(15, 23, 42, 0.45), 0 4px 16px rgba(99, 102, 241, 0.35);
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  perspective: 600px;
+  animation: floatAIBot 3.5s ease-in-out infinite alternate;
 }
 
-.ai-bot-launcher-btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
-  border-color: #38bdf8;
-  box-shadow: 0 14px 40px rgba(56, 189, 248, 0.5);
-}
-
-.ai-bot-launcher-btn.active {
-  background: #4338ca;
-  border-color: #38bdf8;
+.aibot-3d-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5 0%, #1e1b4b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
+  box-shadow:
+    0 14px 30px -4px rgba(79, 70, 229, 0.6),
+    0 6px 14px rgba(0, 0, 0, 0.22),
+    inset 0 3px 5px rgba(255, 255, 255, 0.45),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.35);
+  transform: translateZ(14px) rotateX(12deg) rotateY(8deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, background 0.35s ease;
 }
 
-/* Ambient Rotating Glow Halo */
-.ai-bot-aura-glow {
+.aibot-3d-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.aibot-3d-pulse {
   position: absolute;
-  inset: -4px;
+  inset: -6px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #38bdf8, #818cf8, #f43f5e, #34d399);
-  opacity: 0.45;
-  filter: blur(6px);
-  z-index: -1;
-  animation: aiAuraSpin 6s linear infinite;
-}
-
-@keyframes aiAuraSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.ai-bot-pulse-ring {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2px solid rgba(56, 189, 248, 0.5);
-  animation: aiPulseRing 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  border: 2px solid rgba(79, 70, 229, 0.65);
+  animation: pulseAIBot 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
   pointer-events: none;
 }
 
-@keyframes aiPulseRing {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.25); opacity: 0; }
-  100% { transform: scale(0.9); opacity: 0; }
+@keyframes floatAIBot {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(4px) rotate(-2deg); }
 }
 
-.ai-bot-icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+@keyframes pulseAIBot {
+  0%   { transform: scale(0.95); opacity: 0.9; }
+  50%  { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
 }
 
-.ai-close-icon {
-  width: 22px;
-  height: 22px;
-  color: #ffffff;
+.floating-aibot-3d:hover .aibot-3d-inner {
+  transform: translateZ(24px) scale(1.12) rotateX(0deg) rotateY(0deg);
+  box-shadow:
+    0 20px 40px -4px rgba(79, 70, 229, 0.8),
+    0 10px 22px rgba(0, 0, 0, 0.3),
+    inset 0 4px 6px rgba(255, 255, 255, 0.6),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Animated Robo Icon Wrapper */
-.ai-robo-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-  animation: aiRoboFloat 3.2s ease-in-out infinite;
+.floating-aibot-3d.active .aibot-3d-inner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  transform: translateZ(10px) scale(1.05) rotateX(0deg) rotateY(0deg);
 }
 
-@keyframes aiRoboFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.ai-robo-icon {
-  width: 26px;
-  height: 26px;
-}
-
-.ai-robo-icon-small {
-  width: 22px;
-  height: 22px;
-}
-
+/* Robot Micro Animations */
 .robo-antenna-dot {
   animation: roboAntennaPulse 1.8s ease-in-out infinite alternate;
   transform-origin: center;
@@ -2590,52 +2572,6 @@ html, body, #root {
 @keyframes roboEyeBlink {
   0%, 46%, 48%, 100% { opacity: 1; transform: scaleY(1); }
   47% { opacity: 0.2; transform: scaleY(0.1); }
-}
-
-.ai-badge-dots {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #38bdf8;
-  line-height: 1;
-  margin-top: -1px;
-}
-
-.ai-launcher-tooltip {
-  position: absolute;
-  left: 68px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.76rem;
-  font-weight: 700;
-  padding: 0.4rem 0.85rem;
-  border-radius: 50px;
-  border: 1px solid #334155;
-  white-space: nowrap;
-  pointer-events: none;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  animation: aiTooltipFade 3s ease-in-out infinite alternate;
-}
-
-@keyframes aiTooltipFade {
-  0% { transform: translateY(-50%) translateX(0); }
-  100% { transform: translateY(-50%) translateX(4px); }
-}
-
-.ai-online-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
 }
 
 /* ── AI CHAT WINDOW ── */
