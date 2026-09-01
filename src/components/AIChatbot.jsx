@@ -85,11 +85,13 @@ const FAZIL_KNOWLEDGE = {
   ]
 };
 
-export default function AIChatbot({ isOpen: externalIsOpen, setIsOpen: externalSetIsOpen }) {
-  const [internalIsOpen, setInternalIsOpen] = useState(false);
+export default function AIChatbot({ externalOpen }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
-  const setIsOpen = externalSetIsOpen || setInternalIsOpen;
+  // Use a ref so the global opener always has the latest setIsOpen
+  const setIsOpenRef = useRef(setIsOpen);
+  setIsOpenRef.current = setIsOpen;
+
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
@@ -120,15 +122,12 @@ export default function AIChatbot({ isOpen: externalIsOpen, setIsOpen: externalS
     }
   }, [messages, isOpen, isTyping]);
 
+  // React to parent telling us to open
   useEffect(() => {
-    const handleOpenEvent = () => setIsOpen(true);
-    window.openAIChatbot = () => setIsOpen(true);
-    window.addEventListener('open-ai-chat', handleOpenEvent);
-    return () => {
-      window.removeEventListener('open-ai-chat', handleOpenEvent);
-      try { delete window.openAIChatbot; } catch (_) {}
-    };
-  }, []);
+    if (externalOpen) {
+      setIsOpen(true);
+    }
+  }, [externalOpen]);
 
   function getCurrentTime() {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

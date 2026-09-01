@@ -239,7 +239,7 @@ function ProjectImageSlider({ project }) {
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [openChatTrigger, setOpenChatTrigger] = useState(0);
   const floatingCardRef  = useRef(null);
   const aboutRef         = useRef(null);
   const aboutTextRef     = useRef(null);
@@ -1154,7 +1154,7 @@ function App() {
                 if (e && typeof e.stopPropagation === 'function') {
                   e.stopPropagation();
                 }
-                setIsChatOpen(true);
+                setOpenChatTrigger(c => c + 1);
               }}
             >
               <img
@@ -1165,7 +1165,7 @@ function App() {
                   if (e && typeof e.stopPropagation === 'function') {
                     e.stopPropagation();
                   }
-                  setIsChatOpen(true);
+                  setOpenChatTrigger(c => c + 1);
                 }}
               />
               <span className="footer-avatar-online-dot" />
@@ -1175,7 +1175,7 @@ function App() {
                   if (e && typeof e.stopPropagation === 'function') {
                     e.stopPropagation();
                   }
-                  setIsChatOpen(true);
+                  setOpenChatTrigger(c => c + 1);
                 }}
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
@@ -1225,7 +1225,7 @@ function App() {
       </a>
 
       {/* ── AI Portfolio Intelligence Chatbot ── */}
-      <AIChatbot isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
+      <AIChatbot externalOpen={openChatTrigger} />
 
     </div>
   );
