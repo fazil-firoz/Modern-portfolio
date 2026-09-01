@@ -2041,6 +2041,7 @@ html, body, #root {
 
 .footer-avatar-wrapper {
   position: relative;
+  z-index: 100;
   width: 115px;
   height: 115px;
   border-radius: 50%;
@@ -2049,6 +2050,8 @@ html, body, #root {
   box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
   flex-shrink: 0;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 
@@ -2065,7 +2068,7 @@ html, body, #root {
   background: #ffffff;
   border: 3px solid #ffffff;
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .footer-avatar-online-dot {
@@ -2102,7 +2105,7 @@ html, body, #root {
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .footer-ai-sparkle {
