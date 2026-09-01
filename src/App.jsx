@@ -1150,14 +1150,13 @@ function App() {
               title="Click photo to Ask AI Bot about Fazil Firoz"
               aria-label="Ask AI Assistant about Fazil Firoz"
               onClick={(e) => {
-                if (e) {
-                  if (typeof e.preventDefault === 'function') e.preventDefault();
-                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                }
-                if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
-                  window.openAIChatbot();
+                if (e && typeof e.stopPropagation === 'function') {
+                  e.stopPropagation();
                 }
                 if (typeof window !== 'undefined') {
+                  if (typeof window.openAIChatbot === 'function') {
+                    window.openAIChatbot();
+                  }
                   window.dispatchEvent(new CustomEvent('open-ai-chat'));
                 }
               }}
@@ -1166,9 +1165,33 @@ function App() {
                 src="/Images/profile-pic (18).png"
                 alt="Fazil Firoz Profile - Click to Ask AI"
                 className="footer-avatar-img"
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') {
+                    e.stopPropagation();
+                  }
+                  if (typeof window !== 'undefined') {
+                    if (typeof window.openAIChatbot === 'function') {
+                      window.openAIChatbot();
+                    }
+                    window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                  }
+                }}
               />
               <span className="footer-avatar-online-dot" />
-              <div className="footer-avatar-ai-badge">
+              <div
+                className="footer-avatar-ai-badge"
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') {
+                    e.stopPropagation();
+                  }
+                  if (typeof window !== 'undefined') {
+                    if (typeof window.openAIChatbot === 'function') {
+                      window.openAIChatbot();
+                    }
+                    window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                  }
+                }}
+              >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
                   <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                 </svg>
