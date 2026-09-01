@@ -374,9 +374,9 @@ export default function AIChatbot() {
                   {/* Robot Antenna Top Dot with glowing pulse */}
                   <circle cx="12" cy="3" r="1.5" className="robo-antenna-dot" fill="#38bdf8" />
                   {/* Antenna Pole */}
-                  <path d="M12 4.5V7.5" stroke="#4f46e5" strokeWidth="2" />
+                  <path d="M12 4.5V7.5" stroke="#818cf8" strokeWidth="2" />
                   {/* Head Frame */}
-                  <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#4f46e5" stroke="#4338ca" strokeWidth="1.5" />
+                  <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#4f46e5" stroke="#818cf8" strokeWidth="1.5" />
                   {/* Dark Visor Window */}
                   <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
                   {/* Glowing Robot Eyes */}
