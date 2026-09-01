@@ -2039,7 +2039,8 @@ html, body, #root {
   background: linear-gradient(90deg, #cbd5e1, #cbd5e1, transparent);
 }
 
-.footer-avatar-wrapper {
+.footer-avatar-wrapper,
+button.footer-avatar-wrapper {
   position: relative;
   z-index: 100;
   width: 115px;
@@ -2050,6 +2051,11 @@ html, body, #root {
   box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
   flex-shrink: 0;
   cursor: pointer;
+  border: none;
+  outline: none;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;

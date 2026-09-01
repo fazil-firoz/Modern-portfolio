@@ -119,8 +119,12 @@ export default function AIChatbot() {
 
   useEffect(() => {
     const handleOpenEvent = () => setIsOpen(true);
+    window.openAIChatbot = () => setIsOpen(true);
     window.addEventListener('open-ai-chat', handleOpenEvent);
-    return () => window.removeEventListener('open-ai-chat', handleOpenEvent);
+    return () => {
+      window.removeEventListener('open-ai-chat', handleOpenEvent);
+      try { delete window.openAIChatbot; } catch (_) {}
+    };
   }, []);
 
   function getCurrentTime() {

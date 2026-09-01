@@ -1144,16 +1144,20 @@ function App() {
           {/* Centered Profile Avatar Divider — Click Photo to Open AI Chatbot */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
-            <div
+            <button
+              type="button"
               className="footer-avatar-wrapper"
               title="Click photo to Ask AI Bot about Fazil Firoz"
+              aria-label="Ask AI Assistant about Fazil Firoz"
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                window.dispatchEvent(new CustomEvent('open-ai-chat'));
-              }}
-              onTouchEnd={(e) => {
-                e.stopPropagation();
-                window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
+                  window.openAIChatbot();
+                }
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-ai-chat'));
+                }
               }}
             >
               <img
@@ -1168,7 +1172,7 @@ function App() {
                 </svg>
                 <span>Ask AI</span>
               </div>
-            </div>
+            </button>
             <div className="avatar-divider-line right-line" />
           </div>
 
