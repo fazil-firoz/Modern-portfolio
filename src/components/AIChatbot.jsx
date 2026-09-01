@@ -361,6 +361,7 @@ export default function AIChatbot() {
           aria-label="AI Portfolio Assistant"
         >
           <div className="ai-bot-pulse-ring" />
+          <div className="ai-bot-aura-glow" />
           <div className="ai-bot-icon-box">
             {isOpen ? (
               <svg className="ai-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
@@ -368,18 +369,32 @@ export default function AIChatbot() {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <div className="ai-icon-inner">
-                <svg className="ai-sparkle-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+              <div className="ai-robo-wrapper">
+                <svg className="ai-robo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  {/* Robot Antenna Top Dot with glowing pulse */}
+                  <circle cx="12" cy="3" r="1.5" className="robo-antenna-dot" fill="#38bdf8" />
+                  {/* Antenna Pole */}
+                  <path d="M12 4.5V7.5" stroke="#4f46e5" strokeWidth="2" />
+                  {/* Head Frame */}
+                  <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#4f46e5" stroke="#4338ca" strokeWidth="1.5" />
+                  {/* Dark Visor Window */}
+                  <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
+                  {/* Glowing Robot Eyes */}
+                  <circle cx="9" cy="11.8" r="1.2" className="robo-eye eye-left" fill="#38bdf8" />
+                  <circle cx="15" cy="11.8" r="1.2" className="robo-eye eye-right" fill="#38bdf8" />
+                  {/* Ear Side Nodes */}
+                  <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
+                  {/* Robot Cheerful Smile */}
+                  <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
-                <span className="ai-badge-dots">AI</span>
+                <span className="ai-badge-dots">BOT</span>
               </div>
             )}
           </div>
           {!isOpen && (
             <div className="ai-launcher-tooltip">
               <span className="ai-online-dot" />
-              <span>Ask AI Chat</span>
+              <span>Ask AI Bot</span>
             </div>
           )}
         </button>
@@ -392,8 +407,15 @@ export default function AIChatbot() {
           <div className="ai-chat-header">
             <div className="ai-header-info">
               <div className="ai-avatar-box">
-                <svg className="ai-avatar-sparkle" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                <svg className="ai-robo-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="3" r="1.5" fill="#38bdf8" />
+                  <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
+                  <rect x="4" y="7.5" width="16" height="12" rx="4" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
+                  <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
+                  <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
+                  <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
+                  <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
+                  <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#ffffff" strokeWidth="1.6" />
                 </svg>
               </div>
               <div className="ai-header-titles">

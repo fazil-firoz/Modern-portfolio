@@ -2476,37 +2476,55 @@ html, body, #root {
 
 .ai-bot-launcher-btn {
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: #0f172a;
-  border: 1.5px solid #334155;
-  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border: 1.8px solid #38bdf8;
+  color: #0f172a;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.35), 0 4px 12px rgba(99, 102, 241, 0.18);
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .ai-bot-launcher-btn:hover {
-  transform: scale(1.08);
-  background: #4f46e5;
-  border-color: #4338ca;
-  box-shadow: 0 12px 32px rgba(79, 70, 229, 0.45);
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  border-color: #6366f1;
+  box-shadow: 0 14px 36px rgba(99, 102, 241, 0.45);
 }
 
 .ai-bot-launcher-btn.active {
-  background: #4338ca;
-  border-color: #6366f1;
+  background: #0f172a;
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Ambient Rotating Glow Halo */
+.ai-bot-aura-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #38bdf8, #818cf8, #f43f5e, #34d399);
+  opacity: 0.45;
+  filter: blur(6px);
+  z-index: -1;
+  animation: aiAuraSpin 6s linear infinite;
+}
+
+@keyframes aiAuraSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .ai-bot-pulse-ring {
   position: absolute;
-  inset: -6px;
+  inset: -8px;
   border-radius: 50%;
-  border: 2px solid rgba(79, 70, 229, 0.45);
+  border: 2px solid rgba(56, 189, 248, 0.5);
   animation: aiPulseRing 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
   pointer-events: none;
 }
@@ -2530,32 +2548,58 @@ html, body, #root {
   color: #ffffff;
 }
 
-.ai-icon-inner {
+/* Animated Robo Icon Wrapper */
+.ai-robo-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
+  animation: aiRoboFloat 3.2s ease-in-out infinite;
 }
 
-.ai-sparkle-icon {
-  width: 20px;
-  height: 20px;
-  color: #818cf8;
-  animation: aiSparkleSpin 4s linear infinite;
+@keyframes aiRoboFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
-@keyframes aiSparkleSpin {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.15); }
+.ai-robo-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.ai-robo-icon-small {
+  width: 22px;
+  height: 22px;
+}
+
+.robo-antenna-dot {
+  animation: roboAntennaPulse 1.8s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes roboAntennaPulse {
+  0% { fill: #38bdf8; transform: scale(1); }
+  100% { fill: #f43f5e; transform: scale(1.3); }
+}
+
+.robo-eye {
+  animation: roboEyeBlink 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes roboEyeBlink {
+  0%, 46%, 48%, 100% { opacity: 1; transform: scaleY(1); }
+  47% { opacity: 0.2; transform: scaleY(0.1); }
 }
 
 .ai-badge-dots {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #ffffff;
+  letter-spacing: 0.06em;
+  color: #0f172a;
   line-height: 1;
+  margin-top: -1px;
 }
 
 .ai-launcher-tooltip {
