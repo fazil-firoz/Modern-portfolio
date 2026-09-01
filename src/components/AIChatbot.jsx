@@ -117,6 +117,12 @@ export default function AIChatbot() {
     }
   }, [messages, isOpen, isTyping]);
 
+  useEffect(() => {
+    const handleOpenEvent = () => setIsOpen(true);
+    window.addEventListener('open-ai-chat', handleOpenEvent);
+    return () => window.removeEventListener('open-ai-chat', handleOpenEvent);
+  }, []);
+
   function getCurrentTime() {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }

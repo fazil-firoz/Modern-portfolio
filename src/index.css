@@ -2078,6 +2078,43 @@ html, body, #root {
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
 }
 
+/* Adaptable AI Badge Pill attached to Footer Avatar */
+.footer-avatar-ai-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4f46e5 0%, #0f172a 100%);
+  border: 1.5px solid #818cf8;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.footer-ai-sparkle {
+  width: 11px;
+  height: 11px;
+  color: #38bdf8;
+  animation: aiSparkleSpin 4s linear infinite;
+}
+
+.footer-avatar-wrapper:hover .footer-avatar-ai-badge {
+  background: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+  border-color: #ffffff;
+  color: #0f172a;
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.6);
+}
+
 /* Footer Bottom Bar (No Separate Top Border Line) */
 .contact-footer-bar {
   display: flex;

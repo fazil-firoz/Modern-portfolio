@@ -1141,20 +1141,28 @@ function App() {
             </a>
           </div>
 
-          {/* Centered Profile Avatar Divider with Lines Drawing Outward to Both Sides */}
+          {/* Centered Profile Avatar Divider — Click Photo to Open AI Chatbot */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
             <div
               className="footer-avatar-wrapper"
-              title="Click to Scroll to Top — Fazil Firoz"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              title="Click photo to Ask AI Bot about Fazil Firoz"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('open-ai-chat'));
+              }}
             >
               <img
                 src="/Images/profile-pic (18).png"
-                alt="Fazil Firoz Profile"
+                alt="Fazil Firoz Profile - Click to Ask AI"
                 className="footer-avatar-img"
               />
               <span className="footer-avatar-online-dot" />
+              <div className="footer-avatar-ai-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+                </svg>
+                <span>Ask AI</span>
+              </div>
             </div>
             <div className="avatar-divider-line right-line" />
           </div>
