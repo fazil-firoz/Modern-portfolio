@@ -2116,7 +2116,7 @@ html, body, #root {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 999;
+  z-index: 9999;
   width: 62px;
   height: 62px;
   border-radius: 50%;
@@ -2528,9 +2528,15 @@ html, body, #root {
 }
 
 @keyframes floatAIBot {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-8px) rotate(3deg); }
-  100% { transform: translateY(4px) rotate(-2deg); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
 }
 
 @keyframes pulseAIBot {
