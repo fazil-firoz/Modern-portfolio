@@ -85,8 +85,11 @@ const FAZIL_KNOWLEDGE = {
   ]
 };
 
-export default function AIChatbot() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function AIChatbot({ isOpen: externalIsOpen, setIsOpen: externalSetIsOpen }) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const setIsOpen = externalSetIsOpen || setInternalIsOpen;
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([

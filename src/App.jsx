@@ -239,6 +239,7 @@ function ProjectImageSlider({ project }) {
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const floatingCardRef  = useRef(null);
   const aboutRef         = useRef(null);
   const aboutTextRef     = useRef(null);
@@ -1153,12 +1154,7 @@ function App() {
                 if (e && typeof e.stopPropagation === 'function') {
                   e.stopPropagation();
                 }
-                if (typeof window !== 'undefined') {
-                  if (typeof window.openAIChatbot === 'function') {
-                    window.openAIChatbot();
-                  }
-                  window.dispatchEvent(new CustomEvent('open-ai-chat'));
-                }
+                setIsChatOpen(true);
               }}
             >
               <img
@@ -1169,12 +1165,7 @@ function App() {
                   if (e && typeof e.stopPropagation === 'function') {
                     e.stopPropagation();
                   }
-                  if (typeof window !== 'undefined') {
-                    if (typeof window.openAIChatbot === 'function') {
-                      window.openAIChatbot();
-                    }
-                    window.dispatchEvent(new CustomEvent('open-ai-chat'));
-                  }
+                  setIsChatOpen(true);
                 }}
               />
               <span className="footer-avatar-online-dot" />
@@ -1184,12 +1175,7 @@ function App() {
                   if (e && typeof e.stopPropagation === 'function') {
                     e.stopPropagation();
                   }
-                  if (typeof window !== 'undefined') {
-                    if (typeof window.openAIChatbot === 'function') {
-                      window.openAIChatbot();
-                    }
-                    window.dispatchEvent(new CustomEvent('open-ai-chat'));
-                  }
+                  setIsChatOpen(true);
                 }}
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
@@ -1238,8 +1224,8 @@ function App() {
         <span className="whatsapp-3d-pulse" />
       </a>
 
-      {/* ── AI Portfolio Intelligence Chatbot (Fixed Bottom-Left Launcher) ── */}
-      <AIChatbot />
+      {/* ── AI Portfolio Intelligence Chatbot ── */}
+      <AIChatbot isOpen={isChatOpen} setIsOpen={setIsChatOpen} />
 
     </div>
   );
