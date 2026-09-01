@@ -2134,11 +2134,14 @@ html, body, #root {
 }
 
 .floating-whatsapp-3d {
+  bottom: 2rem;
   right: 2rem;
 }
 
 .floating-aibot-3d {
-  left: 2rem;
+  bottom: 6.75rem;
+  right: 2rem;
+  left: auto;
 }
 
 .whatsapp-3d-inner {
@@ -2437,17 +2440,19 @@ html, body, #root {
 
   .floating-whatsapp-3d,
   .floating-aibot-3d {
-    bottom: 1.25rem;
     width: 54px;
     height: 54px;
   }
 
   .floating-whatsapp-3d {
+    bottom: 1.25rem;
     right: 1.25rem;
   }
 
   .floating-aibot-3d {
-    left: 1.25rem;
+    bottom: 5.25rem;
+    right: 1.25rem;
+    left: auto;
   }
 
   .whatsapp-3d-icon,
@@ -2577,8 +2582,9 @@ html, body, #root {
 /* ── AI CHAT WINDOW ── */
 .ai-chat-window {
   position: fixed;
-  bottom: 92px;
-  left: 24px;
+  bottom: 11.5rem;
+  right: 2rem;
+  left: auto;
   width: 380px;
   max-width: calc(100vw - 32px);
   height: 520px;
@@ -2592,6 +2598,13 @@ html, body, #root {
   flex-direction: column;
   overflow: hidden;
   animation: aiChatSlideUp 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 990px) {
+  .ai-chat-window {
+    bottom: 9rem;
+    right: 1rem;
+  }
 }
 
 @keyframes aiChatSlideUp {
