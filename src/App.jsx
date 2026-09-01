@@ -1150,16 +1150,10 @@ function App() {
               title="Click photo to Ask AI Bot about Fazil Firoz"
               aria-label="Ask AI Assistant about Fazil Firoz"
               onClick={(e) => {
-                if (e) e.stopPropagation();
-                if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
-                  window.openAIChatbot();
+                if (e) {
+                  if (typeof e.preventDefault === 'function') e.preventDefault();
+                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
                 }
-                if (typeof window !== 'undefined') {
-                  window.dispatchEvent(new CustomEvent('open-ai-chat'));
-                }
-              }}
-              onTouchStart={(e) => {
-                if (e) e.stopPropagation();
                 if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
                   window.openAIChatbot();
                 }
