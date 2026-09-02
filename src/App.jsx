@@ -236,58 +236,27 @@ function ProjectImageSlider({ project }) {
 }
 
 /* ─────────────────────────────────────────
-   INITIAL LOAD PRELOADER (FAZIL FIROZ)
+   INITIAL LOAD PRELOADER (SIMPLE & CLEAN)
 ───────────────────────────────────────── */
 function InitialPreloader({ onFinish }) {
-  const [progress, setProgress] = useState(0);
   const [isHiding, setIsHiding] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(() => {
-            setIsHiding(true);
-            setTimeout(() => {
-              if (onFinish) onFinish();
-            }, 650);
-          }, 250);
-          return 100;
-        }
-        const step = Math.floor(Math.random() * 16) + 10;
-        return Math.min(prev + step, 100);
-      });
-    }, 75);
+    const timer = setTimeout(() => {
+      setIsHiding(true);
+      setTimeout(() => {
+        if (onFinish) onFinish();
+      }, 500);
+    }, 1100);
 
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [onFinish]);
 
   return (
     <div className={`initial-preloader-overlay ${isHiding ? 'preloader-exit' : ''}`}>
-      <div className="preloader-content">
-        {/* Animated 3D Monogram Ring */}
-        <div className="preloader-logo-box">
-          <div className="preloader-ring-pulse" />
-          <div className="preloader-monogram">FZ</div>
-        </div>
-
-        {/* Fazil Firoz Name Header Reveal */}
-        <h1 className="preloader-title">
-          <span>FAZIL</span> <span>FIROZ</span>
-        </h1>
-        <p className="preloader-subtitle">SOFTWARE ENGINEER · PORTFOLIO 2026</p>
-
-        {/* Progress Bar & Percentage Counter */}
-        <div className="preloader-progress-container">
-          <div className="preloader-progress-track">
-            <div className="preloader-progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-          <div className="preloader-counter-row">
-            <span className="preloader-status-text">INITIALIZING SYSTEMS...</span>
-            <span className="preloader-counter">{progress}%</span>
-          </div>
-        </div>
+      <div className="preloader-minimal-box">
+        <div className="preloader-ring-pulse" />
+        <div className="preloader-monogram">FZ</div>
       </div>
     </div>
   );
