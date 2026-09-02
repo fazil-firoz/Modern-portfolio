@@ -1147,7 +1147,31 @@ function App() {
               <span className="contact-action-arrow">↗</span>
             </a>
 
-            {/* AI Bot Mobile Contact Card (Placed directly between Instagram and Address) */}
+            {/* Address Location Card (Clickable Google Maps Link) */}
+            <a
+              href="https://maps.google.com/?q=Erakkingal+(H),+Mulayankavu+(PO),+Kulukkallur,+Palakkad,+Kerala+679337,+India"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card card-address"
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+            >
+              <div className="contact-card-icon-box icon-location">
+                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div className="contact-card-info">
+                <span className="contact-label">Location / Address</span>
+                <span className="contact-address-text">
+                  Erakkingal (H), Mulayankavu (PO), Kulukkallur, Palakkad, Kerala 679337, India
+                </span>
+              </div>
+              <span className="contact-action-arrow">↗</span>
+            </a>
+
+            {/* AI Bot Mobile Contact Card (Placed directly BELOW Address Card) */}
             <a
               href="javascript:void(0)"
               className="contact-card card-aibot card-mobile-only"
@@ -1183,30 +1207,6 @@ function App() {
               <div className="contact-card-info">
                 <span className="contact-label">Ask AI Assistant</span>
                 <span className="contact-value">Portfolio AI Bot 💬</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* Address Location Card (Clickable Google Maps Link) */}
-            <a
-              href="https://maps.google.com/?q=Erakkingal+(H),+Mulayankavu+(PO),+Kulukkallur,+Palakkad,+Kerala+679337,+India"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-address"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-location">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Location / Address</span>
-                <span className="contact-address-text">
-                  Erakkingal (H), Mulayankavu (PO), Kulukkallur, Palakkad, Kerala 679337, India
-                </span>
               </div>
               <span className="contact-action-arrow">↗</span>
             </a>

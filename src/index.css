@@ -1940,8 +1940,10 @@ html, body, #root {
 .card-instagram .contact-action-arrow { color: #ffffff; }
 .card-instagram .contact-card-icon-box { background: rgba(255, 255, 255, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); }
 
-/* AI Bot Contact Card (Between Instagram & Address - Distinct Futuristic Robot Theme) */
+/* AI Bot Contact Card (Placed BELOW Address Card - Mobile Only) */
 .card-aibot {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
   background: linear-gradient(135deg, #0284c7 0%, #312e81 55%, #4338ca 100%);
   border: 1px solid #38bdf8 !important;
 }
