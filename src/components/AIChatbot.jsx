@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 const FAZIL_KNOWLEDGE = {
   name: "Fazil Firoz",
@@ -361,143 +362,144 @@ export default function AIChatbot({ externalOpen }) {
     });
   };
 
-  return (
-    <>
-      {/* ── AI CHAT MODAL WINDOW ── */}
-      {isOpen && (
-        <div className="ai-chat-window">
-          {/* Header */}
-          <div className="ai-chat-header">
-            <div className="ai-header-info">
-              <div className="ai-avatar-box">
-                <svg className="ai-robo-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="3" r="1.5" fill="#38bdf8" />
-                  <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
-                  <rect x="4" y="7.5" width="16" height="12" rx="4" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
-                  <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
-                  <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
-                  <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#ffffff" strokeWidth="1.6" />
-                </svg>
-              </div>
-              <div className="ai-header-titles">
-                <div className="ai-header-name">
-                  <span>Firoz's AI Bot</span>
-                  <span className="ai-header-badge">AI Assistant</span>
-                </div>
-                <div className="ai-header-status">
-                  <span className="ai-status-dot" />
-                  <span>Online · Portfolio Intelligence</span>
-                </div>
-              </div>
-            </div>
+  if (!isOpen) return null;
 
-            <div className="ai-header-actions">
-              <button
-                type="button"
-                className="ai-action-btn"
-                onClick={handleClearChat}
-                title="Clear Chat History"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ai-action-icon">
-                  <polyline points="3 6 5 6 21 6" />
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                className="ai-action-btn"
-                onClick={() => setIsOpen(false)}
-                title="Close Chat"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="ai-action-icon">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
+  const chatContent = (
+    <div className="ai-chat-window">
+      {/* Header */}
+      <div className="ai-chat-header">
+        <div className="ai-header-info">
+          <div className="ai-avatar-box">
+            <svg className="ai-robo-icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="3" r="1.5" fill="#38bdf8" />
+              <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
+              <rect x="4" y="7.5" width="16" height="12" rx="4" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
+              <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
+              <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
+              <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
+              <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
+              <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#ffffff" strokeWidth="1.6" />
+            </svg>
+          </div>
+          <div className="ai-header-titles">
+            <div className="ai-header-name">
+              <span>Firoz's AI Bot</span>
+              <span className="ai-header-badge">AI Assistant</span>
+            </div>
+            <div className="ai-header-status">
+              <span className="ai-status-dot" />
+              <span>Online · Portfolio Intelligence</span>
             </div>
           </div>
+        </div>
 
-          {/* Body / Messages List */}
-          <div className="ai-chat-body">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`ai-message-row ${msg.sender === 'user' ? 'msg-user' : 'msg-bot'}`}
-              >
-                {msg.sender === 'bot' && (
-                  <div className="ai-msg-avatar">FZ</div>
-                )}
+        <div className="ai-header-actions">
+          <button
+            type="button"
+            className="ai-action-btn"
+            onClick={handleClearChat}
+            title="Clear Chat History"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ai-action-icon">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="ai-action-btn"
+            onClick={() => setIsOpen(false)}
+            title="Close Chat"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="ai-action-icon">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
 
-                <div className="ai-msg-content">
-                  <div className="ai-msg-bubble">
-                    {renderFormattedText(msg.text)}
-                  </div>
-                  <div className="ai-msg-time">{msg.time}</div>
-
-                  {/* Quick Recommendation Pills */}
-                  {msg.quickPills && msg.quickPills.length > 0 && (
-                    <div className="ai-quick-pills-row">
-                      {msg.quickPills.map((pill, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className="ai-quick-pill"
-                          onClick={() => handleSend(pill.prompt)}
-                        >
-                          {pill.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-
-            {/* Typing Indicator */}
-            {isTyping && (
-              <div className="ai-message-row msg-bot">
-                <div className="ai-msg-avatar">FZ</div>
-                <div className="ai-msg-bubble ai-typing-bubble">
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                  <span className="typing-dot" />
-                </div>
-              </div>
+      {/* Body / Messages List */}
+      <div className="ai-chat-body">
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`ai-message-row ${msg.sender === 'user' ? 'msg-user' : 'msg-bot'}`}
+          >
+            {msg.sender === 'bot' && (
+              <div className="ai-msg-avatar">FZ</div>
             )}
 
-            <div ref={messagesEndRef} />
-          </div>
+            <div className="ai-msg-content">
+              <div className="ai-msg-bubble">
+                {renderFormattedText(msg.text)}
+              </div>
+              <div className="ai-msg-time">{msg.time}</div>
 
-          {/* Footer / Input Bar */}
-          <form
-            className="ai-chat-footer"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-          >
-            <input
-              type="text"
-              className="ai-chat-input"
-              placeholder="Ask about Fazil's skills, experience..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <button
-              type="submit"
-              className="ai-chat-send-btn"
-              disabled={!input.trim()}
-              title="Send Message"
-            >
-              <svg className="ai-send-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      )}
-    </>
+              {/* Quick Recommendation Pills */}
+              {msg.quickPills && msg.quickPills.length > 0 && (
+                <div className="ai-quick-pills-row">
+                  {msg.quickPills.map((pill, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className="ai-quick-pill"
+                      onClick={() => handleSend(pill.prompt)}
+                    >
+                      {pill.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {/* Typing Indicator */}
+        {isTyping && (
+          <div className="ai-message-row msg-bot">
+            <div className="ai-msg-avatar">FZ</div>
+            <div className="ai-msg-bubble ai-typing-bubble">
+              <span className="typing-dot" />
+              <span className="typing-dot" />
+              <span className="typing-dot" />
+            </div>
+          </div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Footer / Input Bar */}
+      <form
+        className="ai-chat-footer"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSend();
+        }}
+      >
+        <input
+          type="text"
+          className="ai-chat-input"
+          placeholder="Ask about Fazil's skills, experience..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="ai-chat-send-btn"
+          disabled={!input.trim()}
+          title="Send Message"
+        >
+          <svg className="ai-send-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+        </button>
+      </form>
+    </div>
   );
+
+  return typeof document !== 'undefined'
+    ? createPortal(chatContent, document.body)
+    : chatContent;
 }
