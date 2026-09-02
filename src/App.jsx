@@ -1173,10 +1173,10 @@ function App() {
                 <span className="footer-avatar-online-dot" />
               </div>
 
-              {/* Dedicated Robot Chatbot Button directly below the image */}
+              {/* 3D Projection Robot Chatbot Button directly below profile photo */}
               <button
                 type="button"
-                className="footer-bot-icon-btn"
+                className="footer-aibot-3d-btn"
                 onClick={(e) => {
                   if (e) {
                     if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
@@ -1194,16 +1194,18 @@ function App() {
                 title="Ask AI Assistant about Fazil Firoz"
                 aria-label="Ask AI Assistant about Fazil Firoz"
               >
-                <svg className="footer-bot-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="3" r="1.5" className="robo-antenna-dot" fill="#38bdf8" />
-                  <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
-                  <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
-                  <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
-                  <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
-                  <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
+                <div className="aibot-3d-inner">
+                  <svg className="aibot-3d-icon ai-robo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="3" r="1.5" className="robo-antenna-dot" fill="#38bdf8" />
+                    <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
+                    <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
+                    <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
+                    <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
+                    <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
+                    <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
+                    <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                </div>
                 <span>Ask AI Bot 💬</span>
               </button>
             </div>
