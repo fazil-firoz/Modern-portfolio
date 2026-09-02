@@ -1148,7 +1148,8 @@ function App() {
             </a>
 
             {/* AI Bot Mobile Contact Card (Placed directly between Instagram and Address) */}
-            <div
+            <a
+              href="javascript:void(0)"
               className="contact-card card-aibot card-mobile-only"
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
@@ -1184,7 +1185,7 @@ function App() {
                 <span className="contact-value">Portfolio AI Bot 💬</span>
               </div>
               <span className="contact-action-arrow">↗</span>
-            </div>
+            </a>
 
             {/* Address Location Card (Clickable Google Maps Link) */}
             <a
