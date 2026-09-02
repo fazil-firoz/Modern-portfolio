@@ -1145,15 +1145,7 @@ function App() {
           {/* Centered Profile Avatar Divider — Click Photo to Open AI Chatbot */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
-            <div
-              id="footer-avatar-open-chat"
-              role="button"
-              tabIndex={0}
-              className="footer-avatar-wrapper"
-              title="Click to Ask AI about Fazil Firoz"
-              aria-label="Ask AI Assistant about Fazil Firoz"
-              onClick={() => setOpenChatTrigger(c => c + 1)}
-            >
+            <div className="footer-avatar-wrapper">
               <img
                 src="/Images/profile-pic (18).png"
                 alt="Fazil Firoz Profile"
@@ -1166,6 +1158,16 @@ function App() {
                 </svg>
                 <span>Ask AI</span>
               </div>
+              {/* Invisible anchor overlay — most reliable mobile tap target */}
+              <a
+                href="#"
+                className="footer-avatar-tap-overlay"
+                aria-label="Ask AI Assistant about Fazil Firoz"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+              >&nbsp;</a>
             </div>
             <div className="avatar-divider-line right-line" />
           </div>
