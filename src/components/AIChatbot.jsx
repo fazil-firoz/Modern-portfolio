@@ -383,7 +383,7 @@ export default function AIChatbot({ externalOpen }) {
               </div>
               <div className="ai-header-titles">
                 <div className="ai-header-name">
-                  <span>Fazil's AI Bot</span>
+                  <span>Firoz's AI Bot</span>
                   <span className="ai-header-badge">AI Assistant</span>
                 </div>
                 <div className="ai-header-status">

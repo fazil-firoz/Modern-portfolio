@@ -1145,14 +1145,48 @@ function App() {
           {/* Centered Profile Avatar Divider — Click Photo to Open AI Chatbot */}
           <div className="footer-avatar-divider">
             <div className="avatar-divider-line left-line" />
-            <div className="footer-avatar-wrapper">
+            <div
+              className="footer-avatar-wrapper"
+              onClick={(e) => {
+                if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                setOpenChatTrigger(c => c + 1);
+                if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
+                  window.openAIChatbot();
+                }
+              }}
+              onTouchEnd={(e) => {
+                if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                setOpenChatTrigger(c => c + 1);
+                if (typeof window !== 'undefined' && typeof window.openAIChatbot === 'function') {
+                  window.openAIChatbot();
+                }
+              }}
+            >
               <img
                 src="/Images/profile-pic (18).png"
                 alt="Fazil Firoz Profile"
                 className="footer-avatar-img"
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+                onTouchEnd={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
               />
               <span className="footer-avatar-online-dot" />
-              <div className="footer-avatar-ai-badge">
+              <div
+                className="footer-avatar-ai-badge"
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+                onTouchEnd={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+              >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="footer-ai-sparkle">
                   <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                 </svg>
@@ -1160,11 +1194,21 @@ function App() {
               </div>
               {/* Invisible anchor overlay — most reliable mobile tap target */}
               <a
-                href="#"
+                href="javascript:void(0)"
                 className="footer-avatar-tap-overlay"
                 aria-label="Ask AI Assistant about Fazil Firoz"
                 onClick={(e) => {
-                  e.preventDefault();
+                  if (e) {
+                    if (typeof e.preventDefault === 'function') e.preventDefault();
+                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+                  }
+                  setOpenChatTrigger(c => c + 1);
+                }}
+                onTouchEnd={(e) => {
+                  if (e) {
+                    if (typeof e.preventDefault === 'function') e.preventDefault();
+                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+                  }
                   setOpenChatTrigger(c => c + 1);
                 }}
               >&nbsp;</a>

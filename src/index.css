@@ -2058,24 +2058,25 @@ html, body, #root {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 
-/* ALL children pointer-events:none EXCEPT the tap overlay anchor */
-.footer-avatar-wrapper > *:not(.footer-avatar-tap-overlay) {
-  pointer-events: none !important;
+.footer-avatar-wrapper,
+.footer-avatar-img,
+.footer-avatar-ai-badge,
+.footer-avatar-tap-overlay {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 /* Invisible anchor overlay that covers the entire avatar — reliable on all mobile browsers */
 .footer-avatar-tap-overlay {
   position: absolute;
-  inset: -5px;
-  z-index: 20;
+  inset: -10px;
+  z-index: 99;
   border-radius: 50%;
-  cursor: pointer;
-  pointer-events: auto !important;
   opacity: 0;
   display: block;
   text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 
 .footer-avatar-wrapper:hover {
