@@ -1151,17 +1151,11 @@ function App() {
                 className="footer-avatar-wrapper"
                 title="Click photo to Ask AI Assistant"
                 onClick={(e) => {
-                  if (e) {
-                    if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                  }
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
                   setOpenChatTrigger(c => c + 1);
                 }}
-                onTouchEnd={(e) => {
-                  if (e) {
-                    if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                  }
+                onTouchStart={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
                   setOpenChatTrigger(c => c + 1);
                 }}
               >
@@ -1178,17 +1172,11 @@ function App() {
                 type="button"
                 className="footer-aibot-3d-btn"
                 onClick={(e) => {
-                  if (e) {
-                    if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                  }
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
                   setOpenChatTrigger(c => c + 1);
                 }}
-                onTouchEnd={(e) => {
-                  if (e) {
-                    if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                    if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                  }
+                onTouchStart={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
                   setOpenChatTrigger(c => c + 1);
                 }}
                 title="Ask AI Assistant about Fazil Firoz"
