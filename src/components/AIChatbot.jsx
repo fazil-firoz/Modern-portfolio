@@ -363,44 +363,7 @@ export default function AIChatbot({ externalOpen }) {
 
   return (
     <>
-      {/* ── FLOATING 3D PROJECTION AI BOT BUTTON (FIXED BOTTOM-LEFT - MATCHING WHATSAPP 3D STYLE) ── */}
-      <button
-        type="button"
-        className={`floating-aibot-3d ${isOpen ? 'active' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        title={isOpen ? "Close AI Assistant" : "Ask AI Portfolio Assistant"}
-        aria-label="AI Portfolio Assistant"
-      >
-        <div className="aibot-3d-inner">
-          {isOpen ? (
-            <svg className="aibot-3d-icon ai-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            <svg className="aibot-3d-icon ai-robo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              {/* Robot Antenna Top Dot with glowing pulse */}
-              <circle cx="12" cy="3" r="1.5" className="robo-antenna-dot" fill="#38bdf8" />
-              {/* Antenna Pole */}
-              <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
-              {/* Head Frame */}
-              <rect x="4" y="7.5" width="16" height="12" rx="4" className="robo-head-frame" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
-              {/* Dark Visor Window */}
-              <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
-              {/* Glowing Robot Eyes */}
-              <circle cx="9" cy="11.8" r="1.2" className="robo-eye eye-left" fill="#38bdf8" />
-              <circle cx="15" cy="11.8" r="1.2" className="robo-eye eye-right" fill="#38bdf8" />
-              {/* Ear Side Nodes */}
-              <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
-              {/* Robot Cheerful Smile */}
-              <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" />
-            </svg>
-          )}
-        </div>
-        <span className="aibot-3d-pulse" />
-      </button>
-
-      {/* ── AI CHAT MODAL WINDOW (FLOATING BOTTOM-LEFT) ── */}
+      {/* ── AI CHAT MODAL WINDOW ── */}
       {isOpen && (
         <div className="ai-chat-window">
           {/* Header */}
