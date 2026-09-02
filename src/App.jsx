@@ -1150,8 +1150,14 @@ function App() {
               <div
                 className="footer-avatar-wrapper"
                 title="Click photo to Ask AI Assistant"
-                onClick={() => setOpenChatTrigger(c => c + 1)}
-                onTouchEnd={() => setOpenChatTrigger(c => c + 1)}
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+                onTouchEnd={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
               >
                 <img
                   src="/Images/profile-pic (18).png"
@@ -1165,8 +1171,14 @@ function App() {
               <button
                 type="button"
                 className="footer-bot-icon-btn"
-                onClick={() => setOpenChatTrigger(c => c + 1)}
-                onTouchEnd={() => setOpenChatTrigger(c => c + 1)}
+                onClick={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
+                onTouchEnd={(e) => {
+                  if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+                  setOpenChatTrigger(c => c + 1);
+                }}
                 title="Ask AI Assistant about Fazil Firoz"
                 aria-label="Ask AI Assistant about Fazil Firoz"
               >
