@@ -1940,15 +1940,20 @@ html, body, #root {
 .card-instagram .contact-action-arrow { color: #ffffff; }
 .card-instagram .contact-card-icon-box { background: rgba(255, 255, 255, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); }
 
-/* AI Bot Contact Card (Between Instagram & Address - Mobile Only) */
+/* AI Bot Contact Card (Between Instagram & Address - Distinct Futuristic Robot Theme) */
 .card-aibot {
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-  border: 1px solid #818cf8 !important;
+  background: linear-gradient(135deg, #0284c7 0%, #312e81 55%, #4338ca 100%);
+  border: 1px solid #38bdf8 !important;
 }
-.card-aibot .contact-label { color: #818cf8; }
-.card-aibot .contact-value { color: #ffffff; }
-.card-aibot .contact-action-arrow { color: #38bdf8; }
-.card-aibot .contact-card-icon-box { background: rgba(99, 102, 241, 0.25); color: #38bdf8; border: 1px solid rgba(129, 140, 248, 0.4); }
+.card-aibot .contact-label { color: #bae6fd; font-weight: 700; }
+.card-aibot .contact-value { color: #ffffff; font-weight: 800; }
+.card-aibot .contact-action-arrow { color: #ffffff; }
+.card-aibot .contact-card-icon-box {
+  background: rgba(15, 23, 42, 0.45);
+  color: #38bdf8;
+  border: 1.5px solid #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+}
 
 /* Mobile Only Visibility Constraint */
 .card-mobile-only {
