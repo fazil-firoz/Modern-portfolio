@@ -1940,6 +1940,27 @@ html, body, #root {
 .card-instagram .contact-action-arrow { color: #ffffff; }
 .card-instagram .contact-card-icon-box { background: rgba(255, 255, 255, 0.25); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.4); }
 
+/* AI Bot Contact Card (Between Instagram & Address - Mobile Only) */
+.card-aibot {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  border: 1px solid #818cf8 !important;
+}
+.card-aibot .contact-label { color: #818cf8; }
+.card-aibot .contact-value { color: #ffffff; }
+.card-aibot .contact-action-arrow { color: #38bdf8; }
+.card-aibot .contact-card-icon-box { background: rgba(99, 102, 241, 0.25); color: #38bdf8; border: 1px solid rgba(129, 140, 248, 0.4); }
+
+/* Mobile Only Visibility Constraint */
+.card-mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 990px) {
+  .card-mobile-only {
+    display: flex !important;
+  }
+}
+
 .card-address {
   grid-column: 1 / -1;
   background: #fef3c7;
