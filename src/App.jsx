@@ -1,298 +1,50 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import AIChatbot from './components/AIChatbot';
+import IDCard from './components/IDCard';
+import InitialPreloader from './components/InitialPreloader';
+import HeroSection from './components/HeroSection';
+import AboutSection from './components/AboutSection';
+import ExperienceSection from './components/ExperienceSection';
+import EducationSection from './components/EducationSection';
+import ProjectsSection from './components/ProjectsSection';
+import ContactSection from './components/ContactSection';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PROFILE_IMG = "/Images/WhatsApp_Image_2026-08-05_at_11.17.06_PMccccccc-removebg-preview.png";
-
-/* ─────────────────────────────────────────
-   PORTFOLIO ID CARD  (hero card)
-───────────────────────────────────────── */
-function IDCard() {
-  return (
-    <div className="scene">
-      {/* Lanyard / Thread Strap extending from top outer screen in a dynamic zigzag curve */}
-      <div className="lanyard-thread-container">
-        <svg className="lanyard-thread-svg" viewBox="0 0 120 500" preserveAspectRatio="none">
-          <path
-            d="M 60,-400 C 10,-300 110,-200 20,-100 C 100,0 30,100 80,250 C 35,360 75,440 60,495"
-            className="lanyard-strap-path"
-          />
-        </svg>
-        <div className="lanyard-clip" />
-      </div>
-
-      <div className="id-card">
-        <div className="card-hole" />
-        <div className="id-card-face">
-          <div className="card-top-bar">
-            <span className="card-brand-left">FZ · Dev</span>
-            <span className="card-brand-right">PORTFOLIO</span>
-          </div>
-          <div className="card-photo-area">
-            <div className="card-big-text">DEV<br />ELOPER</div>
-            <img src={PROFILE_IMG} alt="FaZil Firoz" className="card-photo-img" />
-            <div className="card-photo-fade" />
-          </div>
-          <div className="card-info-section">
-            <div className="card-person-name">FaZil Firoz</div>
-            <div className="card-role-badge">Software Engineer</div>
-            <div className="card-footer-row">
-              {/* <span className="card-dept">Software Solutions</span> */}
-              <div className="card-icon-mark">FZ</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="card-shadow" />
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────
-   PROJECT IMAGE & QR CODE SLIDER FRAME
-───────────────────────────────────────── */
-function ProjectImageSlider({ project }) {
-  const [activeSlide, setActiveSlide] = useState(0); // 0: Image/Placeholder, 1: QR Code
-  const [isRevealed, setIsRevealed] = useState(false); // Image fog cover reveal state
-
-  // QR Code is ONLY generated for Live Preview cases
-  const targetUrl = project.live;
-  const qrCodeUrl = targetUrl
-    ? `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=${encodeURIComponent(targetUrl)}`
-    : null;
-
-  const totalSlides = targetUrl ? 2 : 1;
-
-  const handleNext = (e) => {
-    e.stopPropagation();
-    setActiveSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const handlePrev = (e) => {
-    e.stopPropagation();
-    setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const toggleReveal = (e) => {
-    e.stopPropagation();
-    setIsRevealed((prev) => !prev);
-  };
-
-  return (
-    <div className={`proj-img-wrapper ${isRevealed ? 'img-revealed' : 'img-foggy'}`}>
-      {/* Slide 0: Project Screenshot Image or Reserved Placeholder */}
-      <div className={`proj-slide ${activeSlide === 0 ? 'slide-active' : ''}`}>
-        {project.image ? (
-          <>
-            <img
-              src={project.image}
-              alt={project.title}
-              className={`proj-img ${isRevealed ? 'revealed' : 'foggy'}`}
-              loading="lazy"
-            />
-            {/* Fog Cover Overlay with Eye Button when not revealed */}
-            {!isRevealed && (
-              <div className="proj-fog-overlay">
-                <button
-                  type="button"
-                  className="proj-eye-btn"
-                  onClick={toggleReveal}
-                  title="Click Eye to see full image clarity"
-                >
-                  <svg className="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                  <span>See Image</span>
-                </button>
-              </div>
-            )}
-
-            {/* Fog Cover Toggle Button when revealed */}
-            {isRevealed && (
-              <button
-                type="button"
-                className="proj-eye-btn proj-eye-hide-btn"
-                onClick={toggleReveal}
-                title="Click to cover image with fog"
-              >
-                <svg className="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                  <line x1="1" y1="1" x2="23" y2="23" />
-                </svg>
-                <span>Fog Cover</span>
-              </button>
-            )}
-          </>
-        ) : (
-          <div className="proj-img-placeholder">
-            <div className="proj-placeholder-mac-dots">
-              <span className="mac-dot dot-red" />
-              <span className="mac-dot dot-yellow" />
-              <span className="mac-dot dot-green" />
-            </div>
-            <div className="proj-placeholder-content">
-              <div className="proj-placeholder-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
-              </div>
-              <span className="proj-placeholder-text">Preview Image Space</span>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Slide 1: Live Preview QR Code (Only for Live Preview projects) */}
-      {targetUrl && (
-        <div className={`proj-slide proj-qr-slide ${activeSlide === 1 ? 'slide-active' : ''}`}>
-          <div className="proj-qr-container">
-            <div className="proj-qr-box">
-              <img
-                src={qrCodeUrl}
-                alt={`QR Code for ${project.title}`}
-                className="proj-qr-img"
-                loading="lazy"
-              />
-            </div>
-            <div className="proj-qr-info">
-              <span className="proj-qr-badge">
-                📱 Scan QR Code
-              </span>
-              <a
-                href={targetUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="proj-qr-open-btn"
-                title="Click to visit live website in a new tab"
-              >
-                <span>Visit Live Preview</span>
-                <svg className="link-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </a>
-              <span className="proj-qr-url-hint">
-                {project.live.replace('https://', '')}
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Slider Controls (Arrows, Toggle Badge & Dots) */}
-      {totalSlides > 1 && (
-        <>
-          <button
-            type="button"
-            className="proj-slider-arrow arrow-prev"
-            onClick={handlePrev}
-            title="Previous View"
-            aria-label="Previous View"
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            className="proj-slider-arrow arrow-next"
-            onClick={handleNext}
-            title="Next View (QR Code)"
-            aria-label="Next View"
-          >
-            ›
-          </button>
-
-          <button
-            type="button"
-            className="proj-slider-toggle-badge"
-            onClick={handleNext}
-            title="Toggle between Image and QR Code"
-          >
-            {activeSlide === 0 ? '📱 QR Code' : '📷 Image'}
-          </button>
-
-          <div className="proj-slider-dots">
-            <span
-              className={`proj-dot ${activeSlide === 0 ? 'dot-active' : ''}`}
-              onClick={() => setActiveSlide(0)}
-              title="View Image"
-            />
-            <span
-              className={`proj-dot ${activeSlide === 1 ? 'dot-active' : ''}`}
-              onClick={() => setActiveSlide(1)}
-              title="View QR Code"
-            />
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────
-   INITIAL LOAD PRELOADER (SIMPLE & CLEAN)
-───────────────────────────────────────── */
-function InitialPreloader({ onFinish }) {
-  const [isHiding, setIsHiding] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsHiding(true);
-      setTimeout(() => {
-        if (onFinish) onFinish();
-      }, 500);
-    }, 1100);
-
-    return () => clearTimeout(timer);
-  }, [onFinish]);
-
-  return (
-    <div className={`initial-preloader-overlay ${isHiding ? 'preloader-exit' : ''}`}>
-      <div className="preloader-minimal-box">
-        <div className="preloader-ring-pulse" />
-        <div className="preloader-monogram">FZ</div>
-      </div>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────
    MAIN APP
 ───────────────────────────────────────── */
 function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader]     = useState(true);
   const [openChatTrigger, setOpenChatTrigger] = useState(0);
-  const floatingCardRef  = useRef(null);
-  const aboutRef         = useRef(null);
-  const aboutTextRef     = useRef(null);
-  const experienceRef        = useRef(null);
+
+  // Refs for GSAP scroll animations
+  const floatingCardRef     = useRef(null);
+  const aboutRef            = useRef(null);
+  const aboutTextRef        = useRef(null);
+  const experienceRef       = useRef(null);
   const expContentRef       = useRef(null);
   const timelineProgressRef = useRef(null);
   const bulletItemsRef      = useRef([]);
-
   const educationRef        = useRef(null);
   const roadDashedRef       = useRef(null);
   const pulseRef            = useRef(null);
   const eduCardsRef         = useRef([]);
-
   const projectsRef         = useRef(null);
   const projCardsRef        = useRef([]);
   const projProgressRef     = useRef(null);
   const projDotRef          = useRef(null);
 
+  // ── GSAP Scroll Animations ──
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── Responsive GSAP Animations for Floating ID Card using matchMedia ──
       const mm = gsap.matchMedia();
 
-      // Desktop Screens (> 991px): Card travels from Hero Center -> Section 2 Right, then dissolves as Section 3 enters
+      // Desktop: ID Card animates to the right beside About section, then fades out
       mm.add("(min-width: 992px)", () => {
         gsap.to(floatingCardRef.current, {
           x: () => window.innerWidth * 0.26,
@@ -307,7 +59,6 @@ function App() {
             scrub: 1.5,
           },
         });
-
         gsap.to(floatingCardRef.current, {
           opacity: 0,
           scale: 0.75,
@@ -322,10 +73,9 @@ function App() {
         });
       });
 
-      // Mobile Screens (<= 991px): Guarantee 100% horizontal centering, slide UNDER Section 2 on scroll
+      // Mobile: ID Card slides/fades out as About section enters
       mm.add("(max-width: 991px)", () => {
         gsap.set(floatingCardRef.current, { x: 0 });
-
         gsap.to(floatingCardRef.current, {
           x: 0,
           y: 120,
@@ -341,7 +91,7 @@ function App() {
         });
       });
 
-      // ── About text slides in from left ──
+      // About text slides in from left
       gsap.from(aboutTextRef.current, {
         x: -70,
         opacity: 0,
@@ -354,7 +104,7 @@ function App() {
         },
       });
 
-      // ── Vertical Timeline Line Draw on scroll ──
+      // Experience: Vertical timeline line draws on scroll
       gsap.fromTo(timelineProgressRef.current,
         { scaleY: 0 },
         {
@@ -369,15 +119,13 @@ function App() {
         }
       );
 
-      // ── Staggered Bullet Points Cascade Reveal ──
+      // Experience: Bullet points cascade reveal
       bulletItemsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
           { opacity: 0, x: 35, scale: 0.96 },
           {
-            opacity: 1,
-            x: 0,
-            scale: 1,
+            opacity: 1, x: 0, scale: 1,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: el,
@@ -389,7 +137,7 @@ function App() {
         );
       });
 
-      // ── Education Winding Road Line Draw ──
+      // Education: Winding road SVG draws on scroll
       gsap.fromTo(roadDashedRef.current,
         { strokeDashoffset: 1000 },
         {
@@ -404,13 +152,12 @@ function App() {
         }
       );
 
-      // ── Interactive Light Pulse Orb Traveling along SVG Wire on Scroll ──
+      // Education: Glowing orb travels along SVG path
       const pathEl = roadDashedRef.current;
       if (pathEl && pulseRef.current) {
         try {
           const totalLength = pathEl.getTotalLength();
           const obj = { val: 0 };
-
           gsap.to(obj, {
             val: 1,
             ease: 'none',
@@ -432,15 +179,13 @@ function App() {
         }
       }
 
-      // ── Education Milestone Cards Pop Reveal ──
+      // Education: Milestone cards pop reveal
       eduCardsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
           { opacity: 0, y: 50, scale: 0.9 },
           {
-            opacity: 1,
-            y: 0,
-            scale: 1,
+            opacity: 1, y: 0, scale: 1,
             ease: 'back.out(1.4)',
             scrollTrigger: {
               trigger: el,
@@ -452,7 +197,7 @@ function App() {
         );
       });
 
-      // ── Projects Section Left Vertical Scroll Line & Traveling Laser Dot ──
+      // Projects: Left vertical scroll line & traveling laser dot
       gsap.fromTo(projProgressRef.current,
         { scaleY: 0 },
         {
@@ -465,24 +210,20 @@ function App() {
             scrub: 1,
             onUpdate: (self) => {
               if (projDotRef.current) {
-                gsap.set(projDotRef.current, {
-                  top: `${self.progress * 100}%`,
-                });
+                gsap.set(projDotRef.current, { top: `${self.progress * 100}%` });
               }
             },
           },
         }
       );
 
-      // ── Projects Cards Stagger Slide Up Reveal ──
+      // Projects: Cards stagger slide-up reveal
       projCardsRef.current.forEach((el) => {
         if (!el) return;
         gsap.fromTo(el,
           { opacity: 0, y: 45, scale: 0.96 },
           {
-            opacity: 1,
-            y: 0,
-            scale: 1,
+            opacity: 1, y: 0, scale: 1,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
@@ -498,775 +239,69 @@ function App() {
     return () => ctx.revert();
   }, []);
 
-  const expItems = [
-    { text: 'Designed and developed Hospital Management Systems (HMS) for clients across Dubai and India.', tech: 'ASP.NET Core · React · SQL · PostgreSQL' },
-    { text: 'Built and contributed to a CRM system for an overseas educational consultancy, streamlining student and application management processes.' },
-    { text: 'Built robust backend modules using C# and improved database performance through optimized SQL queries.', tech: 'C#' },
-    { text: 'Developed and integrated RESTful APIs to enable seamless communication between frontend and backend systems.' },
-    { text: 'Integrated third-party APIs to extend system functionality and ensure smooth external service communication.' },
-    { text: 'Resolved critical production issues and ensured high system availability and reliability.' },
-    { text: 'Performed unit testing and debugging to ensure application reliability, code quality, and smooth functionality across modules.' },
-  ];
-
-  const techBadges = ['ASP.NET Core', 'React', 'C#', 'PostgreSQL', 'SQL', 'REST APIs', 'Unit Testing'];
-
-  const projectsData = [
-    {
-      id: 'ecommerce',
-      num: '01',
-      title: 'E-Commerce Web App',
-      subtitle: 'Full-Featured Online Store',
-      tag: 'Full-Stack Project',
-      badgeClass: 'proj-tag-featured',
-      image: '/Images/E-commerce.png',
-      description: 'Full-featured modern e-commerce web application with interactive 3D product animations, C# backend API, PostgreSQL database, Razorpay payment gateway integration, dynamic cart management, and seamless checkout.',
-      tech: ['C#', 'React.js', 'PostgreSQL', 'Razorpay', '3D Animations', 'Vercel'],
-      github: null,
-      live: 'https://e-commerce-web-app-woad-nine.vercel.app/'
-    },
-    {
-      id: 'self-billing',
-      num: '02',
-      title: 'Self-Billing System',
-      subtitle: 'Retail Management System',
-      tag: 'Main Project',
-      badgeClass: 'proj-tag-featured',
-      image: '/Images/Self-Billing.png',
-      description: 'An intelligent self-checkout solution for supermarkets that allows customers to scan product QR codes, automatically generate bills, and make secure payments through their smartphones. Features real-time monitoring to ensure transaction security and prevent fraud.',
-      tech: ['Python Django', 'HTML', 'CSS', 'JavaScript', 'Flutter (Dart)', 'MySQL'],
-      github: 'https://github.com/fazil-firoz/Main-Project.git',
-      live: null
-    },
-    {
-      id: 'learnify',
-      num: '03',
-      title: 'Learnify',
-      subtitle: 'E-Learning Platform',
-      tag: 'Mini Project',
-      badgeClass: 'proj-tag-platform',
-      image: '/Images/Learnify.png',
-      description: 'A full-featured online learning platform where instructors can create and manage courses, admins approve content, and students securely enroll and access video lessons after payment. Designed for a seamless and secure digital learning experience.',
-      tech: ['Python Django', 'HTML', 'CSS', 'Bootstrap', 'MySQL'],
-      github: 'https://github.com/fazil-firoz/Learnify.git',
-      live: null
-    },
-    {
-      id: 'portfolio',
-      num: '04',
-      title: 'Personal Portfolio',
-      subtitle: 'Interactive Developer Showcase',
-      tag: 'Single Page Portfolio',
-      badgeClass: 'proj-tag-live',
-      image: '/Images/SinglePagePortfolioi.png',
-      description: 'Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase projects, skills, and achievements. Focused on creating a clean, user-friendly interface to highlight my journey as a developer.',
-      tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
-      github: null,
-      live: 'https://fazil-firoz.github.io/Portfolio_new/'
-    },
-    {
-      id: 'notebook-portfolio',
-      num: '05',
-      title: 'Notebook Portfolio',
-      subtitle: 'Hobby Project',
-      tag: 'Hobby Project',
-      badgeClass: 'proj-tag-platform',
-      image: '/Images/NotebookPortoflio.png',
-      description: 'Designed and built an interactive notebook-themed portfolio as a creative hobby project, exploring realistic paper textures, handwritten journal layouts, and creative front-end styling.',
-      tech: ['React', 'HTML', 'CSS', 'JavaScript', 'Vercel'],
-      github: null,
-      live: 'https://note-book-portfolio-eta.vercel.app/'
-    },
-    {
-      id: 'modern-portfolio',
-      num: '06',
-      title: 'Modern 3D Portfolio',
-      subtitle: 'Latest Portfolio Project',
-      tag: 'Latest Portfolio',
-      badgeClass: 'proj-tag-featured',
-      image: '/Images/Modern3DPortfolio.png',
-      description: 'Ultra-modern interactive developer portfolio featuring a 3D floating ID card with GSAP ScrollTrigger transition physics, dark/light section theme contrasts, Education roadmap, and modern web application showcase.',
-      tech: ['React', 'GSAP', 'ScrollTrigger', 'CSS3', 'Vite'],
-      github: 'https://github.com/fazil-firoz/Modern-portfolio.git',
-      live: null
-    },
-    {
-      id: 'news24',
-      num: '07',
-      title: 'News24',
-      subtitle: 'Real-Time News App',
-      tag: 'API Integration Project',
-      badgeClass: 'proj-tag-api',
-      image: '/Images/news.jpg',
-      description: 'My first project where I learned how APIs actually work! Created a simple yet functional news website using HTML, CSS, and JavaScript, and fetched live news dynamically using a free News API.',
-      tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
-      github: 'https://github.com/fazil-firoz/News-App.git',
-      live: null
-    },
-    {
-      id: 'bonos',
-      num: '08',
-      title: "Bono's",
-      subtitle: 'Static Front-End Webpage',
-      tag: 'My First Work',
-      badgeClass: 'proj-tag-static',
-      image: "/Images/Bono's.png",
-      description: 'Designed and developed my first static website using only HTML and CSS to grasp the fundamentals of web structure, layout, and styling — laying a strong foundation in front-end development and design principles.',
-      tech: ['HTML', 'CSS'],
-      github: null,
-      live: 'https://fazil-firoz.github.io/bonos/'
-    }
-  ];
-
+  // ── 3D Tilt effect for contact cards ──
   const handleCardMouseMove = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -15;
-    const rotateY = ((x - centerX) / centerX) * 15;
-
+    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -15;
+    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 15;
     card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
   };
 
   const handleCardMouseLeave = (e) => {
-    const card = e.currentTarget;
-    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
 
   return (
     <div className="page-wrapper">
-      {/* ── Initial Load Preloader Animation (Fazil Firoz) ── */}
+
+      {/* ── Initial Load Preloader ── */}
       {showPreloader && <InitialPreloader onFinish={() => setShowPreloader(false)} />}
 
-      {/* ── Single floating portfolio card ── */}
+      {/* ── Floating 3D ID Card (GSAP-animated) ── */}
       <div className="floating-card" ref={floatingCardRef}>
         <IDCard />
       </div>
 
-      {/* ══════════════════════════════════════
-          SECTION 1 — HERO  (dark)
-      ══════════════════════════════════════ */}
-      <section className="section-hero">
-        <div className="hero-glow-1" /><div className="hero-glow-2" /><div className="hero-glow-3" />
-        <div className="hero-bg-text">DEVELOPER</div>
-        <div className="scroll-hint">
-          <span className="scroll-hint-label">Scroll</span>
-          <div className="scroll-hint-arrow" />
-        </div>
-      </section>
+      {/* ── Section 1: Hero ── */}
+      <HeroSection />
 
-      {/* ══════════════════════════════════════
-          SECTION 2 — ABOUT  (light / white)
-      ══════════════════════════════════════ */}
-      <section className="section-about" ref={aboutRef}>
-        <div className="about-inner">
-          <div className="about-left" ref={aboutTextRef}>
-            <div className="about-tag"><span className="about-tag-line" />About Me</div>
-            
-            <h2 className="about-greeting">
-              Hi, I'm <span className="greeting-name">Fazil Firoz</span>
-              {/* <span className="css-waving-hand" title="Hello!">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="wave-hand-svg">
-                  <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v6M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8M18 8a2 2 0 0 1 2 2v4a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.8-5.6-2.4l-2.6-3.7a1.4 1.4 0 0 1 .3-1.9v0a1.4 1.4 0 0 1 1.9.3l2.4 3.4" stroke="#d97706" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="rgba(245, 158, 11, 0.25)"/>
-                </svg>
-              </span> */}
-            </h2>
-            <p className="about-role-sub">
-              Software Engineer based in Infopark, Kochi | Full-Stack Web Developer
-            </p>
+      {/* ── Section 2: About ── */}
+      <AboutSection sectionRef={aboutRef} textRef={aboutTextRef} />
 
-            <div className="about-highlights-grid">
-              <div className="highlight-item">
-                <span className="highlight-icon">💼</span>
-                <div>
-                  <strong>Software Engineer</strong>
-                  <p>1+ Year building enterprise web applications at Infopark, Kochi.</p>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-icon">🚀</span>
-                <div>
-                  <strong>Full-Stack Creator</strong>
-                  <p>Specialized in C#, ASP.NET Core, React, Python Django, PostgreSQL & REST APIs.</p>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-icon">🎓</span>
-                <div>
-                  <strong>Continuous Learner</strong>
-                  <p>Passionate about crafting clean UI/UX, robust backend systems & interactive web experiences.</p>
-                </div>
-              </div>
-            </div>
+      {/* ── Section 3: Experience ── */}
+      <ExperienceSection
+        sectionRef={experienceRef}
+        timelineProgressRef={timelineProgressRef}
+        bulletItemsRef={bulletItemsRef}
+      />
 
-            <div className="chapter-mark">
-              <span className="chapter-label">— currently building & evolving</span>
-              <span className="chapter-icon">✓</span>
-              <div className="chapter-line" />
-            </div>
+      {/* ── Section 4: Education ── */}
+      <EducationSection
+        sectionRef={educationRef}
+        roadDashedRef={roadDashedRef}
+        pulseRef={pulseRef}
+        eduCardsRef={eduCardsRef}
+      />
 
-            <div className="story-closing">
-              <span className="story-emoji">♡</span>
-              I believe something good is waiting ahead. And if life decides otherwise... well, I do have a Plan B — though between you and me, I'm secretly hoping I never have to use it. 😄
-            </div>
+      {/* ── Section 5: Projects ── */}
+      <ProjectsSection
+        sectionRef={projectsRef}
+        projCardsRef={projCardsRef}
+        projProgressRef={projProgressRef}
+        projDotRef={projDotRef}
+      />
 
-            {/* Theme-Adapted Download Resume Action Button */}
-            <div className="about-resume-action">
-              <a
-                href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="download-resume-btn"
-                title="Download / View Fazil Firoz Official Resume"
-              >
-                <svg className="resume-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Download Resume</span>
-              </a>
-            </div>
-          </div>
-          <div className="about-right" />
-        </div>
-      </section>
+      {/* ── Section 6: Contact ── */}
+      <ContactSection
+        onOpenChat={() => setOpenChatTrigger((c) => c + 1)}
+        handleCardMouseMove={handleCardMouseMove}
+        handleCardMouseLeave={handleCardMouseLeave}
+      />
 
-      {/* ══════════════════════════════════════
-          SECTION 3 — EXPERIENCE  (Timeline Track & Cascade)
-      ══════════════════════════════════════ */}
-      <section className="section-experience" ref={experienceRef}>
-        <div className="exp-inner">
-
-          {/* Section Heading Tag */}
-          <div className="exp-tag">
-            <span className="exp-tag-line" />
-            Work Experience
-          </div>
-
-          {/* Direct Experience Layout with Vertical Timeline Track */}
-          <div className="exp-timeline-wrapper">
-
-            {/* Vertical Timeline Track Line */}
-            <div className="exp-timeline-track">
-              <div className="exp-timeline-progress" ref={timelineProgressRef} />
-            </div>
-
-            {/* Experience Content Column */}
-            <div className="exp-timeline-content">
-
-              {/* Header Row */}
-              <div className="exp-card-header">
-                <div className="exp-role-group">
-                  <h3 className="exp-role-title">Junior Software Engineer</h3>
-                  <div className="exp-company-sub">
-                    <span className="exp-company-name">Antas Technologies</span>
-                    <span className="exp-dot-sep">•</span>
-                    <span className="exp-location">Infopark, Kochi, India</span>
-                  </div>
-                </div>
-
-                <div className="exp-period-badge">
-                  <span className="exp-badge-pulse" />
-                  2025 – Present
-                </div>
-              </div>
-
-              {/* Tech Stack Pills */}
-              <div className="exp-tech-pills">
-                {techBadges.map((badge, idx) => (
-                  <span key={idx} className="exp-tech-pill">{badge}</span>
-                ))}
-              </div>
-
-              {/* Divider Line */}
-              <div className="exp-divider" />
-
-              {/* Cascading Contribution Bullet Points */}
-              <ul className="exp-points-list">
-                {expItems.map((item, i) => (
-                  <li
-                    key={i}
-                    className="exp-point-item"
-                    ref={(el) => (bulletItemsRef.current[i] = el)}
-                  >
-                    <span className="exp-point-icon">◆</span>
-                    <div className="exp-point-body">
-                      <span className="exp-point-text">{item.text}</span>
-                      {item.tech && <span className="exp-point-tech">[{item.tech}]</span>}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          SECTION 4 — EDUCATION & ROADMAP  (White Theme)
-      ══════════════════════════════════════ */}
-      <section className="section-education" ref={educationRef}>
-        <div className="edu-inner">
-
-          {/* Section Tag */}
-          <div className="edu-tag">
-            <span className="edu-tag-line" />
-            Education & Journey
-          </div>
-
-          {/* <h2 className="edu-heading">Academic & Certification</h2> */}
-
-          {/* Winding Road Roadmap Container */}
-          <div className="edu-roadmap-container">
-
-            {/* SVG Connecting Wire / String Line (Pins to Pin Center Corridor) */}
-            <svg className="edu-wire-svg" viewBox="0 0 1000 520" preserveAspectRatio="none">
-              {/* Base Wire String Line */}
-              <path
-                className="edu-wire-base"
-                d="M 460,45 C 580,100 580,180 540,240 C 500,300 420,380 460,435"
-              />
-              {/* Active Wire String Line (Animated Draw on Scroll) */}
-              <path
-                ref={roadDashedRef}
-                className="edu-wire-active"
-                d="M 460,45 C 580,100 580,180 540,240 C 500,300 420,380 460,435"
-              />
-              {/* Interactive Glowing Light Pulse Orb Traveling along SVG Wire */}
-              <circle
-                ref={pulseRef}
-                className="edu-wire-pulse-orb"
-                cx="460"
-                cy="45"
-                r="7"
-              />
-            </svg>
-
-            {/* Milestone Cards positioned along the Roadmap */}
-            <div className="edu-milestones-grid">
-
-              {/* Milestone 1 (Top Left Edge) — MCA (Master's Degree) */}
-              <div
-                className="edu-milestone-card edu-card-left"
-                ref={(el) => (eduCardsRef.current[0] = el)}
-              >
-                <div className="edu-pin-wrapper edu-pin-purple">
-                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <div className="edu-card-content">
-                  <div className="edu-card-header">
-                    <span className="edu-type-pill pill-masters">Master's Degree</span>
-                    <span className="edu-period">2023 – 2025</span>
-                  </div>
-                  <h3 className="edu-degree-title">Master of Computer Applications (MCA)</h3>
-                  <div className="edu-institution">MES College of Engineering, Kuttippuram</div>
-                  <div className="edu-board">APJ Abdul Kalam Technological University</div>
-                </div>
-              </div>
-
-              {/* Milestone 2 (Middle Right Edge) — Python Certification */}
-              <div
-                className="edu-milestone-card edu-card-right"
-                ref={(el) => (eduCardsRef.current[1] = el)}
-              >
-                <div className="edu-pin-wrapper edu-pin-amber">
-                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <div className="edu-card-content">
-                  <div className="edu-card-header">
-                    <span className="edu-type-pill pill-cert">Certification</span>
-                    <span className="edu-period">2022-2023</span>
-                  </div>
-                  <h3 className="edu-degree-title">Python Web Development Expert</h3>
-                  <div className="edu-institution">Luminar Technolab, Kakkanad</div>
-                  <div className="edu-board">National Council for Technology and Training</div>
-                </div>
-              </div>
-
-              {/* Milestone 3 (Bottom Left Edge) — BCA (Degree) */}
-              <div
-                className="edu-milestone-card edu-card-left"
-                ref={(el) => (eduCardsRef.current[2] = el)}
-              >
-                <div className="edu-pin-wrapper edu-pin-cyan">
-                  <svg className="edu-pin-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                  </svg>
-                </div>
-                <div className="edu-card-content">
-                  <div className="edu-card-header">
-                    <span className="edu-type-pill pill-degree">Degree</span>
-                    <span className="edu-period">2019 – 2022</span>
-                  </div>
-                  <h3 className="edu-degree-title">Bachelor of Computer Applications (BCA)</h3>
-                  <div className="edu-institution">Majlis Arts and Science College, Puramannur</div>
-                  <div className="edu-board">University of Calicut</div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          SECTION 5 — PROJECTS  (Dark Theme)
-      ══════════════════════════════════════ */}
-      <section className="section-projects" ref={projectsRef}>
-        <div className="proj-inner">
-
-          {/* Section Tag */}
-          <div className="proj-tag">
-            <span className="proj-tag-line" />
-            Featured Work
-          </div>
-
-          <h2 className="proj-heading">Projects & Built Systems</h2>
-
-          {/* Projects Grid */}
-          <div className="proj-grid">
-            {projectsData.map((project, idx) => (
-              <div
-                key={project.id}
-                className="proj-card"
-                ref={(el) => (projCardsRef.current[idx] = el)}
-              >
-                {/* Card Top Badge & Link Row with Geometric Index */}
-                <div className="proj-card-top">
-                  <div className="proj-index-group">
-                    <span className="proj-index-num">{project.num}</span>
-                    <span className="proj-shape-node" />
-                    <span className={`proj-category-pill ${project.badgeClass}`}>
-                      {project.tag}
-                    </span>
-                  </div>
-                  <div className="proj-links-row">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="proj-link-btn btn-github"
-                        title="GitHub Repository"
-                      >
-                        <svg className="proj-link-icon" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                        </svg>
-                        <span>GitHub Repo</span>
-                      </a>
-                    )}
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="proj-link-btn btn-live"
-                        title="Live Website Preview"
-                      >
-                        <svg className="proj-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="10" />
-                          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-                        </svg>
-                        <span>Live Preview ↗</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* Project Title & Subtitle */}
-                <h3 className="proj-title">{project.title}</h3>
-                <div className="proj-subtitle">{project.subtitle}</div>
-
-                {/* Description */}
-                <p className="proj-desc">{project.description}</p>
-
-                {/* Project Image & QR Code Slider Component */}
-                <ProjectImageSlider project={project} />
-
-                {/* Tech Pills */}
-                <div className="proj-tech-row">
-                  {project.tech.map((t, i) => (
-                    <span key={i} className="proj-tech-pill">{t}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          SECTION 6 — CONTACT & CONNECT  (Light Theme)
-      ══════════════════════════════════════ */}
-      <section className="section-contact">
-        <div className="contact-inner">
-          <div className="contact-tag">
-            <span className="contact-tag-line" />
-            Get In Touch
-          </div>
-          
-          <h2 className="contact-heading">Let's Connect & Build Together</h2>
-          <p className="contact-subtext">
-            Feel free to reach out for software engineering opportunities, technical collaborations, or direct project inquiries!
-          </p>
-
-          <div className="contact-cards-grid">
-            {/* WhatsApp Link Card */}
-            <a
-              href="https://wa.me/919048634881"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-whatsapp"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-whatsapp">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">WhatsApp Direct</span>
-                <span className="contact-value">+91 9048634881</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* Direct Call Phone Card */}
-            <a
-              href="tel:+919048634881"
-              className="contact-card card-phone"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-phone">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Mobile Phone</span>
-                <span className="contact-value">+91 9048634881</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* Email Card */}
-            <a
-              href="mailto:fazzilfiroz@gmail.com"
-              className="contact-card card-email"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-email">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Email Address</span>
-                <span className="contact-value">fazzilfiroz@gmail.com</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* LinkedIn Card */}
-            <a
-              href="https://linkedin.com/in/fazzil-firoz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-linkedin"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-linkedin">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">LinkedIn Profile</span>
-                <span className="contact-value">fazzil-firoz</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* GitHub Card */}
-            <a
-              href="https://github.com/fazil-firoz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-github"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-github">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">GitHub Profile</span>
-                <span className="contact-value">fazil-firoz</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* Instagram Card */}
-            <a
-              href="https://www.instagram.com/fzl.frz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-instagram"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-instagram">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Instagram Profile</span>
-                <span className="contact-value">fzl.frz</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-
-            {/* Address Location Card (Clickable Google Maps Link) */}
-            <a
-              href="https://maps.google.com/?q=Erakkingal+(H),+Mulayankavu+(PO),+Kulukkallur,+Palakkad,+Kerala+679337,+India"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card card-address"
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-            >
-              <div className="contact-card-icon-box icon-location">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Location / Address</span>
-                <span className="contact-address-text">
-                  Erakkingal (H), Mulayankavu (PO), Kulukkallur, Palakkad, Kerala 679337, India
-                </span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-          </div>
-
-          {/* Centered Profile Avatar Circle with Grey Lines Extending Directly Outward */}
-          <div className="footer-avatar-divider">
-            <div className="avatar-divider-line left-line" />
-
-            <div
-              className="footer-avatar-wrapper"
-              title="Click photo to Ask AI Assistant"
-              onClick={(e) => {
-                if (e) {
-                  if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                }
-                setOpenChatTrigger(c => c + 1);
-              }}
-              onTouchEnd={(e) => {
-                if (e) {
-                  if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                }
-                setOpenChatTrigger(c => c + 1);
-              }}
-            >
-              <img
-                src="/Images/profile-pic (18).png"
-                alt="Fazil Firoz Profile"
-                className="footer-avatar-img"
-              />
-              <span className="footer-avatar-online-dot" />
-            </div>
-
-            <div className="avatar-divider-line right-line" />
-          </div>
-
-          {/* AI Bot Bar Placed Directly Below Profile Circle */}
-          <div className="footer-bot-bar-wrapper">
-            <a
-              href="javascript:void(0)"
-              className="contact-card card-aibot"
-              onClick={(e) => {
-                if (e) {
-                  if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                }
-                setOpenChatTrigger(c => c + 1);
-              }}
-              onTouchEnd={(e) => {
-                if (e) {
-                  if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-                  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-                }
-                setOpenChatTrigger(c => c + 1);
-              }}
-            >
-              <div className="contact-card-icon-box icon-aibot">
-                <svg className="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="3" r="1.5" fill="#38bdf8" />
-                  <path d="M12 4.5V7.5" stroke="#ffffff" strokeWidth="2" />
-                  <rect x="4" y="7.5" width="16" height="12" rx="4" fill="#6366f1" stroke="#ffffff" strokeWidth="1.5" />
-                  <rect x="6" y="9.5" width="12" height="4.5" rx="2" fill="#0f172a" />
-                  <circle cx="9" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <circle cx="15" cy="11.8" r="1.2" fill="#38bdf8" />
-                  <path d="M2 12h2M20 12h2" stroke="#38bdf8" strokeWidth="2" />
-                  <path d="M9.5 15.8c.83.9 2.17.9 3 0" stroke="#38bdf8" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              </div>
-              <div className="contact-card-info">
-                <span className="contact-label">Ask AI Assistant</span>
-                <span className="contact-value">Portfolio AI Bot 💬</span>
-              </div>
-              <span className="contact-action-arrow">↗</span>
-            </a>
-          </div>
-
-          {/* Footer Copyright Bottom Bar */}
-          <div className="contact-footer-bar">
-            <span>© 2026 Fazil Firoz</span>
-            <div className="footer-links-inline">
-              <a href="https://github.com/fazil-firoz" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <span>•</span>
-              <a href="https://linkedin.com/in/fazzil-firoz" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <span>•</span>
-              <a href="https://www.instagram.com/fzl.frz/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <span>•</span>
-              <a href="https://wa.me/919048634881" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-              <span>•</span>
-              <a href="mailto:fazzilfiroz@gmail.com">Email</a>
-              <span>•</span>
-              <a href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Resume</a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── Floating 3D Projection WhatsApp Button ── */}
+      {/* ── Floating WhatsApp Button ── */}
       <a
         href="https://wa.me/919048634881"
         target="_blank"
@@ -1282,7 +317,7 @@ function App() {
         <span className="whatsapp-3d-pulse" />
       </a>
 
-      {/* ── AI Portfolio Intelligence Chatbot ── */}
+      {/* ── AI Portfolio Chatbot ── */}
       <AIChatbot externalOpen={openChatTrigger} />
 
     </div>
