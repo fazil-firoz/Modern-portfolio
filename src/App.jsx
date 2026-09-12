@@ -42,6 +42,9 @@ function App() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
+      // ── Pin card to correct initial position immediately (prevents misplaced flash on load) ──
+      gsap.set(floatingCardRef.current, { x: 0, y: 0, opacity: 1, scale: 1, clearProps: 'none' });
+
       const mm = gsap.matchMedia();
 
       // Desktop: ID Card animates to the right beside About section, then fades out

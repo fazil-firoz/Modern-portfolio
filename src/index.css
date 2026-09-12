@@ -387,12 +387,13 @@ html, body, #root {
 ═══════════════════════════════════════════ */
 .floating-card {
   position: fixed;
-  /* Center it in the viewport */
+  /* Center via top/left + negative margin so GSAP owns `transform` exclusively */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -222px;   /* half of card height: 445px / 2 */
+  margin-left: -140px;  /* half of card width:  280px / 2 */
   z-index: 100;
-  /* GSAP will animate the x property — don't interfere */
+  /* GSAP will animate x/y/scale/opacity — no CSS transform conflict */
   will-change: transform;
 }
 
