@@ -52,7 +52,10 @@ export default function AboutSection({ sectionRef, textRef }) {
           {/* Download Resume Button */}
           <div className="about-resume-action">
             <a
-              href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link"
+              // href="https://drive.google.com/file/d/1_5UOnTnYpTpAmlexkF0fw0LVKGw7BUBx/view?usp=drive_link"
+              href="https://drive.google.com/file/d/11zqZ9MMEkjkH2nVNA3Sba01vAS2chLY3/view?usp=sharing"
+
+
               target="_blank"
               rel="noopener noreferrer"
               className="download-resume-btn"
