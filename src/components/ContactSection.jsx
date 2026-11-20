@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 const aiButtonCss = `
 .ai-cta-wrap {
@@ -20,10 +20,13 @@ const aiButtonCss = `
   color: var(--ink);
   border-radius: 9999px;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
   transition: transform .25s cubic-bezier(.2,.8,.2,1);
 }
-.ai-cta:hover { transform: translate(-2px, -2px); }
-.ai-cta:active { transform: translate(0, 0); }
+@media (hover: hover) { .ai-cta:hover { transform: translate(-2px, -2px); } }
+.ai-cta:active { transform: scale(.97); }
 .ai-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 8px; }
 
 /* faint outer hairline that tightens onto the button on hover */
@@ -35,7 +38,7 @@ const aiButtonCss = `
   transition: inset .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease;
   pointer-events: none;
 }
-.ai-cta:hover .ai-cta__ring { inset: -4px; border-color: var(--ink); }
+@media (hover: hover) { .ai-cta:hover .ai-cta__ring { inset: -4px; border-color: var(--ink); } }
 
 /* main outlined body: white, no fill, dark border */
 .ai-cta__body {
@@ -51,7 +54,7 @@ const aiButtonCss = `
   border: 1.5px solid var(--ink);
   transition: box-shadow .25s ease;
 }
-.ai-cta:hover .ai-cta__body { box-shadow: 4px 4px 0 0 var(--ink); }
+@media (hover: hover) { .ai-cta:hover .ai-cta__body { box-shadow: 4px 4px 0 0 var(--ink); } }
 .ai-cta:active .ai-cta__body { box-shadow: 0 0 0 0 var(--ink); }
 
 /* AI core: outlined orb with a rotating dashed orbit */
@@ -73,9 +76,9 @@ const aiButtonCss = `
   opacity: .55;
   animation: ai-cta-orbit 9s linear infinite;
 }
-.ai-cta:hover .ai-cta__orb::before { animation-duration: 2.5s; opacity: 1; }
+@media (hover: hover) { .ai-cta:hover .ai-cta__orb::before { animation-duration: 2.5s; opacity: 1; } }
 .ai-cta__orb svg { width: 20px; height: 20px; position: relative; z-index: 1; }
-.ai-cta:hover .ai-cta__orb svg { animation: ai-cta-wiggle .6s ease; }
+@media (hover: hover) { .ai-cta:hover .ai-cta__orb svg { animation: ai-cta-wiggle .6s ease; } }
 
 .ai-cta__text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; text-align: left; }
 .ai-cta__title {
@@ -118,7 +121,7 @@ const aiButtonCss = `
   line-height: 1;
   transition: transform .25s ease;
 }
-.ai-cta:hover .ai-cta__arrow { transform: translate(2px, -2px) rotate(8deg); }
+@media (hover: hover) { .ai-cta:hover .ai-cta__arrow { transform: translate(2px, -2px) rotate(8deg); } }
 
 @keyframes ai-cta-flow   { to { background-position: 100% 0; } }
 @keyframes ai-cta-orbit  { to { transform: rotate(360deg); } }
@@ -131,11 +134,14 @@ const aiButtonCss = `
 `;
 
 export default function ContactSection({ onOpenChat, handleCardMouseMove, handleCardMouseLeave }) {
+  const lastTrigger = useRef(0);
+
   const triggerChat = (e) => {
-    if (e) {
-      if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
-      if (typeof e.stopPropagation === 'function') e.stopPropagation();
-    }
+    if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+    // guard: never fire twice for one tap (touch + synthesized click)
+    const now = Date.now();
+    if (now - lastTrigger.current < 500) return;
+    lastTrigger.current = now;
     onOpenChat();
   };
 
@@ -263,7 +269,7 @@ export default function ContactSection({ onOpenChat, handleCardMouseMove, handle
         {/* Footer Avatar Divider — Profile Circle with lines */}
         <div className="footer-avatar-divider">
           <div className="avatar-divider-line left-line" />
-          <div className="footer-avatar-wrapper" title="Click photo to Ask AI Assistant" onClick={triggerChat} onTouchEnd={triggerChat}>
+          <div className="footer-avatar-wrapper" title="Click photo to Ask AI Assistant" onClick={triggerChat}>
             <img src="/Images/profile-pic (18).png" alt="Fazil Firoz Profile" className="footer-avatar-img" />
             <span className="footer-avatar-online-dot" />
           </div>
@@ -276,7 +282,6 @@ export default function ContactSection({ onOpenChat, handleCardMouseMove, handle
             type="button"
             className="ai-cta"
             onClick={triggerChat}
-            onTouchEnd={triggerChat}
             aria-label="Ask AI about Firoz"
           >
             <span className="ai-cta__ring" aria-hidden="true" />
