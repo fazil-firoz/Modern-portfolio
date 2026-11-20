@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 const aiButtonCss = `
 .ai-cta-wrap {
@@ -6,109 +6,84 @@ const aiButtonCss = `
   justify-content: center;
   width: 100%;
   padding: 0 16px;
-  margin: 18px 0 28px;
+  margin: 22px 0 30px;
 }
 .ai-cta {
-  --mx: 50%;
-  --my: 50%;
+  --ink: #0f172a;
   position: relative;
   display: inline-flex;
   border: 0;
   padding: 0;
   background: none;
-  border-radius: 9999px;
   cursor: pointer;
   font-family: inherit;
-  color: #e6fffb;
-  isolation: isolate;
+  color: var(--ink);
+  border-radius: 9999px;
   -webkit-tap-highlight-color: transparent;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1), filter .25s ease;
-  filter: drop-shadow(0 10px 28px rgba(20, 184, 166, .35));
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
 }
-.ai-cta:hover { transform: translateY(-3px); filter: drop-shadow(0 16px 38px rgba(34, 211, 238, .5)); }
-.ai-cta:active { transform: translateY(0) scale(.97); }
-.ai-cta:focus-visible { outline: 2px solid #5eead4; outline-offset: 5px; }
+.ai-cta:hover { transform: translate(-2px, -2px); }
+.ai-cta:active { transform: translate(0, 0); }
+.ai-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 8px; }
 
+/* faint outer hairline that tightens onto the button on hover */
 .ai-cta__ring {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  overflow: hidden;
-  z-index: -2;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, .22);
+  transition: inset .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease;
+  pointer-events: none;
 }
-.ai-cta__ring::before {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 220%; aspect-ratio: 1;
-  transform: translate(-50%, -50%) rotate(0deg);
-  background: conic-gradient(from 0deg,
-    transparent 0deg, #14b8a6 70deg, #22d3ee 120deg, #818cf8 170deg,
-    transparent 230deg, transparent 360deg);
-  animation: ai-cta-spin 3.2s linear infinite;
-}
+.ai-cta:hover .ai-cta__ring { inset: -4px; border-color: var(--ink); }
 
+/* main outlined body: white, no fill, dark border */
 .ai-cta__body {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin: 2px;
   padding: 8px 10px 8px 8px;
   border-radius: 9999px;
-  overflow: hidden;
-  background:
-    radial-gradient(120px 60px at var(--mx) var(--my), rgba(94, 234, 212, .28), transparent 70%),
-    linear-gradient(135deg, #03141b 0%, #062a33 55%, #0a1f3d 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 -8px 18px rgba(0,0,0,.35);
+  background: linear-gradient(120deg, #e0e7ff 0%, #ede9fe 35%, #cffafe 70%, #e0e7ff 100%);
+  background-size: 200% 100%;
+  animation: ai-cta-flow 8s ease-in-out infinite alternate;
+  border: 1.5px solid var(--ink);
+  transition: box-shadow .25s ease;
 }
-.ai-cta__body::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
-  pointer-events: none;
-}
-.ai-cta__body::after {
-  content: "";
-  position: absolute; top: 0; bottom: 0; left: -40%;
-  width: 30%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent);
-  transform: skewX(-20deg);
-  animation: ai-cta-sweep 4.5s ease-in-out infinite;
-  pointer-events: none;
-}
-.ai-cta:hover .ai-cta__body::after { animation-duration: 1.4s; }
+.ai-cta:hover .ai-cta__body { box-shadow: 4px 4px 0 0 var(--ink); }
+.ai-cta:active .ai-cta__body { box-shadow: 0 0 0 0 var(--ink); }
 
+/* AI core: outlined orb with a rotating dashed orbit */
 .ai-cta__orb {
   position: relative;
   flex: 0 0 auto;
   width: 40px; height: 40px;
   border-radius: 50%;
   display: grid; place-items: center;
-  background: radial-gradient(circle at 30% 25%, #5eead4 0%, #0d9488 45%, #064e3b 100%);
-  box-shadow: 0 0 18px rgba(45, 212, 191, .7), inset 0 0 8px rgba(255,255,255,.35);
+  border: 1.5px solid var(--ink);
+  background: radial-gradient(circle at 30% 28%, #ffffff 0%, #c4b5fd 55%, #67e8f9 100%);
 }
-.ai-cta__orb::before,
-.ai-cta__orb::after {
+.ai-cta__orb::before {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: -6px;
   border-radius: 50%;
-  border: 1.5px solid rgba(94, 234, 212, .7);
-  animation: ai-cta-pulse 2.4s ease-out infinite;
+  border: 1.5px dashed var(--ink);
+  opacity: .55;
+  animation: ai-cta-orbit 9s linear infinite;
 }
-.ai-cta__orb::after { animation-delay: 1.2s; }
-.ai-cta__orb svg { width: 22px; height: 22px; position: relative; z-index: 1; }
+.ai-cta:hover .ai-cta__orb::before { animation-duration: 2.5s; opacity: 1; }
+.ai-cta__orb svg { width: 20px; height: 20px; position: relative; z-index: 1; }
 .ai-cta:hover .ai-cta__orb svg { animation: ai-cta-wiggle .6s ease; }
 
 .ai-cta__text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; text-align: left; }
 .ai-cta__title {
   font-size: clamp(.9rem, 2.2vw, 1rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .01em;
   white-space: nowrap;
-  background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 60%, #c7d2fe 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--ink);
 }
 .ai-cta__status {
   display: inline-flex; align-items: center; gap: 6px;
@@ -116,55 +91,52 @@ const aiButtonCss = `
   font-size: .68rem;
   font-weight: 500;
   letter-spacing: .04em;
-  color: rgba(167, 243, 208, .85);
+  color: #475569;
 }
 .ai-cta__status i {
+  position: relative;
   width: 6px; height: 6px; border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
-  animation: ai-cta-blink 1.6s ease-in-out infinite;
+  background: var(--ink);
 }
+.ai-cta__status i::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  animation: ai-cta-ping 1.8s ease-out infinite;
+}
+
+/* arrow chip: outline only */
 .ai-cta__arrow {
   flex: 0 0 auto;
   width: 30px; height: 30px;
   display: grid; place-items: center;
   border-radius: 50%;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(165, 243, 252, .3);
+  border: 1.5px solid var(--ink);
+  background: rgba(255, 255, 255, .7);
   font-size: .95rem;
-  transition: transform .25s ease, background .25s ease;
+  line-height: 1;
+  transition: transform .25s ease;
 }
-.ai-cta:hover .ai-cta__arrow { transform: translate(2px, -2px) rotate(8deg); background: rgba(94, 234, 212, .25); }
+.ai-cta:hover .ai-cta__arrow { transform: translate(2px, -2px) rotate(8deg); }
 
-@keyframes ai-cta-spin  { to { transform: translate(-50%, -50%) rotate(360deg); } }
-@keyframes ai-cta-sweep { 0%, 55% { left: -40%; } 100% { left: 140%; } }
-@keyframes ai-cta-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.9); opacity: 0; } }
-@keyframes ai-cta-blink { 50% { opacity: .35; } }
+@keyframes ai-cta-flow   { to { background-position: 100% 0; } }
+@keyframes ai-cta-orbit  { to { transform: rotate(360deg); } }
+@keyframes ai-cta-ping   { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(3); opacity: 0; } }
 @keyframes ai-cta-wiggle { 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai-cta__ring::before, .ai-cta__body::after,
-  .ai-cta__orb::before, .ai-cta__orb::after, .ai-cta__status i { animation: none; }
+  .ai-cta__body, .ai-cta__orb::before, .ai-cta__status i::after { animation: none; }
 }
 `;
 
 export default function ContactSection({ onOpenChat, handleCardMouseMove, handleCardMouseLeave }) {
-  const aiBtnRef = useRef(null);
-
   const triggerChat = (e) => {
     if (e) {
       if (e.type === 'touchend' && typeof e.preventDefault === 'function') e.preventDefault();
       if (typeof e.stopPropagation === 'function') e.stopPropagation();
     }
     onOpenChat();
-  };
-
-  const handleAiBtnMove = (e) => {
-    const el = aiBtnRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    el.style.setProperty('--my', `${e.clientY - r.top}px`);
   };
 
   return (
@@ -301,20 +273,18 @@ export default function ContactSection({ onOpenChat, handleCardMouseMove, handle
         {/* Futuristic AI Button Below Profile Circle */}
         <div className="ai-cta-wrap">
           <button
-            ref={aiBtnRef}
             type="button"
             className="ai-cta"
             onClick={triggerChat}
             onTouchEnd={triggerChat}
-            onMouseMove={handleAiBtnMove}
             aria-label="Ask AI about Firoz"
           >
             <span className="ai-cta__ring" aria-hidden="true" />
             <span className="ai-cta__body">
               <span className="ai-cta__orb" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z" fill="rgba(255,255,255,.9)" />
-                  <path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2z" fill="#fff" stroke="none" />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3z" />
+                  <path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2z" />
                 </svg>
               </span>
               <span className="ai-cta__text">
